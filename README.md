@@ -7,7 +7,7 @@
 <h1 align="center"> KillerWhalePirates </h1>
 
 <h4 align="center">
-    팀 범고래 해적단의 팀 프로젝트입니다.
+범고래 해적단의 팀 프로젝트입니다.
 </h4>
 
 <div align=center>
