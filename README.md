@@ -49,7 +49,8 @@
 <br/>
 <br/>
 
-## 🛠 Tools
+## 🛠 Tech Stack 
+<p>✨ Platforms & Languages ✨</p>
 
 #### Design
 
