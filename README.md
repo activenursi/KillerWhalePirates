@@ -126,8 +126,9 @@
 
 ## 👀 How can I use it?
 
-To start using Logseq, follow these simple steps:
+저희 서비스는 사용자들의 채팅 대화를 통해 자동으로 관련 정보를 수집하고, AI 기술을 활용하여 맞춤형 구인구직 정보를 제공합니다. 이를 통해 의료인들은 자신의 역량과 성향에 맞는 채용 정보를 빠르게 찾을 수 있으며, 의료 기관들은 특정 분야의 전문성을 갖춘 인재를 쉽게 찾아낼 수 있습니다.✍️
 
+우리의 목표는 의료 분야에서 인재와 기관이 서로를 빠르고 정확하게 연결하여 의료 서비스의 품질을 향상시키는 데 기여하는 것입니다. 이를 통해 의료 현장의 효율성을 증대시키고, 더 나은 의료 인력 관리를 가능케 하는 것 입니다.🎉
 1. [Download](https://github.com/logseq/logseq/releases/latest) the latest version of Logseq
 2. Install Logseq on your device and launch the application
 3. Start writing ✍️
