@@ -124,11 +124,6 @@
 <br>
 <br>
 
-## Table of Contents
-
-<br/>
-<br/>
-
 ## 👀 How can I use it?
 
 To start using Logseq, follow these simple steps:
