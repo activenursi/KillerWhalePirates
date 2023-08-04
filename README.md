@@ -62,9 +62,9 @@
   
   </tr>
   <tr>
-    <td align="center"><b>Backend</b></td>
-    <td align="center"><b>Frontend</b></td>
     <td align="center"><b>Database</b></td>
+    <td align="center"><b>Frontend</b></td>
+    <td align="center"><b>Backend</b></td>
     <td align="center"><b>GIT</b></td>
   </tr>
 </table>
