@@ -107,8 +107,6 @@
 
 #### 🐰 카카오 로그인 / 이메일 로그인
 
-- 카카오를 통한 소셜로그인으로 간단하게 가입할 수 있어요. 이메일 회원가입에서는 유효한 이메일만 가입할 수 있도록 중복확인과 더불어 이메일 인증 링크 방식을 도입했어요.
-
 #### 🦊 나를 소개하는 프로필
 
 - 프로필 닉네임, 사진, github링크와 자기소개까지 개발자들의 공간이니만큼 나를 어필할 수 있어요. 유저의 닉네임을 클릭하면 해당 유저 모달창으로 정보가 보여지게 돼요.
@@ -151,20 +149,10 @@
 <br/>
 
 
-## 🤔 Why Logseq?
+#### 🐰 카카오 로그인 / 이메일 로그인
 
-[Logseq](https://logseq.com) is a **knowledge management** and **collaboration** platform. It focuses on **privacy**, **longevity**, and [**user control**](https://www.gnu.org/philosophy/free-sw.en.html). Logseq offers a range of **powerful tools** for **knowledge management**, **collaboration**, **PDF annotation**, and **task management** with support for multiple file formats, including **Markdown** and **Org-mode**, and **various features** for organizing and structuring your notes.
 
-Logseq's **Whiteboard** feature lets you organize your knowledge and ideas using a spatial **canvas** with **shapes**, **drawings**, **website embeds**, and **connectors**. You can **visually group** and **link** your **notes** and external media (such as **videos** and **images**), enabling visual thinkers to compose, remix, **annotate**, and connect content from their knowledge base and emerging thoughts in a new way.
-
-In addition to its core features, Logseq has a growing ecosystem of **plugins** and **themes** that enable a wide range of workflows and **customization** options. **Mobile apps** are also available, providing access to most of the features of the desktop application. Whether you're a student, a professional, or anyone who values a clear and organized approach to managing your ideas and notes, Logseq is an excellent choice for anyone looking to improve their productivity and streamline their workflow.
-
-![logseq-demo](https://user-images.githubusercontent.com/25513724/221387376-4dc419c2-0d0a-460c-a920-2d211e78b456.gif)
-
-<a href="https://github.com/logseq/logseq/releases/latest/">
-        <img src="https://img.shields.io/badge/Download_Logseq-100000?style=for-the-badge&logo=flatpak&logoColor=white&labelColor=002b36&color=85c8c8"
-            align="right"
-            alt="Download Logseq"/></a>
+- 카카오를 통한 소셜로그인으로 간단하게 가입할 수 있어요. 이메일 회원가입에서는 유효한 이메일만 가입할 수 있도록 중복확인과 더불어 이메일 인증 링크 방식을 도입했어요.
 
 ## 👀 How can I use it?
 
