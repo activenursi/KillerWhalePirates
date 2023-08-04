@@ -36,16 +36,16 @@
 
 <table>
    <tr>
-    <td align="center"><b><a href="https://github.com/llama-ste">조남용</a></b></td>
-    <td align="center"><b><a href="https://github.com/AlgoRoots">이승준</a></b></td>
-    <td align="center"><b><a href="https://github.com/limjae">손진원</a></b></td>
-    <td align="center"><b><a href="https://github.com/catalinakim">조대형</a></b></td>
+    <td align="center"><b><a href="#">조남용</a></b></td>
+    <td align="center"><b><a href="#">이승준</a></b></td>
+    <td align="center"><b><a href="#">손진원</a></b></td>
+    <td align="center"><b><a href="#">조대형</a></b></td>
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/llama-ste"><img src="https://user-images.githubusercontent.com/90495580/169259372-a923afea-a898-4bca-9504-7d073d6ffab8.jpeg" width="100px" /></a></td>
     <td align="center"><a href="https://github.com/AlgoRoots"><img src="https://user-images.githubusercontent.com/90495580/169259379-a913dd30-fa7f-4309-af30-9bd94c9608a6.png" width="100px" /></a></td>
     <td align="center"><a href="https://github.com/limjae"><img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/16684da2-a2be-485c-ac5a-534b57496653" width="100px" /></a></td>
-    <td align="center"><a href="https://github.com/catalinakim"><img src="https://user-images.githubusercontent.com/90495580/170095150-bcdacb00-ac2a-42eb-98b5-c67e05352832.jpeg" width="100px" /></a></td>
+    <td align="center"><a href="https://github.com/catalinakim"><img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/19525076-b5dc-45c7-b704-341da1128c52" width="100px" /></a></td>
   
   </tr>
   <tr>
