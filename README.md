@@ -42,10 +42,7 @@
     <td align="center"><b>GIT</b></td>
   </tr>
 </table>
-<div align=center>
-	<h3>📚 Tech Stack 📚</h3>
-	<p>✨ Platforms & Languages ✨</p>
-</div>
+
 <br/>
 <br/>
 
