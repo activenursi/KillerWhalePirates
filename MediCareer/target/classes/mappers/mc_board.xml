@@ -16,7 +16,7 @@
 	</resultMap>
 	
 	
-	<select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
+	<select id="boardSelectList" parameterType="map" resultMap="boardResultMap">
 		SELECT MEMBER1.MNO,  MNAME, EMAIL, CRE_DATE
 		FROM (  SELECT ROWNUM AS R_NUM, M.MNO, M.MNAME, M.EMAIL, M.CRE_DATE 
         		FROM (  SELECT MNO,  MNAME, EMAIL, CRE_DATE
