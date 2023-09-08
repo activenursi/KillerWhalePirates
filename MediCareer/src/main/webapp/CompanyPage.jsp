@@ -61,6 +61,18 @@
 	.jobPostingMod{
 		width:105px;
 	}
+	.jobPosting1No{
+		width:40px;
+	}
+	.jobPosting1Title{
+		width:380px;
+	}
+	.jobPosting1Cre{
+		width:120px;
+	}
+	.jobPosting1Mod{
+		width:120px;
+	}
 	
 	
 	
@@ -109,10 +121,10 @@
 	<div class="tableBox2">
 		<table>
 			<tr>
-				<th class="jobPostingNo">번호</th>
-				<th class="jobPostingTitle">채용공고목록</th>
-				<th class="jobPostingCre">등록날짜</th>
-				<th class="jobPostingMod">수정날짜</th>
+				<th class="jobPosting1No">번호</th>
+				<th class="jobPosting1Title">채용공고목록</th>
+				<th class="jobPosting1Cre">등록날짜</th>
+				<th class="jobPosting1Mod">수정날짜</th>
 			</tr>
 			<tr>
 				<td>1</td>
@@ -122,5 +134,6 @@
 			</tr>
 		</table>
 	</div>
+		
 </body>
 </html>
