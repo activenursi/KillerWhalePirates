@@ -21,7 +21,13 @@
 </style>
 
 <script type="text/javascript">
-	
+
+	$(".ctr_top").on('click', function() {
+	    $("html, body").animate({
+	        scrollTop:0
+	    }, '500');
+	    return false;
+	})
 
 </script>
 
@@ -32,36 +38,28 @@
 		<%@include file ="/header.jsp" %>
 		
 		<div class="secondBack"> 
-		
 			<div class="bodyWrap">
 				<div class="mainInfo">
 					<p style="font-size: 30px;">스마트한 간호사 구인구직</p>
 					<p>메디커리어</p>
 				</div>
 			</div>
-		
 		</div>
-		
 		<div class="firstBack"> 
-		
 			<div class="bodyWrap">
 				<div class="mainInfo">
 					<p style="font-size: 30px;">당신보다 당신을 더 잘 아는</p>
 					<p>메디커리어</p>
 				</div>
 			</div>
-		
 		</div>
-		
 		<div class="thirdBack"> 
-		
 			<div class="bodyWrap">
 				<div class="mainInfo">
 					<p style="font-size: 30px;">무조건 써야하는</p>
 					<p>메디커리어</p>
 				</div>
 			</div>
-		
 		</div>
 		
 		<%@include file ="/footer.jsp" %>
