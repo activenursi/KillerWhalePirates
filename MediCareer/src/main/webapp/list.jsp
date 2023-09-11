@@ -47,7 +47,7 @@
                     </div>
                     <div class="tool">
                         <ul>
-                            <li><a href="#" class="btn btn_08"><span>질문하기</span></a></li>
+                            <li><a href="/MediCareer/write.jsp" class="btn btn_08"><span>질문하기</span></a></li>
                             <li><a href="#" class="btn btn_01"><span>답변하기</span></a></li>
                         </ul>
                     </div>

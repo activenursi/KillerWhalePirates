@@ -19,7 +19,7 @@
                        <a href="/MediCareer/careerInfo.jsp">채용 공고</a>
                    </li>
                    <li>
-                       <a href="/MediCareer/community.jsp">커뮤니티</a>
+                       <a href="/MediCareer/list.jsp">커뮤니티</a>
                    </li>
                    <li>
                    	   <a href="/MediCareer/myPage.jsp">마이페이지</a>
