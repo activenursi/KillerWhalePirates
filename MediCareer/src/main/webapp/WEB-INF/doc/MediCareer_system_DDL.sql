@@ -1,0 +1,6 @@
+-- 계정 생성
+CREATE USER medi IDENTIFIED BY q1w2e3r4 ACCOUNT UNLOCK;
+
+--계정에 권한 부여
+GRANT RESOURCE, CONNECT
+TO medi;
