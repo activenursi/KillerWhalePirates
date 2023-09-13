@@ -43,8 +43,9 @@
 <body>
 <div class="wrap1" style="width:550px">
 		<div class="align-center">
-			고객문의글상세
+			문의답변
 		</div>
+		<br>
 		<div>
 		<form action="add" method="post">
 			<table>
@@ -57,7 +58,7 @@
 				
 				<tr>
 					<td>제목</td>
-					<td colspan="2"><input type="text" name="title"style="width:320px"value="${boardDto.cTitle}" readonly="readonly"></td>
+					<td colspan="2"><input type="text" name="title"style="width:320px"value="" readonly="readonly"></td>
 					<td></td>
 				</tr>
 				<tr class="contentTr" height="350px">
@@ -66,8 +67,6 @@
 				</tr>
 			</table>
 			<div>
-				<input type="button" value='수정하기' onclick='pageMoveUpdateFnc(${boardDto.bNo});'>
-				<input type="button" value='삭제하기' onclick='pageMoveDeleteFnc(${boardDto.bNo});'><br><br>
 				<input type='button' value='문의글 목록보기' onclick='pageMoveListFnc();'>
 			</div>
 			</form>

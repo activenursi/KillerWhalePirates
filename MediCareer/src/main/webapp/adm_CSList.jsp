@@ -43,6 +43,7 @@
 					<th class="">작성일자</th>
 					<th class="">진행상태</th>
 					<th class="">담당자</th>
+					<th class="">답변하기</th>
 				</tr>
 				<tr>
 					<td>1</td>
@@ -50,8 +51,9 @@
 					<td>비밀번호찾기가안되요.</td>
 					<td>홍길동</td>
 					<td>2023-09-07</td>
-					<td>진행단계<td>
+					<td>진행단계</td>
 					<td>최고관리자</td>
+					<td><input type="button" value="답변하기"></td>
 				</tr>
 			</table>
 		</div>
