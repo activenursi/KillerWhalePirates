@@ -5,22 +5,75 @@
 <mapper namespace="com.mc.board">
 
 	<resultMap type="boardDto" id="boardResultMap">
-		<id column="MNO" property="no" />
-
+		<id column="BOARD_NO" property="no" />
+		<result column="BOARD_WRITER" property="writer"/>
+		<result column="BOARD_TITLE" property="title"/>
+		<result column="BOARD_CONTENT" property="content"/>
+		<result column="BOARD_VIEW_COUNT" property="view_count"/>
+		<result column="BOARD_RECOMMEND" property="recommend"/>
+		<result column="BOARD_WRITE_DATE" property="write_date"
+			javaType="java.util.Date"/>
+		<result column="BOARD_MOD_DATE" property="mod_date" 
+			javaType="java.util.Date" />
+		<result column="CM_NO" property="cm_no"/>
 	</resultMap>
-	
+ 
 	
 	<select id="boardSelectList" parameterType="map" resultMap="boardResultMap">
-		SELECT MEMBER1.MNO,  MNAME, EMAIL, CRE_DATE
-		FROM (  SELECT ROWNUM AS R_NUM, M.MNO, M.MNAME, M.EMAIL, M.CRE_DATE 
-        		FROM (  SELECT MNO,  MNAME, EMAIL, CRE_DATE
-		                FROM MEMBER 
-		                ORDER BY CRE_DATE DESC) M
-		) MEMBER1
-		WHERE MEMBER1.R_NUM BETWEEN #{start} AND #{end}
+		SELECT BOARD1.BOARD_NO, BOARD_WRITER, BOARD_TITLE
+		,BOARD_CONTENT, BOARD_VIEW_COUNT, BOARD_RECOMMEND 
+		, BOARD_WRITE_DATE, CM_NO
+		FROM (  SELECT ROWNUM AS R_NUM, B.BOARD_NO, BOARD_WRITER, B.BOARD_TITLE
+					, B.BOARD_CONTENT, B.BOARD_VIEW_COUNT, B.BOARD_RECOMMEND 
+					, B.BOARD_WRITE_DATE, B.CM_NO
+        		FROM (  SELECT BOARD_NO, BOARD_WRITER, BBOARD_TITLE
+							, BOARD_CONTENT, BOARD_VIEW_COUNT, BOARD_RECOMMEND 
+							, BOARD_WRITE_DATE, CM_NO
+		                FROM BOARD 
+		                ORDER BY WRITE_DATE DESC) B
+		) BOARD1
+		WHERE BOARD1.R_NUM BETWEEN #{start} AND #{end}
 	</select>
 	
+	<select id="boardSelectTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM BOARD
+	</select>
 	
-
+	<select id="boardSelectOne" resultMap="boardResultMap">
+		SELECT BOARD_NO, BOARD_WRITER, BBOARD_TITLE
+			, BOARD_CONTENT, BOARD_VIEW_COUNT, BOARD_RECOMMEND 
+			, BOARD_WRITE_DATE, CM_NO
+		FROM BOARD
+		WHERE BOARD_NO = #{no}
+	</select>
+	
+	<update id="boardUpdateOne" parameterType="boardDto">
+		UPDATE BOARD
+		<set>
+			<if test="title!=null">BOARD_TITLE = #{title},</if>
+			<if test="email!=null">BOARD_COTENT = #{content},</if>
+			BOARD_MOD_DATE = SYSDATE
+		</set>
+			WHERE BOARD_NO = #{no}
+	</update>
+	
+	<delete id="boardDeleteOne">
+		DELETE FROM BOARD WHERE BOARD_NO = #{no}
+	</delete>
+	
+	<insert id="boardInsertOne" parameterType="boardDto"
+       useGeneratedKeys="true" keyProperty="no">
+       <selectKey keyProperty="no" resultType="int" order="BEFORE">
+          SELECT BOARD_NO_SEQ.NEXTVAL
+         FROM DUAL
+       </selectKey>
+      INSERT INTO COMMON_MEMBER
+      (BOARD_NO, BOARD_WRITER, BBOARD_TITLE
+			, BOARD_CONTENT, BOARD_VIEW_COUNT, BOARD_RECOMMEND 
+			, BOARD_WRITE_DATE, CM_NO)
+      VALUES(#{no}, #{writer}, #{title}, #{content}, #{view_count}, #{recommend}
+      , SYSDATE, #{cm_no})
+   </insert>
 	
 </mapper>

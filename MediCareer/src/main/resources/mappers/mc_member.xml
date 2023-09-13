@@ -5,21 +5,70 @@
 <mapper namespace="com.mc.member">
 
 	<resultMap type="memberDto" id="memberResultMap">
-
+		<id column="CM_NO" property="no" />
+		<result column="CM_NAME" property="name"/>
+		<result column="CM_EMAIL" property="email"/>
+		<result column="CM_NICKNAME" property="nickName"/>
+		<result column="CM_PASSWORD" property="password"/>
+		<result column="CM_JOIN_DATE" property="createDate"
+			javaType="java.util.Date"/>
+		<result column="CM_MOD_DATE" property="modifyDate" 
+			javaType="java.util.Date" />
 	</resultMap>
 	
+	<select id="memberExist" parameterType="map" 
+		resultMap="memberResultMap">
+		SELECT CM_NAME, CM_EMAIL
+		FROM COMMON_MEMBER
+		WHERE CM_EMAIL = #{email}
+		AND CM_PASSWORD = #{pwd}
+	</select>
 	
 	<select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
-		SELECT MEMBER1.MNO,  MNAME, EMAIL, CRE_DATE
-		FROM (  SELECT ROWNUM AS R_NUM, M.MNO, M.MNAME, M.EMAIL, M.CRE_DATE 
-        		FROM (  SELECT MNO,  MNAME, EMAIL, CRE_DATE
-		                FROM MEMBER 
-		                ORDER BY CRE_DATE DESC) M
+		SELECT MEMBER1.CM_NO,  CM_NAME, CM_EMAIL, CM_JOIN_DATE
+		FROM (  SELECT ROWNUM AS R_NUM, M.CM_NO, M.CM_NAME, M.CM_EMAIL, M.CM_JOIN_DATE 
+        		FROM (  SELECT CM_NO,  CM_NAME, CM_EMAIL, CM_JOIN_DATE
+		                FROM COMMON_MEMBER 
+		                ORDER BY CM_JOIN_DATE DESC) M
 		) MEMBER1
 		WHERE MEMBER1.R_NUM BETWEEN #{start} AND #{end}
 	</select>
 	
+	<select id="memberSelectOne" resultMap="memberResultMap">
+		SELECT CM_NO, CM_NAME, CM_EMAIL, CM_JOIN_DATE
+		FROM COMMON_MEMBER
+		WHERE MNO = #{no}
+	</select>
 	
+	<select id="memberSelectTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM COMMON_MEMBER
+	</select>
 	
+	 
+	<update id="memberUpdateOne" parameterType="memberDto">
+		UPDATE COMMON_MEMBER
+		<set>
+			<if test="name!=null">CM_NAME = #{name},</if>
+			<if test="email!=null">CM_EMAIL = #{email},</if>
+			CM_MOD_DATE = SYSDATE
+		</set>
+			WHERE CM_NO = #{no}
+	</update>
 	
+	<delete id="memberDeleteOne">
+		DELETE FROM COMMON_ WHERE CM_NO = #{no}
+	</delete>
+	
+	<insert id="memberInsertOne" parameterType="memberDto"
+       useGeneratedKeys="true" keyProperty="no">
+       <selectKey keyProperty="no" resultType="int" order="BEFORE">
+          SELECT CM_NO_SEQ.NEXTVAL
+         FROM DUAL
+       </selectKey>
+      INSERT INTO COMMON_MEMBER
+      (CM_NO, CM_MAIL, CM_PASSWORD, CM_NAME, CM_JOIN_DATE, CM_MOD_DATE)
+      VALUES(#{no}, #{email}, #{password}, #{name}
+      , SYSDATE, SYSDATE)
+   </insert>
 </mapper>
