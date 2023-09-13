@@ -73,6 +73,17 @@
   <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 </p>
 
+
+### 😎 Information Architechture
+<p>
+  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/1119f3f3-be16-4071-b6fe-e6bf50a08ae7">
+</p>
+
+<br/>
+<br/>
+
+
+
 #### Infrastructure
 
 <p>
