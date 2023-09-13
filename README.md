@@ -53,6 +53,11 @@
 <br/>
 <br/>
 
+### 😊 Information Architechture
+<p>
+  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/64b4f717-6f9c-4f40-87a9-a4d73d1928ca">
+</p>
+
 ## 🛠 Tech Stack 
 <p>✨ Platforms & Languages ✨</p>
 
@@ -72,6 +77,7 @@
   <img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white">
   <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 </p>
+
 
 #### Infrastructure
 
