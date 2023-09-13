@@ -59,7 +59,7 @@
                                 <dt>내용 <div class="anony"><label><input type="checkbox"><p>익명</p><i></i></label></div></dt>
                                 <dd>
                                     <div class="textarea">
-                                       
+                                       <textarea></textarea>
                                     </div>
                                 </dd>
                             </dl>
@@ -71,7 +71,14 @@
                                     </div>
                                 </dd>
                             </dl>
-
+							<dl>
+                                <dt>이미지 업로드</dt>
+                                <dd>
+                                    <div class="button">
+                                        <button type="button" id="" class="btn btn_01">이미지 업로드</button>
+                                    </div>
+                                </dd>
+                            </dl>
                           
 
                         </div>
