@@ -45,7 +45,12 @@
 <br/>
 
 
-### 😎 Members
+### 😎 Work breakdown structure
+<p>
+  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/1119f3f3-be16-4071-b6fe-e6bf50a08ae7">
+</p>
+
+
 
 <table>
    <tr>
