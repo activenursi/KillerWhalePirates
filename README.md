@@ -50,30 +50,6 @@
   <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/1119f3f3-be16-4071-b6fe-e6bf50a08ae7">
 </p>
 
-
-
-<table>
-   <tr>
-    <td align="center"><b><a href="#">조남용</a></b></td>
-    <td align="center"><b><a href="#">이승준</a></b></td>
-    <td align="center"><b><a href="#">손진원</a></b></td>
-    <td align="center"><b><a href="#">조대형</a></b></td>
-  </tr>
-  <tr>  
-    <td align="center"><a href="https://github.com/llama-ste"><img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/2d6e0f64-af86-48a1-a15e-d1ceab35d382" width="100px" /></a></td>
-<td align="center"><a href="https://github.com/llama-ste"><img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/9f7d44db-16dc-4475-a19f-ee4e5e3e7325" width="100px" /></a></td>
-    <td align="center"><a href="https://github.com/limjae"><img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/16684da2-a2be-485c-ac5a-534b57496653" width="100px" /></a></td>
-    <td align="center"><a href="https://github.com/catalinakim"><img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/19525076-b5dc-45c7-b704-341da1128c52" width="100px" /></a></td>
-  
-  </tr>
-  <tr>
-    <td align="center"><b>Database</b></td>
-    <td align="center"><b>Frontend</b></td>
-    <td align="center"><b>Backend</b></td>
-    <td align="center"><b>GIT</b></td>
-  </tr>
-</table>
-
 <br/>
 <br/>
 
