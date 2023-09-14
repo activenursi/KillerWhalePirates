@@ -8,13 +8,15 @@
 - 일반 회원 이메일: CM_EMAIL | VARCHAR2(40BYTE) | UNN
 - 일반 회원 비밀번호: CM_PASSWORD | VARCHAR2(20BYTE) | NN
 - 일반 회원 가입일: CM_JOIN_DATE | DATE | NN
+- 일반 회원 정보 수정일: CM_MODIFY_DATE DATE | DATE
 
 #프로필 이미지 테이블: PROFILE_IMAGE
 - 프로필 이미지 색인: PI_INDEX | PRIMARY KEY | NUMBER | NN
 - 프로필 이미지 원본 이름: PI_ORIGINAL_FILE_NAME | VARCHAR2(300) | NN
 - 프로필 이미지 저장된 파일 이름: PI_AFTER_FILE_NAME | VARCHAR2(36) | NN
-- 프로필 이미지 파일 크기: PI_FILE_SIZE | NUMBER
+- 프로필 이미지 파일 크기: PI_FILE_SIZE | NUMBER | NN
 - 프로필 이미지 파일 업로드일: PI_UPLOAD_DATE | DATE | NN
+- 프로필 이미지 수정일: PI_MODIFY_DATE | DATE
 - 회원 식별번호: CM_NO | FOREIGN KEY | NUMBER | NN
 
 #기업 회원 정보 테이블: ENTERPRISE_MEMBER
@@ -27,6 +29,7 @@
 - 기업 회원 이메일: EM_EMAIL | VARCHAR2(40BYTE) | UNN
 - 기업 회원 비밀번호: EM_PASSWORD | VARCHAR2(20BYTE) | NN
 - 기업 회원 가입일: EM_JOIN_DATE | DATE | NN
+- 기업 회원 정보 수정일: EM_MODIFY_DATE | DATE
 
 #로고 이미지 테이블: LOGO_IMAGE
 - 로고 이미지 색인: LI_INDEX | PRIMARY KEY | NUMBER | NN
@@ -34,16 +37,20 @@
 - 로고 이미지 저장된 파일 이름: LI_AFTER_FILE_NAME | VARCHAR2(36) | NN
 - 로고 이미지 파일 크기: LI_FILE_SIZE | NUMBER
 - 로고 이미지 파일 업로드일: LI_UPLOAD_DATE | DATE | NN
+- 로고 이미지 파일 수정일: LI_MODIFY_DATE | DATE
 - 회원 식별번호: EM_NO | FOREIGN KEY | NUMBER | NN
 
 #게시판 테이블: BOARD
 - 게시글 식별번호: BOARD_NO | PRIMARY KEY | NUMBER | NN
 - 게시글 작성자: BOARD_WRITER | VARCHAR2(30BYTE) | NN
+- 게시글 카테고리: BOARD_CATEGORY | VARCHAR2(30BYTE) | NN
+- 게시글 태그: BOARD_HASHTAG | VARCHAR2(300BYTE)
 - 게시글 제목: BOARD_TITLE | VARCHAR2(60BYTE) | NN
 - 게시글 내용: BOARD_CONTENT | VARCHAR2(3000BYTE) | NN
 - 게시글 조회수: BOARD_VIEW_COUNT | NUMBER | NN
 - 게시글 추천수: BOARD_RECOMMEND | NUMBER | NN
 - 게시글 작성일: BOARD_WRITE_DATE | DATE | NN
+- 게시글 수정일: BOARD_MODIFY_DATE | DATE
 - 회원 식별번호: CM_NO | FOREIGN KEY | NUMBER | NN
 
 #게시글 이미지 테이블: BOARD_IMAGE
@@ -52,6 +59,7 @@
 - 게시글 이미지 저장된 파일 이름: BI_AFTER_FILE_NAME | VARCHAR2(36) | NN
 - 게시글 이미지 파일 크기: BI_FILE_SIZE | NUMBER
 - 게시글 이미지 파일 업로드일: BI_UPLOAD_DATE | DATE | NN
+- 게시글 이미지 수정일: BI_MODIFY_DATE | DATE
 - 게시글 식별번호: BOARD_NO | FOREIGN KEY | NUMBER | NN
 
 #이력서 테이블: RESUME
@@ -74,6 +82,8 @@
 - 자격증 발행기관: LICENSE_ISSUING_AGENCY | VARCHAR2(90BYTE)
 - 자격증 합격일: LICENSE_PASSING_DATE | DATE
 - 자기소개: SELF_INTRODUCTION | VARCHAR2(3000BYTE)
+- 이력서 작성일: RESUME_CREATE_DATE | DATE | NN
+- 이력서 수정일: RESUME_MODIFY_DATE | DATE
 - 회원 식별번호: CM_NO | FOREIGN KEY | NUMBER
 
 #공고 테이블

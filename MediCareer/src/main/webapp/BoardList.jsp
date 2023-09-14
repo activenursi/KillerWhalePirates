@@ -20,16 +20,6 @@
 	<!-- swiper Javascript CDN 연결 -->
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 	
-	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
-		class="bi bi-pencil" viewBox="0 0 16 16">
-		<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 
-		1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 
-		4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 
-		1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 
-		3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 
-		1-.468-.325z"/>
-	</svg>
-	
 
 	<!-- Demo styles -->
 	<style>
@@ -122,15 +112,13 @@
 	                    <div class="tabs">
 	                        <ul>
 	                            <li class="active" rel="전체">전체</li>
-	                            <li rel="SN">SN</li>
-	                            <li rel="RN">RN</li>
-	                            <li rel="해외">해외</li>
-	                            <li rel="탈출">탈출</li>
+	                            <li rel="취업">취업</li>
+	                            <li rel="일상">일상</li>
 	                        </ul>
 	                    </div>
 	                    <div class="tool">
 	                        <ul>
-	                            <li><a href="/MediCareer/write.jsp" class="btn btn_08"><span>질문하기</span></a></li>
+	                            <li><a href="/MediCareer/BoardWrite.jsp" class="btn btn_08"><span>질문하기</span></a></li>
 	                            <li><a href="#" class="btn btn_01"><span>답변하기</span></a></li>
 	                        </ul>
 	                    </div>
@@ -141,36 +129,40 @@
 						<div class="swiper-wrapper">
 						    <div class="swiper-slide">
 						    	<a>
-						    		<div>
-							    		<p class="board_info">
-											<span>n 시간 전</span>
-								    		<span>&nbsp;·&nbsp;</span>
-								    		<span>(닉네임)님의 질문</span>
-							    		</p>
-						    		</div>
-						    		<p class="board_title">
-						    			<span>제목이 들어가는 부분</span>
-						    		</p>
-						    		<p class="board_content">
-							    		이 곳에는 내용이 들어가는데 두줄 이상이면 자르고 '...'처리
-						    		</p>
-						    		<div class="board_state">
-						    			<span class="board_answer">
-						    				답변
-						    				&nbsp;
-						    				<span>n</span>
-						    			</span>
-						    			<span class="board_comment">
-						    				댓글
-						    				&nbsp;
-						    				<span>n</span>
-						    			</span>
-						    			<span class="board_recommend">
-						    				추천
-						    				&nbsp;
-						    				<span>n</span>
-						    			</span>
-						    		</div>
+				                    <div class="flex">
+				                        <div class="lt-item">
+				                            <div class="head">
+				                                <div class="cate">
+				                                    <span class="cate02">RN</span>
+				                                </div>
+				                                <div class="hash"><span>#수술</span> <span>#수술방</span> <span>#정형외과</span></div>
+				                            </div>
+				                            <div class="subject">
+				                                <a href="#">프로필테스트입니다.</a>
+				                            </div>
+				                            <div class="text">
+				                                <a href="#">123</a>
+				                            </div>
+				                        </div>
+				                        <div class="rt-item">
+				                            <div class="image">
+				                                <a href="#">
+				                                    <img src="/data/file/review/13a8a413dedf43224f8ca1af31489adb_zHFtMsNk_df2d085a165991279bb05196691d17ca1b9f4bd7.png">
+				                                </a>
+				                            </div>
+				                        </div>
+				                    </div>
+				                    <div class="bottom">
+				                        <div class="info">
+				                            <span>2023-08-20 00:52:03</span>
+				                            <span>버터</span>
+				                        </div>
+				                        <div class="tool">
+				                            <a href="javascript:;"><img src="../resources/img/icon_latest_viewer.png"> <em>19</em></a>
+				                            <a href="javascript:;"><img src="../resources/img/icon_latest_bookmark.png"> <em>0</em></a>
+				                            <a href="javascript:;"><img src="../resources/img/icon_latest_comment.png"> <em>0</em></a>
+				                        </div>
+				                    </div>
 						    	</a>
 						    </div>
 						    <div class="swiper-slide">Slide 2</div>
@@ -209,40 +201,41 @@
 	                <div class="list">
 	                    <ul id="newList" class="paging_list">
 	                        <li>
-	                        	<a>
-						    		<div>
-							    		<p class="board_info">
-											<span>n 시간 전</span>
-								    		<span>&nbsp;·&nbsp;</span>
-								    		<span>(닉네임)님의 질문</span>
-							    		</p>
-						    		</div>
-						    		<p class="board_title">
-						    			<span>제목이 들어가는 부분</span>
-						    		</p>
-						    		<p class="board_content">
-							    		이 곳에는 내용이 들어가는데 두줄 이상이면 자르고 '...'처리
-						    		</p>
-						    		<div class="board_state">
-						    			<span class="board_answer">
-						    				답변
-						    				&nbsp;
-						    				<span>n</span>
-						    				&nbsp;
-						    			</span>
-						    			<span class="board_comment">
-						    				댓글
-						    				&nbsp;
-						    				<span>n</span>
-						    			</span>
-						    			<span class="board_recommend">
-						    				추천
-						    				&nbsp;
-						    				<span>n</span>
-						    			</span>
-						    		</div>
-						    	</a>
-	                        </li>
+			                    <div class="flex">
+			                        <div class="lt-item">
+			                            <div class="head">
+			                                <div class="cate">
+			                                    <span class="cate02">RN</span>
+			                                </div>
+			                                <div class="hash"><span>#수술</span> <span>#수술방</span> <span>#정형외과</span></div>
+			                            </div>
+			                            <div class="subject">
+			                                <a href="#">프로필테스트입니다.</a>
+			                            </div>
+			                            <div class="text">
+			                                <a href="#">123</a>
+			                            </div>
+			                        </div>
+			                        <div class="rt-item">
+			                            <div class="image">
+			                                <a href="#">
+			                                    <img src="/data/file/review/13a8a413dedf43224f8ca1af31489adb_zHFtMsNk_df2d085a165991279bb05196691d17ca1b9f4bd7.png">
+			                                </a>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="bottom">
+			                        <div class="info">
+			                            <span>2023-08-20 00:52:03</span>
+			                            <span>버터</span>
+			                        </div>
+			                        <div class="tool">
+			                            <a href="javascript:;"><img src="../resources/img/icon_latest_viewer.png"> <em>19</em></a>
+			                            <a href="javascript:;"><img src="../resources/img/icon_latest_bookmark.png"> <em>0</em></a>
+			                            <a href="javascript:;"><img src="../resources/img/icon_latest_comment.png"> <em>0</em></a>
+			                        </div>
+			                    </div>
+			                </li>
 	                    </ul>
 	                </div>
 	            </form>
