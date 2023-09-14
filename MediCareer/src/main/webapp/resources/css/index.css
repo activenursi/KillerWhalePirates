@@ -60,12 +60,13 @@ a {text-decoration: none;}
 header {width: 100%; background-color: transparent; border-radius: 1px solid #c8c8c8; position: fixed; top: 0; z-index: 9; }
 .inner {width: 1100px; margin: 0 auto; position: relative;}
 header > .inner {height: 80px;}
-header .logo {width: 100px; height: 100px; position: absolute; top: 0; bottom: 0; left: 0; margin: auto;}
+.logo img {width: 130px; /* 원하는 크기로 조정 */ height: auto; /* 가로 비율을 유지하면서 크기를 조정 */
+}
 header .sub-menu {position: absolute; top: 50%; right: 0; display: flex; transform: translate(0, -50%)}
 header .sub-menu ul.menu {display: flex; list-style-type: none;}
-header .sub-menu ul.menu li {position: relative; color: #fff;}
+header .sub-menu ul.menu li {position: relative; color: #333;}
 header .sub-menu ul.menu li:first-child::before {display: none;}
-header .sub-menu ul.menu li a {background-color: transparent; font-size: 16px; color: #fff; font-weight: 700; padding: 20px 16px; display: block; text-decoration: none;}
+header .sub-menu ul.menu li a {background-color: transparent; font-size: 16px; color: #333; font-weight: 700; padding: 20px 16px; display: block; text-decoration: none;}
 
 
 
