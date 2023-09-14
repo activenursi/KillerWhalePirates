@@ -37,7 +37,7 @@ public class MemberController {
 		return "./auth/LoginForm";
 	}
 	
-	// 로그인 버튼 클릭시
+	
 	@RequestMapping(value="/auth/loginCtr.do", method = RequestMethod.POST)
 	public String loginCtr(String email, String password, 
 			HttpSession session, Model model) {

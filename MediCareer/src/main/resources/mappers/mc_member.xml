@@ -57,7 +57,7 @@
 	</update>
 	
 	<delete id="memberDeleteOne">
-		DELETE FROM COMMON_ WHERE CM_NO = #{no}
+		DELETE FROM COMMON_MEMBER WHERE CM_NO = #{no}
 	</delete>
 	
 	<insert id="memberInsertOne" parameterType="memberDto"

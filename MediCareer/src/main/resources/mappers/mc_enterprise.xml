@@ -4,71 +4,77 @@
 
 <mapper namespace="com.mc.enterprise">
 
-	<resultMap type="memberDto" id="memberResultMap">
-		<id column="CM_NO" property="no" />
-		<result column="CM_NAME" property="name"/>
-		<result column="CM_EMAIL" property="email"/>
-		<result column="CM_NICKNAME" property="nickName"/>
-		<result column="CM_PASSWORD" property="password"/>
-		<result column="CM_JOIN_DATE" property="createDate"
+	<resultMap type="enterpriseDto" id="enterpriseResultMap">
+		<id column="EM_NO" property="no" />
+		<result column="EM_BRN" property="brNo"/>
+		<result column="EM_COMPANY_NAME" property="companyName"/>
+		<result column="EM_CEO_NAME" property="name"/>
+		<result column="EM_ADDRESS" property="address"/>
+		<result column="EM_REP" property="contactDetails"/>
+		<result column="EM_EMAIL" property="email"/>
+		<result column="EM_PASSWORD" property="pwd"/>
+		<result column="EM_JOIN_DATE" property="createDate"
 			javaType="java.util.Date"/>
-		<result column="CM_MOD_DATE" property="modifyDate" 
-			javaType="java.util.Date" />
 	</resultMap>
 
-	<select id="memberExist" parameterType="map" 
-		resultMap="memberResultMap">
-		SELECT CM_NAME, CM_EMAIL
-		FROM COMMON_MEMBER
+	<select id="enterpriseExist" parameterType="map" 
+		resultMap="enterpriseResultMap">
+		SELECT EM_NAME, EM_EMAIL
+		FROM ENTERPRISE_MEMBER
 		WHERE CM_EMAIL = #{email}
-		AND CM_PASSWORD = #{pwd}
+		AND EM_PASSWORD = #{pwd}
 	</select>
 	
-	<select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
-		SELECT MEMBER1.CM_NO,  CM_NAME, CM_EMAIL, CM_JOIN_DATE
-		FROM (  SELECT ROWNUM AS R_NUM, M.CM_NO, M.CM_NAME, M.CM_EMAIL, M.CM_JOIN_DATE 
-        		FROM (  SELECT CM_NO,  CM_NAME, CM_EMAIL, CM_JOIN_DATE
-		                FROM COMMON_MEMBER 
-		                ORDER BY CM_JOIN_DATE DESC) M
+	<select id="enterpriseSelectList" parameterType="map" resultMap="enterpriseResultMap">
+		SELECT MEMBER1.EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS, EM_REP
+		, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+		FROM (  SELECT ROWNUM AS R_NUM, M.EM_NO, M.EM_BRN, M.EM_COMPANY_NAME, M.EM_CEO_NAME
+			, M.EM_ADDRESS, M.EM_REP, M.EM_EMAIL, M.EM_PASSWORD, M.EM_JOIN_DATE 
+        		FROM (  SELECT EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
+        		, EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+		                FROM ENTERPRISE_MEMBER 
+		                ORDER BY EM_JOIN_DATE DESC) E
 		) MEMBER1
 		WHERE MEMBER1.R_NUM BETWEEN #{start} AND #{end}
 	</select>
 	
-	<select id="memberSelectOne" resultMap="memberResultMap">
-		SELECT CM_NO, CM_NAME, CM_EMAIL, CM_JOIN_DATE
-		FROM COMMON_MEMBER
+	<select id="enterpriseSelectOne" resultMap="enterpriseResultMap">
+		SELECT EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS, EM_REP
+		, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+		FROM ENTERPRISE_MEMBER
 		WHERE MNO = #{no}
 	</select>
 	
-	<select id="memberSelectTotalCount" resultType="java.lang.Integer">
+	<select id="enterpriseSelectTotalCount" resultType="java.lang.Integer">
 		SELECT COUNT(*)
-		FROM COMMON_MEMBER
+		FROM ENTERPRISE_MEMBER
 	</select>
 	
 	 
-	<update id="memberUpdateOne" parameterType="memberDto">
-		UPDATE COMMON_MEMBER
+	<update id="enterpriseUpdateOne" parameterType="enterpriseDto">
+		UPDATE ENTERPRISE_MEMBER
 		<set>
-			<if test="name!=null">CM_NAME = #{name},</if>
-			<if test="email!=null">CM_EMAIL = #{email},</if>
-			CM_MOD_DATE = SYSDATE
+			<if test="name!=null">EM_NAME = #{name},</if>
+			<if test="email!=null">EM_EMAIL = #{email},</if>
+			EM_MOD_DATE = SYSDATE
 		</set>
-			WHERE CM_NO = #{no}
+			WHERE EM_NO = #{no}
 	</update>
 	
-	<delete id="memberDeleteOne">
-		DELETE FROM COMMON_ WHERE CM_NO = #{no}
+	<delete id="enterpriseDeleteOne">
+		DELETE FROM ENTERPRISE_MEMBER WHERE EM_NO = #{no}
 	</delete>
 	
-	<insert id="memberInsertOne" parameterType="memberDto"
+	<insert id="enterpriseInsertOne" parameterType="enterpriseDto"
        useGeneratedKeys="true" keyProperty="no">
        <selectKey keyProperty="no" resultType="int" order="BEFORE">
           SELECT CM_NO_SEQ.NEXTVAL
          FROM DUAL
        </selectKey>
-      INSERT INTO COMMON_MEMBER
-      (CM_NO, CM_MAIL, CM_PASSWORD, CM_NAME, CM_JOIN_DATE, CM_MOD_DATE)
-      VALUES(#{no}, #{email}, #{password}, #{name}
-      , SYSDATE, SYSDATE)
+      INSERT INTO ENTERPRISE_MEMBER
+		VALUE(EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
+		, EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE)
+		VALUES(EM_NO_SEQ.NEXTVAL, #{brNo}, #{companyName}, #{name}
+		, #{address}, #{contactDetails}, #{email}, #{pwd}, SYSDATE)
    </insert>
 </mapper>
