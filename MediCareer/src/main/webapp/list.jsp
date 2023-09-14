@@ -12,222 +12,242 @@
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <!-- JavaScript 파일 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+	<!-- swiper CSS CDN 연결 -->
+	<link
+		rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+	/>
+	<!-- swiper Javascript CDN 연결 -->
+	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+	
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+		class="bi bi-pencil" viewBox="0 0 16 16">
+		<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 
+		1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 
+		4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 
+		1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 
+		3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 
+		1-.468-.325z"/>
+	</svg>
+	
 
-
+	<!-- Demo styles -->
 	<style>
-
+		html,
+		body {
+			position: relative;
+			height: 100%;
+		}
+		
+		body {
+			font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		.swiper {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.swiper-slide {
+			text-align: center;
+			font-size: 18px;
+			background: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.swiper-slide img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		
+		.board_info {
+			text-align: left;
+			font-size: 12px;
+			color: gray;
+		}
+		
+		.board_title {
+			text-align: left;
+			font-size: 25px;
+			font-weight: bold;
+		}
+		
+		.board_content {
+			text-align: left;
+			font-size: 14px;
+		}
+		
+		.board_state {
+			font-size: 12px;
+			color: gray;
+		}
+		
+		.board_answer {
+			float: left;
+		}
+		
+		.board_comment {
+			float: left;
+		}
+		
+		.board_recommend {
+			float: right;
+		}
 	</style>
-
+	
 </head>
 
 <body>
 	<%@include file ="/header.jsp" %>
-
-<div id="community" >
-    <div class="wrap">
-        <section class="listskin ">
-         <form name="fboardlist" id="fboardlist" action="#" onsubmit="return fboardlist_submit(this);" method="post">
-                <input type="hidden" name="bo_table" value="<?php echo $bo_table ?>">
-                <input type="hidden" name="sfl" value="#">
-                <input type="hidden" name="stx" value="#">
-                <input type="hidden" name="spt" value="#">
-                <input type="hidden" name="sst" value="#">
-                <input type="hidden" name="sod" value="#">
-                <input type="hidden" name="page" value="#">
-                <input type="hidden" name="sw" value="#">
-                <div class="header">
-                    <div class="tabs">
-                        <ul>
-                            <li class="active" rel="전체">전체</li>
-                            <li rel="SN">SN</li>
-                            <li rel="RN">RN</li>
-                            <li rel="해외">해외</li>
-                            <li rel="탈출">탈출</li>
-                        </ul>
-                    </div>
-                    <div class="tool">
-                        <ul>
-                            <li><a href="/MediCareer/write.jsp" class="btn btn_08"><span>질문하기</span></a></li>
-                            <li><a href="#" class="btn btn_01"><span>답변하기</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="slider bestslider">
-                    <div class="tit">Today Best</div>
-                    <div class="con">
-                        <!--id="bestList"-->
-                        <ul class="swiper-wrapper" id="bestList">
-
-
-                            
-                        </ul>
-                        <div class="ctl">
-                            <div class="swiper-arrow-prev"><i>이전 슬라이드</i></div>
-                            <div class="swiper-arrow-next"><i>다음 슬라이드</i></div>
-                        </div>
-                        <script>
-                        $(function(){
-                            var swiper = new Swiper(".bestslider .con", {
-                                slidesPerView: 2,
-                                spaceBetween: 10,
-                                navigation: {
-                                    prevEl: '.bestslider .swiper-arrow-prev',
-                                    nextEl: '.bestslider .swiper-arrow-next',
-                                },
-                                breakpoints:{
-                                    1:{
-                                        slidesPerView: 1,
-                                    },
-                                    769:{
-                                        slidesPerView: 2,
-                                    }
-                                }
-                            });
-                        });
-                        </script>
-                    </div>
-                </div>
-                <div class="middle">
-                    <div class="onlyme">
-                        <label>
-                            <input type="checkbox"><p>내 질문만 보기</p>
-                        </label>
-                    </div>
-                </div>
-                <div class="list">
-                    <ul id="newList" class="paging_list">
-                        
-                    </ul>
-                </div>
-            </form>
-        </section>
-    </div>
-</div>
-
-<div id="community" style="display:none">
-    <section id="header">
-        <div class="heading">
-            <div class="back"><a href="javascript:window.history.back()">뒤로 돌아가기</a></div>
-            <div class="title">선배 QnA</div>
-        </div>
-    </section>
-    <section id="headerSpace"></section>
-    <section class="community">
-        
-        <div class="lt-item">
-            <form name="fboardlist" id="fboardlist" action="<?php echo G5_BBS_URL; ?>/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
-            <input type="hidden" name="bo_table" value="<?php echo $bo_table ?>">
-            <input type="hidden" name="sfl" value="<?php echo $sfl ?>">
-            <input type="hidden" name="stx" value="<?php echo $stx ?>">
-            <input type="hidden" name="spt" value="<?php echo $spt ?>">
-            <input type="hidden" name="sst" value="<?php echo $sst ?>">
-            <input type="hidden" name="sod" value="<?php echo $sod ?>">
-            <input type="hidden" name="page" value="<?php echo $page ?>">
-            <input type="hidden" name="sw" value="">
-
-
-            <?php if ($rss_href || $write_href) { ?>
-                <ul class="<?php echo isset($view) ? 'view_is_list btn_top' : 'btn_top top btn_bo_user';?>">
-                <?php if ($admin_href) { ?><li><a href="<?php echo $admin_href ?>" class="btn_admin btn" title="관리자"><i class="fa fa-cog fa-spin fa-fw"></i><span class="sound_only">관리자</span></a></li><?php } ?>
-                <?php if ($rss_href) { ?><li><a href="<?php echo $rss_href ?>" class="btn_b03 btn" title="RSS"><i class="fa fa-rss" aria-hidden="true"></i><span class="sound_only">RSS</span></a></li><?php } ?>
-                <?php if ($is_admin == 'super' || $is_auth) {  ?>
-                <li>
-                    <button type="button" class="btn_more_opt btn_b03 btn is_list_btn" title="게시판 리스트 옵션"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sound_only">게시판 리스트 옵션</span></button>
-                    <?php if ($is_checkbox) { ?>
-                    <ul class="more_opt is_list_btn">
-                        <li><button type="submit" name="btn_submit" value="선택삭제" onclick="document.pressed=this.value"><i class="fa fa-trash-o" aria-hidden="true"></i> 선택삭제</button></li>
-                        <li><button type="submit" name="btn_submit" value="선택복사" onclick="document.pressed=this.value"><i class="fa fa-files-o" aria-hidden="true"></i> 선택복사</button></li>
-                        <li><button type="submit" name="btn_submit" value="선택이동" onclick="document.pressed=this.value"><i class="fa fa-arrows" aria-hidden="true"></i> 선택이동</button></li>
-                    </ul>
-                    <?php } ?>
-                </li>
-                <?php } ?>
-                </ul>
-            <?php } ?>
-
-            <?php //if ($is_category) { ?>
-<!--                 <nav id="bo_cate" class="category categorySlider" style="display:block"> -->
-<!--                     <ul class="swiper-wrapper"> -->
-<!--                         <?php echo $category_option ?> -->
-<!--                     </ul> -->
-<!--                 </nav> -->
-            <?php //} ?>
-
-            <ul class="tabs" style="display:block;margin-bottom:20px;">
-            <?php
-
-            ?>
-                <li class="active" rel="전체">전체</li>
-                <li rel="SN">SN</li>
-                <li rel="RN">RN</li>
-                <li rel="해외">해외</li>
-				<li rel="탈임상">탈임상</li>
-            </ul>
-
-            <div class="tab_container" style="display:none">
-
-              <!-- #tab1 -->
-              <div id="tab1" class="tab_content">
-              <nav id="bo_cate" class="category categorySlider" style="">
-                    <ul>
-                        <?php echo $category_option1 ?>
-                    </ul>
-                </nav>
-              </div>
-              <!-- #tab1 -->
-
-              <!-- #tab2 -->
-              <div id="tab2" class="tab_content">
-              <nav id="bo_cate" class="category categorySlider" style="">
-                    <ul>
-                        <?php echo $category_option2 ?>
-                    </ul>
-                </nav>
-              </div>
-              <!-- #tab2 -->
-
-            </div>
-            <!-- .tab_container -->
-
-    
-
+	<div id="community" >
+	    <div class="wrap">
+	        <section class="listskin ">
+	         <form name="fboardlist" id="fboardlist" action="#" onsubmit="return fboardlist_submit(this);" method="post">
+	                <input type="hidden" name="bo_table" value="<?php echo $bo_table ?>">
+	                <input type="hidden" name="sfl" value="#">
+	                <input type="hidden" name="stx" value="#">
+	                <input type="hidden" name="spt" value="#">
+	                <input type="hidden" name="sst" value="#">
+	                <input type="hidden" name="sod" value="#">
+	                <input type="hidden" name="page" value="#">
+	                <input type="hidden" name="sw" value="#">
+	                <div class="header">
+	                    <div class="tabs">
+	                        <ul>
+	                            <li class="active" rel="전체">전체</li>
+	                            <li rel="SN">SN</li>
+	                            <li rel="RN">RN</li>
+	                            <li rel="해외">해외</li>
+	                            <li rel="탈출">탈출</li>
+	                        </ul>
+	                    </div>
+	                    <div class="tool">
+	                        <ul>
+	                            <li><a href="/MediCareer/write.jsp" class="btn btn_08"><span>질문하기</span></a></li>
+	                            <li><a href="#" class="btn btn_01"><span>답변하기</span></a></li>
+	                        </ul>
+	                    </div>
+	                </div>
+	                <div class="tit">Today Best</div>
+					<!-- Swiper -->
+					<div class="swiper mySwiper">
+						<div class="swiper-wrapper">
+						    <div class="swiper-slide">
+						    	<a>
+						    		<div>
+							    		<p class="board_info">
+											<span>n 시간 전</span>
+								    		<span>&nbsp;·&nbsp;</span>
+								    		<span>(닉네임)님의 질문</span>
+							    		</p>
+						    		</div>
+						    		<p class="board_title">
+						    			<span>제목이 들어가는 부분</span>
+						    		</p>
+						    		<p class="board_content">
+							    		이 곳에는 내용이 들어가는데 두줄 이상이면 자르고 '...'처리
+						    		</p>
+						    		<div class="board_state">
+						    			<span class="board_answer">
+						    				답변
+						    				&nbsp;
+						    				<span>n</span>
+						    			</span>
+						    			<span class="board_comment">
+						    				댓글
+						    				&nbsp;
+						    				<span>n</span>
+						    			</span>
+						    			<span class="board_recommend">
+						    				추천
+						    				&nbsp;
+						    				<span>n</span>
+						    			</span>
+						    		</div>
+						    	</a>
+						    </div>
+						    <div class="swiper-slide">Slide 2</div>
+						    <div class="swiper-slide">Slide 3</div>
+						    <div class="swiper-slide">Slide 4</div>
+						    <div class="swiper-slide">Slide 5</div>
+						    <div class="swiper-slide">Slide 6</div>
+						    <div class="swiper-slide">Slide 7</div>
+						    <div class="swiper-slide">Slide 8</div>
+						    <div class="swiper-slide">Slide 9</div>
+						    <div class="swiper-slide">Slide 10</div>
+					  	</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+					
+					<!-- Swiper JS -->
+					<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+					
+					<!-- Initialize Swiper -->
+					<script>
+						var swiper = new Swiper(".mySwiper", {
+							navigation: {
+								nextEl: ".swiper-button-next",
+								prevEl: ".swiper-button-prev",
+							},
+						});
+					</script>
+	                <div class="middle">
+	                    <div class="onlyme">
+	                        <label>
+	                            <input type="checkbox"><p>내 질문만 보기</p>
+	                        </label>
+	                    </div>
+	                </div>
+	                <div class="list">
+	                    <ul id="newList" class="paging_list">
+	                        <li>
+	                        	<a>
+						    		<div>
+							    		<p class="board_info">
+											<span>n 시간 전</span>
+								    		<span>&nbsp;·&nbsp;</span>
+								    		<span>(닉네임)님의 질문</span>
+							    		</p>
+						    		</div>
+						    		<p class="board_title">
+						    			<span>제목이 들어가는 부분</span>
+						    		</p>
+						    		<p class="board_content">
+							    		이 곳에는 내용이 들어가는데 두줄 이상이면 자르고 '...'처리
+						    		</p>
+						    		<div class="board_state">
+						    			<span class="board_answer">
+						    				답변
+						    				&nbsp;
+						    				<span>n</span>
+						    				&nbsp;
+						    			</span>
+						    			<span class="board_comment">
+						    				댓글
+						    				&nbsp;
+						    				<span>n</span>
+						    			</span>
+						    			<span class="board_recommend">
+						    				추천
+						    				&nbsp;
+						    				<span>n</span>
+						    			</span>
+						    		</div>
+						    	</a>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </form>
+	        </section>
+	    </div>
+	</div>
 	<%@include file ="/footer.jsp" %>
-	
 </body>
-<script>
-	$(document).ready(function(){
-	    var swiper = new Swiper(".categorySlider", {
-	        slidesPerView: "auto",
-	        spaceBetween: 10,
-	        freeMode: true,
-	        centeredSlides: true,
-	    });
-	})
-	</script>
-	
-	<script>
-	$(function () {
-	
-	$(".tab_content").hide();
-	
-	<?php if($tabCon=="1"){ ?>
-	$(".tab_content:first").show();
-	<?php }else{ ?>
-	$(".tab_content:last").show();
-	<?php } ?>
-	
-	$("div.tabs li").click(function () {
-	
-	$("div.tabs li").removeClass("active");//.css("color", "#555");
-	$(this).addClass("active");//.css("color", "#fff");
-	$(".tab_content").hide()
-	var activeTab = $(this).attr("rel");
-	$("#" + activeTab).fadeIn()
-	
-	getBestList(activeTab);
-	getNewList(activeTab);
-	
-	});
-	});
-</script>
-

@@ -7,6 +7,7 @@ public class MemberDto {
 
 	private int no;
 	private String name;
+	private String nickName;
 	private String email;
 	private String password;
 	private Date createDate;
@@ -22,10 +23,14 @@ public class MemberDto {
 	
 	
 	
-	public MemberDto(int no, String name, String email, String password, Date createDate, Date modifyDate) {
+
+
+
+	public MemberDto(int no, String name,String nickName, String email, String password, Date createDate, Date modifyDate) {
 		super();
 		this.no = no;
 		this.name = name;
+		this.nickName = nickName;
 		this.email = email;
 		this.password = password;
 		this.createDate = createDate;
@@ -33,6 +38,15 @@ public class MemberDto {
 	}
 
 
+	public String getNickName() {
+		return nickName;
+	}
+	
+	
+	
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
 
 	public int getNo() {
 		return no;
@@ -75,9 +89,13 @@ public class MemberDto {
 
 	@Override
 	public String toString() {
-		return "MemberDto [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password
-				+ ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
+		return "MemberDto [no=" + no + ", name=" + name + ", nickName=" + nickName + ", email=" + email + ", password="
+				+ password + ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
 	}
+
+
+
+	
 	
 	
 	

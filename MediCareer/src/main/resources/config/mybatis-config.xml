@@ -6,9 +6,9 @@
   
   <typeAliases>
   	<typeAlias type="com.mc.member.dto.MemberDto" alias="memberDto"/>
+  	<typeAlias type="com.mc.enterprise.dto.EnterpriseDto" alias="enterpriseDto"/>
   	<typeAlias type="com.mc.board.dto.BoardDto" alias="boardDto"/>
   </typeAliases>
   
 
-  
 </configuration>
