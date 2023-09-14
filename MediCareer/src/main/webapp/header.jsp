@@ -13,7 +13,7 @@
 	<header>
        <div class="inner">
            <a href="/MediCareer/index.jsp" class="logo">
-               <img src="./resources/images/medicareer_logo.png" style="width: 100px;" alt="메디커리어">
+               <img src="./resources/images/medicareer1_logo.png" alt="메디커리어">
            </a>
            <div class="sub-menu">
                <ul class="menu">

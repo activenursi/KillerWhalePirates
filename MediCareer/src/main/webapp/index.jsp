@@ -12,6 +12,9 @@
 
 <style>
 
+header .sub-menu ul.menu li a { color: #fff; /* 다른 페이지에서는 검은색으로 변경 */ }
+header .sub-menu ul.menu li a {background-color: transparent; font-size: 16px; color: #fff; font-weight: 700; padding: 20px 16px; display: block; text-decoration: none;}
+
 .firstBack {background-image: url('./resources/images/firstBack.png'); background-size: cover; background-position: center; height: 1000px;}
 .secondBack {background-image: url('./resources/images/secondBack.png'); background-size: cover; background-position: center; height: 1000px;}
 .thirdBack {background-image: url('./resources/images/thirdBack.png'); background-size: cover; background-position: center; height: 1000px;}
