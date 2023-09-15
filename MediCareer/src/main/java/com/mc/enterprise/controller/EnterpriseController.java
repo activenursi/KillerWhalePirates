@@ -30,14 +30,14 @@ public class EnterpriseController {
 	public EnterpriseService enterpriseService;
 	
 	
-	@RequestMapping(value="/auth/login.do", method = RequestMethod.GET)
+	@RequestMapping(value="/auth/em_login.do", method = RequestMethod.GET)
 	public String login(HttpSession session, Model model) {
 		log.info("Welcome EnterPriseController login!");
 		
-		return "./auth/LoginForm";
+		return "./auth/EnterpriseLoginForm";
 	}
 	
-	@RequestMapping(value="/auth/loginCtr.do", method = RequestMethod.POST)
+	@RequestMapping(value="/auth/em_loginCtr.do", method = RequestMethod.POST)
 	public String loginCtr(String email, String password, 
 			HttpSession session, Model model) {
 		log.info("Welcome EnterpriseController loginCtr!" + email +", "+ password);
@@ -56,17 +56,9 @@ public class EnterpriseController {
 		
 		return viewUrl;
 	}
-	// 로그아웃
-	@RequestMapping(value="/auth/logout.do", method = RequestMethod.GET)
-	public String loginout(HttpSession session, Model model) {
-		log.info("Welcome EnterpriseController loginout!");
-		
-		session.invalidate();
-		
-		return "redirect:/auth/login.do";
-	}
 	
-	@RequestMapping(value="/enterprise/listOne.do" , method = RequestMethod.GET)
+	
+	@RequestMapping(value="/enterprise/em_listOne.do" , method = RequestMethod.GET)
 	public String memberListOne(int no, Model model) {
 		log.debug("Welcome EnterpriseController enterpriselistOne - {}!" + no);
 		
@@ -86,7 +78,7 @@ public class EnterpriseController {
 		
 		
 		
-	@RequestMapping(value = "/enterprise/list.do", 
+	@RequestMapping(value = "/enterprise/em_list.do", 
 			method = {RequestMethod.GET,RequestMethod.POST})
 	public String enterpriseList(@RequestParam(defaultValue = "1") int curPage, Model model) {
 		log.info("Welcome EnterpriseController list!: {}", curPage);
@@ -112,14 +104,14 @@ public class EnterpriseController {
 		return "enterprise/EnterpriseListView";
 	}
 	
-	@RequestMapping(value="/enterprise/add.do", method = RequestMethod.GET)
+	@RequestMapping(value="/enterprise/em_add.do", method = RequestMethod.GET)
 	public String enterpriseAdd(Model model) {
 		log.debug("Welcome EnterpriseController enterpriseAdd!");
 		
 		return "enterprise/EnterpriseForm";
 	}
 	
-	@RequestMapping(value="/enterprise/addCtr.do", method = RequestMethod.POST)
+	@RequestMapping(value="/enterprise/em_addCtr.do", method = RequestMethod.POST)
 	public String memberAdd(EnterpriseDto enterpriseDto, MultipartHttpServletRequest mulRequest
 			, Model model) {
 		log.debug("Welcome EnterpriseController enterpriseAdd!" + enterpriseDto);
@@ -132,10 +124,10 @@ public class EnterpriseController {
 			e.printStackTrace();
 		}
 			
-		return "redirect:/enterprise/list.do";
+		return "redirect:/enterprise/em_list.do";
 	}
 	
-	@RequestMapping(value="/enterprise/update.do", method = RequestMethod.GET)
+	@RequestMapping(value="/enterprise/em_update.do", method = RequestMethod.GET)
 	public String memberUpdate(int no, Model model) {
 		log.info("Welcome EnterpriseController enterpriseUpdate!"+ no);
 		
@@ -153,7 +145,7 @@ public class EnterpriseController {
 		return "enterprise/EnterpriseUpdateForm";
 	}
 	
-	@RequestMapping(value="/enterprise/updateCtr.do", method = RequestMethod.POST)
+	@RequestMapping(value="/enterprise/em_updateCtr.do", method = RequestMethod.POST)
 	public String memberUpdateCtr(EnterpriseDto enterpriseDto
 			, @RequestParam(value = "fileIdx", defaultValue ="-1") int fileIdx
 			, MultipartHttpServletRequest mulRequest
@@ -175,12 +167,12 @@ public class EnterpriseController {
 	}
 	
 	
-	@RequestMapping(value="/enterprise/delete.do", method= RequestMethod.GET)
+	@RequestMapping(value="/enterprise/em_delete.do", method= RequestMethod.GET)
 	public String memberDelete(int no, Model model) {
 		log.info("Welcome EnterpriseController enterpriseDelete!"+ no);
 		
 		enterpriseService.enterpriseDeleteOne(no);
 		
-		return "redirect:/enterprise/list.do";
+		return "redirect:/enterprise/em_list.do";
 	}
 }

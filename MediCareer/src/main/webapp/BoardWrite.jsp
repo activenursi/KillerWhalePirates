@@ -17,7 +17,7 @@
 
 <body>
 
-<%@include file ="/header.jsp" %>
+<%-- <%@include file ="/header.jsp" %> --%>
 
 <div id="community">
     <section class="writeskin" id="bo_w">

@@ -101,15 +101,15 @@
 				<a class="enterprise_log" href="/" onclick="EnterpriseLogFnc()" target="_blank">기업회원 로그인</a>
 			</div>
 				<div class="general_containerMenu">
-					<form style="list-style: none;" width="150px;" height="30px">
+					<form action='./loginCtr.do' method='post' style="list-style: none;" width="150px;" height="30px" action=>
 						<label>
 							<li class="general_inputWrap1">
 							<input class="general_creId"
-								type="text" title="여기에 id 기입" placeholder="아이디" name="id">
+								type="text" title="여기에 이메일기입" placeholder="이메일" name="email">
 						</li>
 						</label> <label>
 							<li class="general_inputWrap2">
-							<input class="general_crepassword" type="password" maxlength="8" title="pw입력" name="pwd"
+							<input class="general_crepassword" type="password" title="pw입력" name="password"
 								placeholder="비밀번호"></li>
 						</label> <label>
 							<li class="general_inputWrap3">

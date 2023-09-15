@@ -101,10 +101,10 @@
 				<a class="enterprise_log" href="/" onclick="EnterpriseLogFnc()" target="_blank">기업회원 로그인</a>
 			</div>
 				<div class="ent_containerMenu">
-					<form style="list-style: none;" width="150px;" height="30px">
+					<form action='./em_login.do' method='post' style="list-style: none;" width="150px;" height="30px">
 						<label>
 							<li class="ent_inputWrap1"><input class="ent_creId"
-								type="text" title="여기에 id 기입" placeholder="아이디" name="id">
+								type="text" title="여기에 이메일 기입" placeholder="이메일" name="email">
 						</li>
 						</label> <label>
 							<li class="ent_inputWrap2"><input class="ent_crepassword"

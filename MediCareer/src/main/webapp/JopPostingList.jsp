@@ -57,7 +57,7 @@
 </head>
 <body>
 
-<jsp:include page="./header.jsp"/>
+<%-- <jsp:include page="./header.jsp"/> --%>
 <div class="wrap-container">
 	<div class="jopPostingList">
 		<ul>

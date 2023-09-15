@@ -34,7 +34,7 @@ public class MemberController {
 		log.info("Welcome MemberController login!");
 		
 		
-		return "./auth/LoginForm";
+		return "./auth/MemberLoginForm";
 	}
 	
 	
@@ -50,7 +50,7 @@ public class MemberController {
 		if(memberDto != null) {
 			//회원존재하면 세션에담는다
 			session.setAttribute("member", memberDto);
-			viewUrl = "redirect:/member/list.do";
+			viewUrl = "redirect:../home.do";
 		}else {
 			viewUrl =  "auth/LoginFail";
 		}
