@@ -49,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.memberSelectList(start, end);
 	}
 	@Override
-	public void memberInsertOne(MemberDto memberDto, MultipartHttpServletRequest mulRequest) {
+	public void memberInsertOne(MemberDto memberDto) {
 		memberDao.memberInsertOne(memberDto);
 				
 	}

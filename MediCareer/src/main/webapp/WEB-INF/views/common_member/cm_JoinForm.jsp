@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,6 +71,22 @@
 	height: 50px;
 }
 
+#passwordCheck1 {
+	display: none;
+}
+
+#passwordCheck2 {
+	display: none;
+}
+
+#passwordCheck3 {
+	display: none;
+}
+
+#passwordCheck4 {
+	display: none;
+}
+
 /* 회원가입 버튼 */
 .cre_input_joinMembership{
 	display: inline-block;
@@ -83,6 +100,26 @@
 }
 </style>
 
+<script type="text/javascript">
+	function passwordCheckFnc() {
+		var password = document.getElementById("password").value;
+		
+		var passwordCheck1Obj = document.getElementById("passwordCheck1");
+		
+		if (password == "") {
+			passwordCheck1Obj.style.display = "block";
+		}
+	}
+	
+	function passwordDoubleCheckFnc() {
+		
+		var passwordCheck
+		
+		if (password == "") {
+			
+		}
+	}
+</script>
 
 </head>
 <body>
@@ -97,12 +134,12 @@
 			</div>
 			<div id="info_wrap">
 				<!-- 일단 ? -->
-				<form class="cre_wrap_inputBox" action="join" method="post">
+				<form class="cre_wrap_inputBox" action="member/addCtr.do" method="post">
 					<div>
 						<label>
 							<li class="inputBox_items">
 								<div class="cre_check_div">
-									<input type="text" class="cre_check_input" name="nickname" placeholder="닉네임">
+									<input type="text" class="cre_check_input" name="nickName" placeholder="닉네임">
 								</div>
 								<div class="check_btn_div">
 									<button class="check_btn">중복확인</button>
@@ -144,17 +181,26 @@
 					<div>
 						<label>
 							<li class="inputBox_items">
-								<input type="password" class="cre_input" name="password" placeholder="비밀번호">
-							</li>
-
-							<li class="inputBox_items">
-								<input type="password" class="cre_input" name="password_check" placeholder="비밀번호 확인">
+								<input type="password" id="password" class="cre_input" name="password" 
+									placeholder="비밀번호" onblur="passwordCheckFnc();">
+								<p id="passwordCheck1">비밀번호를 입력해주세요.</p>
+								<p id="passwordCheck2">비밀번호는 8 ~ 24자리 이내로 입력해주세요.</p>
+								<p id="passwordCheck3">영문, 숫자, 특수문자를 혼합하여 입력해주세요.</p>
 							</li>
 						</label>
 					</div>
 					<div>
 						<label>
-							<input type="button" class="cre_input_joinMembership" value="회원가입">
+							<li class="inputBox_items">
+								<input type="password" id="passwordCheck" class="cre_input" name="password" 
+									placeholder="비밀번호 확인" onblur="passwordDoubleCheckFnc();">
+								<p id="passwordCheck4">비밀번호를 다시 확인하세요.</p>
+							</li>
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="submit" class="cre_input_joinMembership" value="회원가입">
 						</label>
 					</div>
 				</form>
