@@ -13,7 +13,7 @@
 	<header>
        <div class="inner">
            <a href="/MediCareer/index.jsp" class="logo">
-               <img src="./resources/images/medicareer1_logo.png" alt="메디커리어">
+               <img src="./resources/images/medicareer_logo.png" style="width: 100px;" alt="메디커리어">
            </a>
            <div class="sub-menu">
                <ul class="menu">
@@ -21,7 +21,7 @@
                        <a href="/MediCareer/careerInfo.jsp">채용 공고</a>
                    </li>
                    <li>
-                       <a href="/MediCareer/BoardList.jsp">커뮤니티</a>
+                       <a href="/MediCareer/list.jsp">커뮤니티</a>
                    </li>
                    <li>
                    	   <a href="/MediCareer/myPage.jsp">마이페이지</a>
