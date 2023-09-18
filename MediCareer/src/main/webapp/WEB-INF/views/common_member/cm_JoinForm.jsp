@@ -71,19 +71,27 @@
 	height: 50px;
 }
 
-#passwordCheck1 {
+#nicknameBlankCheck {
 	display: none;
 }
 
-#passwordCheck2 {
+#nicknameCheckPass {
 	display: none;
 }
 
-#passwordCheck3 {
+#nicknameCheckFail {
 	display: none;
 }
 
-#passwordCheck4 {
+#pwdCheck {
+	display: none;
+}
+
+#pwdBlankCheck {
+	display: none;
+}
+
+#pwdDoubleCheck {
 	display: none;
 }
 
@@ -101,23 +109,83 @@
 </style>
 
 <script type="text/javascript">
-	function passwordCheckFnc() {
-		var password = document.getElementById("password").value;
+	function nicknameCheckFnc() {
+		var nicknameObj = document.getElementById("nickname");
 		
-		var passwordCheck1Obj = document.getElementById("passwordCheck1");
+		var nickname = nicknameObj.value;
 		
-		if (password == "") {
-			passwordCheck1Obj.style.display = "block";
+		var nicknameBlankCheckObj = document.getElementById("nicknameBlankCheck");
+		
+		if (nickname == "") {
+			nicknameBlankCheckObj.style.display = "block";
+			nicknameObj.style.borderColor = "red";
+		} else {
+			nicknameBlankCheckObj.style.display = "none";
+			nicknameObj.style.borderColor = "blue";
 		}
 	}
 	
-	function passwordDoubleCheckFnc() {
+	function passwordCheckFnc() {
+		var passwordObj = document.getElementById("password");
+		var password = passwordObj.value;
 		
-		var passwordCheck
+		var passwordReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,24}$/;
+		
+		var pwdCheckObj = document.getElementById("pwdCheck");
+		var pwdBlankCheckObj = document.getElementById("pwdBlankCheck");
+		
+		var result = true;
 		
 		if (password == "") {
-			
+			pwdCheckObj.style.display = "none";
+			pwdBlankCheckObj.style.display = "block";
+			passwordObj.style.borderColor = "red";
+			result = false;
+		} else if (!passwordReg.test(password)) {
+			pwdBlankCheckObj.style.display = "none";
+			pwdCheckObj.style.display = "block";
+			passwordObj.style.borderColor = "red";
+			result = false;
+		} else {
+			pwdBlankCheckObj.style.display = "none";
+			pwdCheckObj.style.display = "none";
+			passwordObj.style.borderColor = "blue";
+			result = true;
 		}
+		 
+		return result;
+	}
+	
+	function passwordDoubleCheckFnc() {
+		var passwordObj = document.getElementById("password");
+		var passwordCheckObj = document.getElementById("passwordCheck");
+		
+		var password = passwordObj.value;
+		var passwordCheck = passwordCheckObj.value;
+		
+		var pwdDoubleCheckObj = document.getElementById("pwdDoubleCheck");
+		var pwdBlankCheckObj = document.getElementById("pwdBlankCheck");
+		
+		var result = true;
+		
+		if (passwordCheck == "") {
+			pwdBlankCheckObj.style.display = "block";
+			pwdDoubleCheckObj.style.display = "none";
+			passwordCheckObj.style.borderColor = "red";
+			result = false;
+		} else if (password != passwordCheck) {
+			pwdBlankCheckObj.style.display = "none";
+			pwdDoubleCheckObj.style.display = "block";
+			passwordCheckObj.style.borderColor = "red";
+			result = false;
+		} else {
+			pwdDoubleCheckObj.style.display = "none";
+			pwdBlankCheckObj.style.display = "none";
+			passwordCheckObj.style.borderColor = "blue";
+			result = true;
+		}
+		
+		return result;
 	}
 </script>
 
@@ -139,11 +207,32 @@
 						<label>
 							<li class="inputBox_items">
 								<div class="cre_check_div">
-									<input type="text" class="cre_check_input" name="nickName" placeholder="닉네임">
+									<input type="text" id="nickname" class="cre_check_input" name="nickName" placeholder="닉네임">
 								</div>
 								<div class="check_btn_div">
-									<button class="check_btn">중복확인</button>
+									<button id="nicknameCheck" class="check_btn" onclick="nicknameCheckFnc();">중복확인</button>
 								</div>
+							</li>
+						</label>
+					</div>
+					<div id="nicknameBlankCheck">
+						<label>
+							<li class="inputBox_items">
+								<p>닉네임을 입력해주세요.</p>
+							</li>
+						</label>
+					</div>
+					<div id="nicknameCheckPass">
+						<label>
+							<li class="inputBox_items">
+								<p>사용 가능한 닉네임입니다.</p>
+							</li>
+						</label>
+					</div>
+					<div id="nicknameCheckFail">
+						<label>
+							<li class="inputBox_items">
+								<p>이미 존재하는 닉네임입니다.</p>
 							</li>
 						</label>
 					</div>
@@ -183,9 +272,13 @@
 							<li class="inputBox_items">
 								<input type="password" id="password" class="cre_input" name="password" 
 									placeholder="비밀번호" onblur="passwordCheckFnc();">
-								<p id="passwordCheck1">비밀번호를 입력해주세요.</p>
-								<p id="passwordCheck2">비밀번호는 8 ~ 24자리 이내로 입력해주세요.</p>
-								<p id="passwordCheck3">영문, 숫자, 특수문자를 혼합하여 입력해주세요.</p>
+							</li>
+						</label>
+					</div>
+					<div id="pwdCheck">
+						<label>
+							<li class="inputBox_items">
+								<p>8~20자 영문 대소문자, 숫자, 특수문자를 사용하세요.</p>
 							</li>
 						</label>
 					</div>
@@ -194,13 +287,28 @@
 							<li class="inputBox_items">
 								<input type="password" id="passwordCheck" class="cre_input" name="password" 
 									placeholder="비밀번호 확인" onblur="passwordDoubleCheckFnc();">
-								<p id="passwordCheck4">비밀번호를 다시 확인하세요.</p>
+							</li>
+						</label>
+					</div>
+					<div id="pwdBlankCheck">
+						<label>
+							<li class="inputBox_items">
+								<p>비밀번호를 입력해주세요.</p>
+							</li>
+						</label>
+					</div>
+					<div id="pwdDoubleCheck">
+						<label>
+							<li class="inputBox_items">
+								<p>비밀번호가 일치하지 않습니다.</p>
 							</li>
 						</label>
 					</div>
 					<div>
 						<label>
-							<input type="submit" class="cre_input_joinMembership" value="회원가입">
+							<li class="inputBox_items">
+								<input type="submit" class="cre_input_joinMembership" value="회원가입">
+							</li>
 						</label>
 					</div>
 				</form>

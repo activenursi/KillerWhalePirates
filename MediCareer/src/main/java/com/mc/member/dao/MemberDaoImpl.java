@@ -77,5 +77,14 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.delete(namespace+"memberDeleteOne", no);
 	}
 
+
+	@Override
+	public int memberNicknameCheck(MemberDto memberDto) throws Exception {
+		// TODO Auto-generated method stub
+		int result = sqlSession.selectOne(namespace+"memberNicknameCheck", memberDto);
+		
+		return result;
+	}
+
 	
 }

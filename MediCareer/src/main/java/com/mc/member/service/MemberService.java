@@ -23,4 +23,6 @@ public interface MemberService {
 	public int memberUpdateOne(MemberDto memberDto, MultipartHttpServletRequest mulRequest, int fileIdx);
 
 	public int memberDeleteOne(int no);	
+	
+	public int memberNicknameCheck(MemberDto memberDto) throws Exception;
 }
