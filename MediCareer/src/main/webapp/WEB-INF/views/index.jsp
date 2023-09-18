@@ -8,7 +8,7 @@
 <title>당신보다 당신을 더 잘 아는 메디커리어</title>
 
 <!-- main.css 파일을 연결 -->
-<link rel="stylesheet" type="text/css" href="resources/css/index.css">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/index.css">
 
 <style>
 
@@ -19,7 +19,8 @@
 .bodyWrap {padding: 300px 400px;}
 .mainInfo {color: #fff; font-size: 80px;font-weight: 800;}
 </style>
-
+<script type="text/javascript" 
+	src="/MediCareer/resources/js/jquery-3.7.1.js"></script>
 <script type="text/javascript">
 
 	$(".ctr_top").on('click', function() {
@@ -35,7 +36,7 @@
 
 <body>
 
-		<%@include file ="/header.jsp" %>
+		<%@include file ="./header.jsp" %>
 		
 		<div class="secondBack"> 
 			<div class="bodyWrap">

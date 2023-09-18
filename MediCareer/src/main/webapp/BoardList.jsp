@@ -95,7 +95,7 @@
 </head>
 
 <body>
-	<%@include file ="/header.jsp" %>
+<%-- 	<%@include file ="/header.jsp" %> --%>
 	<div id="community" >
 	    <div class="wrap">
 	        <section class="listskin ">

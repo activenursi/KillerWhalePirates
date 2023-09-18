@@ -45,7 +45,7 @@ public class BoardController {
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("pagingMap", pagingMap);
 
-		return "boarder/boardListView";
+		return "board/adm_BoardList";
 	}
 
 	@RequestMapping(value = "/board/add.do", method = RequestMethod.GET)
