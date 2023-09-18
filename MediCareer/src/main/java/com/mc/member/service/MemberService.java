@@ -18,7 +18,7 @@ public interface MemberService {
 
 	public List<MemberDto> memberSelectList(int start, int end);
 
-	public void memberInsertOne(MemberDto memberDto, MultipartHttpServletRequest mulRequest);
+	public void memberInsertOne(MemberDto memberDto);
 
 	public int memberUpdateOne(MemberDto memberDto, MultipartHttpServletRequest mulRequest, int fileIdx);
 

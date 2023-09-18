@@ -28,7 +28,6 @@ public class MemberController {
 	@Autowired
 	public MemberService memberService;
 	
-	
 	@RequestMapping(value="/auth/login.do", method = RequestMethod.GET)
 	public String login(HttpSession session, Model model) {
 		log.info("Welcome MemberController login!");
@@ -112,28 +111,27 @@ public class MemberController {
 		
 		return "member/MemberListView";
 	}
-	
+
 	@RequestMapping(value="/member/add.do", method = RequestMethod.GET)
 	public String memberAdd(Model model) {
 		log.debug("Welcome MemberController memberAdd!");
 		
-		return "member/MemberForm";
+		return "common_member/cm_JoinForm";
 	}
 	
 	@RequestMapping(value="/member/addCtr.do", method = RequestMethod.POST)
-	public String memberAdd(MemberDto memberDto, MultipartHttpServletRequest mulRequest
-			, Model model) {
+	public String memberAdd(MemberDto memberDto, Model model) {
 		log.debug("Welcome MemberController memberAdd!" + memberDto);
 		
 		try {
-			memberService.memberInsertOne(memberDto, mulRequest);
+			memberService.memberInsertOne(memberDto);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("오류 처리할거 있음 한다");
 			e.printStackTrace();
 		}
 			
-		return "redirect:/member/list.do";
+		return "redirect:/index.jsp";
 	}
 	
 	@RequestMapping(value="/member/update.do", method = RequestMethod.GET)
@@ -146,7 +144,6 @@ public class MemberController {
 		
 		List<Map<String, Object>> fileList 
 			= (List<Map<String,Object>>) map.get("fileList");
-		
 		
 		model.addAttribute("memberDto",memberDto);
 		model.addAttribute("fileList",fileList);
@@ -169,8 +166,6 @@ public class MemberController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 		
 		return "common/successPage";
 	}
