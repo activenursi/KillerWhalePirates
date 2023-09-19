@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mc.board.dto.BoardDto;
+import com.mc.member.dto.MemberDto;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
@@ -50,6 +51,13 @@ public class BoardDaoImpl implements BoardDao{
 	public int boardDeleteOne(int no) {
 		// TODO Auto-generated method stub
 		return sqlSession.delete(namespace+"boardDeleteOne", no);
+	}
+
+	@Override
+	public BoardDto boardSelectOne(int no) {
+		BoardDto boardDto = sqlSession.selectOne(namespace+"boardSelectOne", no);
+		
+		return boardDto;
 	}
 	
 }

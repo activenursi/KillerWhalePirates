@@ -59,7 +59,7 @@ public class EnterpriseController {
 	
 	
 	@RequestMapping(value="/enterprise/em_listOne.do" , method = RequestMethod.GET)
-	public String memberListOne(int no, Model model) {
+	public String enterpriseListOne(int no, Model model) {
 		log.debug("Welcome EnterpriseController enterpriselistOne - {}!" + no);
 		
 		Map<String, Object> map =  enterpriseService.enterpriseSelectOne(no);
@@ -112,7 +112,7 @@ public class EnterpriseController {
 	}
 	
 	@RequestMapping(value="/enterprise/em_addCtr.do", method = RequestMethod.POST)
-	public String memberAdd(EnterpriseDto enterpriseDto, MultipartHttpServletRequest mulRequest
+	public String enterpriseAddCtr(EnterpriseDto enterpriseDto, MultipartHttpServletRequest mulRequest
 			, Model model) {
 		log.debug("Welcome EnterpriseController enterpriseAdd!" + enterpriseDto);
 		
@@ -128,7 +128,7 @@ public class EnterpriseController {
 	}
 	
 	@RequestMapping(value="/enterprise/em_update.do", method = RequestMethod.GET)
-	public String memberUpdate(int no, Model model) {
+	public String enterpriseUpdate(int no, Model model) {
 		log.info("Welcome EnterpriseController enterpriseUpdate!"+ no);
 		
 		Map<String,Object> map = enterpriseService.enterpriseSelectOne(no);
@@ -146,7 +146,7 @@ public class EnterpriseController {
 	}
 	
 	@RequestMapping(value="/enterprise/em_updateCtr.do", method = RequestMethod.POST)
-	public String memberUpdateCtr(EnterpriseDto enterpriseDto
+	public String enterpriseUpdateCtr(EnterpriseDto enterpriseDto
 			, @RequestParam(value = "fileIdx", defaultValue ="-1") int fileIdx
 			, MultipartHttpServletRequest mulRequest
 			,Model model) {
@@ -168,7 +168,7 @@ public class EnterpriseController {
 	
 	
 	@RequestMapping(value="/enterprise/em_delete.do", method= RequestMethod.GET)
-	public String memberDelete(int no, Model model) {
+	public String enterpriseDelete(int no, Model model) {
 		log.info("Welcome EnterpriseController enterpriseDelete!"+ no);
 		
 		enterpriseService.enterpriseDeleteOne(no);

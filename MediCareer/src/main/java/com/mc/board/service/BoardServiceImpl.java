@@ -1,5 +1,6 @@
 package com.mc.board.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.mc.board.controller.BoardController;
 import com.mc.board.dao.BoardDao;
 import com.mc.board.dto.BoardDto;
+import com.mc.member.dto.MemberDto;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -41,8 +43,12 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Map<String, Object> boardSelectOne(int no) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
+		
+		BoardDto boardDto = boardDao.boardSelectOne(no);
+		resultMap.put("boardDto", boardDto);
+		return resultMap;
 	}
 
 	@Override
