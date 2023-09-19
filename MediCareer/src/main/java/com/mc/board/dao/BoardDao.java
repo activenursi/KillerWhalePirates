@@ -16,4 +16,6 @@ public interface BoardDao {
 
 	public int boardDeleteOne(int no);
 
+	public BoardDto boardSelectOne(int no);
+
 }

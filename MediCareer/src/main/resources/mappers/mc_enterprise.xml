@@ -16,7 +16,34 @@
 		<result column="EM_JOIN_DATE" property="createDate"
 			javaType="java.util.Date"/>
 	</resultMap>
-
+	
+	<resultMap type="JobPostingDto" id="jobPostingResultMap">
+		<id column="JOBPOSTING_NO" property="no" />
+		<result column="JOBPOSTING_TITLE" property="title"/>
+		<result column="EMPLOYMENT_TYPE" property="type"/>
+		<result column="LOCATION_NAME" property="Location_name"/>
+		<result column="WORKING_HOUR" property="working_hour"/>
+		<result column="SALARY" property="salary"/>
+		<result column="GENDER" property="gender"/>
+		<result column="AGE" property="gender"/>
+		<result column="EDUCATION" property="career"/>
+		<result column="CAREER" property="education"/>
+		<result column="PRIMARY_DUTIES1" property="primary_duties1"/>
+		<result column="PRIMARY_DUTIES2" property="primary_duties2"/>
+		<result column="PRIMARY_DUTIES3" property="primary_duties3"/>
+		<result column="RECRUITER_NAME" property="recruiter_name"/>
+		<result column="RECRUITER_PHONE" property="recruiter_phone"/>
+		<result column="RECRUITER_EMAIL" property="recruiter_email"/>
+		<result column="RECRUITMENT_PROCESS" property="recruiter_process"/>
+		<result column="EMPLOYEE_BENEFIT" property="employee_benefit"/>
+		<result column="ADDRESS" property="address"/>
+		<result column="APPLICATION_PERIOD" property="application_period"/>
+		<result column="CREATE_DATE" property="create_date"
+			javaType="java.util.Date"/>
+		<result column="EM_NO" property="em_no"/>
+		<result column="EM_NAME" property="em_name"/>
+	</resultMap>
+	
 	<select id="enterpriseExist" parameterType="map" 
 		resultMap="enterpriseResultMap">
 		SELECT EM_NAME, EM_EMAIL
@@ -72,6 +99,62 @@
          FROM DUAL
        </selectKey>
       INSERT INTO ENTERPRISE_MEMBER
+		VALUE(EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
+		, EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE)
+		VALUES(EM_NO_SEQ.NEXTVAL, #{brNo}, #{companyName}, #{name}
+		, #{address}, #{contactDetails}, #{email}, #{pwd}, SYSDATE)
+   </insert>
+   
+   
+   <!-- 채용공고  -->
+   
+   <select id="jobPostingSelectList" parameterType="map" resultMap="jobPostingResultMap">
+		SELECT MEMBER1.EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS, EM_REP
+		, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+		FROM (  SELECT ROWNUM AS R_NUM, M.EM_NO, M.EM_BRN, M.EM_COMPANY_NAME, M.EM_CEO_NAME
+			, M.EM_ADDRESS, M.EM_REP, M.EM_EMAIL, M.EM_PASSWORD, M.EM_JOIN_DATE 
+        		FROM (  SELECT EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
+        		, EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+		                FROM JOBPOSTING 
+		                ORDER BY EM_JOIN_DATE DESC) E
+		) MEMBER1
+		WHERE MEMBER1.R_NUM BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="jobPostingSelectOne" resultMap="jobPostingResultMap">
+		SELECT EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS, EM_REP
+		, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+		FROM JOBPOSTING
+		WHERE MNO = #{no}
+	</select>
+	
+	<select id="jobPostingSelectTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM ENTERPRISE_MEMBER
+	</select>
+	
+	 
+	<update id="jobPostingUpdateOne" parameterType="jobPostingDto">
+		UPDATE JOBPOSTING
+		<set>
+			<if test="name!=null">EM_NAME = #{name},</if>
+			<if test="email!=null">EM_EMAIL = #{email},</if>
+			EM_MOD_DATE = SYSDATE
+		</set>
+			WHERE EM_NO = #{no}
+	</update>
+	
+	<delete id="enterpriseDeleteOne">
+		DELETE FROM JOBPOSTING WHERE EM_NO = #{no}
+	</delete>
+	
+	<insert id="jobPostingInsertOne" parameterType="jobPostingDto"
+       useGeneratedKeys="true" keyProperty="no">
+       <selectKey keyProperty="no" resultType="int" order="BEFORE">
+          SELECT CM_NO_SEQ.NEXTVAL
+         FROM DUAL
+       </selectKey>
+      INSERT INTO JOBPOSTING
 		VALUE(EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
 		, EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE)
 		VALUES(EM_NO_SEQ.NEXTVAL, #{brNo}, #{companyName}, #{name}

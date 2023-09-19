@@ -17,13 +17,28 @@
 			javaType="java.util.Date" />
 		<result column="CM_NO" property="cm_no"/>
 	</resultMap>
+	
+	<resultMap type="cs_boardDto" id="cs_boardResultMap">
+		<id column="CS_BOARD_NO" property="no" />
+		<result column="CS_CATEGORY" property="category"/>
+		<result column="CM_MEMBER_NAME" property="writer"/>
+		<result column="CM_NO" property="cm_no"/>
+		<result column="CS_TITLE" property="title"/>
+		<result column="CS_CONTENT" property="content"/>
+		<result column="REPLY_NAME" property="replyer"/>
+		<result column="CREATE_DATE" property="create_date"
+			javaType="java.util.Date"/>
+		<result column="REPLY_DATE" property="reply_date" 
+			javaType="java.util.Date" />
+		<result column="PROGRESS" property="progress"/>
+	</resultMap>
  
 	
 	<select id="boardSelectList" parameterType="map" resultMap="boardResultMap">
 		SELECT BOARD1.BOARD_NO, BOARD_WRITER, BOARD_TITLE
 		,BOARD_CONTENT, BOARD_VIEW_COUNT, BOARD_RECOMMEND 
 		, BOARD_WRITE_DATE, CM_NO
-		FROM (  SELECT ROWNUM AS R_NUM, B.BOARD_NO, BOARD_WRITER, B.BOARD_TITLE
+		FROM (  SELECT ROWNUM AS R_NUM, B.BOARD_NO, B.BOARD_WRITER, B.BOARD_TITLE
 					, B.BOARD_CONTENT, B.BOARD_VIEW_COUNT, B.BOARD_RECOMMEND 
 					, B.BOARD_WRITE_DATE, B.CM_NO
         		FROM (  SELECT BOARD_NO, BOARD_WRITER, BOARD_TITLE
@@ -76,4 +91,62 @@
       , SYSDATE, #{cm_no})
    </insert>
 	
+<!-- 고객문의 -->
+
+	<select id="cs_boardSelectList" parameterType="map" resultMap="cs_boardResultMap">
+		SELECT CS_BOARD1.BOARD_NO, CS_CATEGORY, CM_MEMBER_NAME
+			,CM_NO, CS_TITLE, CS_CONTENT, CREATE_DATE, REPLY_NAME
+       		, REPLY_DATE, PROGRESS
+		FROM (	SELECT ROWNUM AS R_NUM, C.CS_BOARD_NO, C.CS_CATEGORY, C.CM_MEMBER_NAME, C.CM_NO
+	        		, C.CS_TITLE, C.CS_CONTENT, C.CREATE_DATE, C.REPLY_NAME
+	        		, C.REPLY_DATE, C.PROGRESS
+       			FROM (	SELECT CS_BOARD_NO, CS_CATEGORY, CM_MEMBER_NAME, CM_NO
+			        		, CS_TITLE, CS_CONTENT, CREATE_DATE, REPLY_NAME
+			        		, REPLY_DATE, PROGRESS
+		                FROM CS_BOARD 
+		                ORDER BY CS.CREATE_DATE DESC) C
+		) CS_BOARD1
+		WHERE CS_BOARD1.R_NUM BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="cs_boardSelectTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM CS_BOARD
+	</select>
+	
+	<select id="cs_boardSelectOne" resultMap="cs_boardResultMap">
+		SELECT CS_BOARD_NO, CS_CATEGORY, CM_MEMBER_NAME, CM_NO, CS_TITLE
+			, CS_CONTENT, CREATE_DATE, REPLY_NAME, REPLY_DATE, PROGRESS
+		FROM CS_BOARD
+		WHERE CS_BOARD_NO = #{no}
+	</select>
+	
+	<update id="cs_boardUpdateOne" parameterType="cs_boardDto">
+		UPDATE CS_BOARD
+		<set>
+			<if test="title!=null">BOARD_TITLE = #{title},</if>
+			<if test="email!=null">BOARD_COTENT = #{content},</if>
+			REPLY_DATE = SYSDATE
+		</set>
+			WHERE CS_BOARD_NO = #{no}
+	</update>
+	
+	<delete id="cs_boardDeleteOne">
+		DELETE FROM CS_BOARD WHERE BOARD_NO = #{no}
+	</delete>
+	
+	<insert id="cs_boardInsertOne" parameterType="cs_boardDto"
+       useGeneratedKeys="true" keyProperty="no">
+       <selectKey keyProperty="no" resultType="int" order="BEFORE">
+          SELECT CS_BOARD_NO_SEQ.NEXTVAL
+         FROM DUAL
+       </selectKey>
+      INSERT INTO CS_BOARD
+      (CS_BOARD_NO, CS_CATEGORY, CM_MEMBER_NAME, CM_NO, CS_TITLE, CS_CONTENT
+      , CREATE_DATE, REPLY_NAME)
+      VALUES(#{no}, #{category}, #{writer}, #{cm_no}, #{title}, #{content}
+      ,SYSDATE, #{replyer})
+   </insert>
+   
+   
 </mapper>
