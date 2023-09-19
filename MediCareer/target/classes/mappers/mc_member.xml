@@ -62,12 +62,18 @@
 	
 	<insert id="memberInsertOne" parameterType="memberDto"
        useGeneratedKeys="true" keyProperty="no">
-       <selectKey keyProperty="no" resultType="int" order="BEFORE">
-          SELECT CM_NO_SEQ.NEXTVAL
-         FROM DUAL
-       </selectKey>
-      INSERT INTO COMMON_MEMBER
-      (CM_NO, CM_NICKNAME, CM_EMAIL, CM_PASSWORD, CM_NAME, CM_JOIN_DATE, CM_MODIFY_DATE)
-      VALUES(#{no}, #{nickName}, #{email}, #{password}, #{name}, SYSDATE, SYSDATE)
-   </insert>
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT CM_NO_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+			INSERT INTO COMMON_MEMBER
+			(CM_NO, CM_NICKNAME, CM_EMAIL, CM_PASSWORD, CM_NAME, CM_JOIN_DATE, CM_MODIFY_DATE)
+			VALUES(#{no}, #{nickName}, #{email}, #{password}, #{name}, SYSDATE, SYSDATE)
+	</insert>
+   
+	<select id="memberNicknameCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM COMMON_MEMBER
+		WHERE CM_NICKNAME = #{nickName}
+	</select>
 </mapper>

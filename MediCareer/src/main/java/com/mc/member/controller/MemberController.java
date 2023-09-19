@@ -120,10 +120,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/member/addCtr.do", method = RequestMethod.POST)
-	public String memberAdd(MemberDto memberDto, Model model) {
+	public String memberAdd(MemberDto memberDto, Model model) throws Exception {
 		log.debug("Welcome MemberController memberAdd!" + memberDto);
 		
+		int result = memberService.memberNicknameCheck(memberDto);
+		
 		try {
+			if (result == 1) {
+				
+			}
 			memberService.memberInsertOne(memberDto);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -132,6 +137,14 @@ public class MemberController {
 		}
 			
 		return "redirect:/index.jsp";
+	}
+	
+	//닉네임 중복 체크
+	@RequestMapping(value="/member/nicknameCheck.do", method= RequestMethod.POST)
+	public int memberNicknameCheck(MemberDto memberDto) throws Exception {
+		int result = memberService.memberNicknameCheck(memberDto);
+		
+		return result;
 	}
 	
 	@RequestMapping(value="/member/update.do", method = RequestMethod.GET)
@@ -169,7 +182,6 @@ public class MemberController {
 		
 		return "common/successPage";
 	}
-	
 	
 	@RequestMapping(value="/member/delete.do", method= RequestMethod.GET)
 	public String memberDelete(int no, Model model) {

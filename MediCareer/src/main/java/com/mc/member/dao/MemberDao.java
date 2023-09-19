@@ -21,6 +21,7 @@ public interface MemberDao {
 	public int fileDelete(int no);
 
 	public int memberDeleteOne(int no);
-
+	
+	public int memberNicknameCheck(MemberDto memberDto) throws Exception;
 
 }

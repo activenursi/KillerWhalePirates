@@ -69,5 +69,13 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberDao.memberDeleteOne(no);
 	}
+	
+	@Override
+	public int memberNicknameCheck(MemberDto memberDto) throws Exception {
+		// TODO Auto-generated method stub
+		int result = memberDao.memberNicknameCheck(memberDto);
+		
+		return result;
+	}
 
 }
