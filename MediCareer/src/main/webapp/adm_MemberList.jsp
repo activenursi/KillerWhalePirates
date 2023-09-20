@@ -15,6 +15,7 @@
 		font-size : 24px;
 		font-weight: bold;
 		padding-bottom: 12px;
+		margin-top: 100px;
 	}
   /* 입력 상자 스타일 */
     .search-input {
@@ -60,35 +61,40 @@
 	}
 	.listLabel{
 		color: black;
+		margin-right: 20px;
 
 	}
 	.tableBox2 table{
-		text-align: center;
-		border-collapse: collapse;
+		width: 750px;
+		border-collapse: collapse; /* 셀 간의 경계를 합치기 */
+		background-color: lightgray;
 		border:1px solid black;
+		text-align: center;
 	}
 	.tableBox2 table th {
-		background-color: gray;
+		background-color: lightgray;
 		border-collapse: collapse;
 		border:1px solid black;
 	}
 	.tableBox2 table td {
+		border: 1px solid black; /* 셀 테두리 설정 (선택 사항) */
 		border-collapse: collapse;
-		border:1px solid black;
+		background-color: white;
 	}
 </style>
 </head>
 <body>
+<%-- <jsp:include page="./Header7.jsp"></jsp:include> --%>
 	<div class="wrap-container">
 		<div>
 			<div class="admMemberCategory">
 			  <input type="radio" id="memberList" class="category" value="memberList">
 			  <label for="memberList" class="listLabel" 
-			  	onclick="window.location.href = './adm_memberList.jsp';">회원목록</label>
+			  	onclick="window.location.href = './adm_MemberList.jsp';">회원목록</label>
 			
 			  <input type="radio" id="memberDelList" class="category" value="memberDelList">
 			  <label for="memberDelList" class="delLabel" 
-			  	onclick="window.location.href = './adm_memberDelList.jsp';">탈퇴내역</label>
+			  	onclick="window.location.href = './adm_MemberDelList.jsp';">회원 탈퇴내역</label>
 			</div>
 			<div class="seach-container">
 				<input type="text" class="search-input">

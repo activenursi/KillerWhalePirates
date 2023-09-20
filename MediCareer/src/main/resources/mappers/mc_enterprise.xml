@@ -144,7 +144,7 @@
 			WHERE EM_NO = #{no}
 	</update>
 	
-	<delete id="enterpriseDeleteOne">
+	<delete id="jobPostingDeleteOne">
 		DELETE FROM JOBPOSTING WHERE EM_NO = #{no}
 	</delete>
 	

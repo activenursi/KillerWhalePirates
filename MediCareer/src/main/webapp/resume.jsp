@@ -6,21 +6,21 @@
 <meta charset="EUC-KR">
 <title>이력서 작성</title>
 <style>
+body {
+	background-color: rgb(248 250 252);
+}
 #main_content {
 	width: 1348px;
 }
 #content{
-	margin-left:600px;
-	margin-top:70px;
-	width: 1000px;
-	align-items: center;
-	
+	width: 500px;
+	margin:  0 auto;
+	padding-left: 70px;
+	background-color: #FFFFFF;
+	border: 1px solid rgb(203 213 225);
 }
 .profile_img{
 	font-weight: 700;
-}
-.img_modify{
-	margin-left: 80px;
 }
 a{
 	text-align: left;
@@ -33,54 +33,77 @@ a{
 .input_name {
 	width: 200px;
 	height: 30px;
+	background-color: rgb(248 250 252);
+	border: 1px solid lightgray;
+	border-radius: 4px;
 }
 
 .input_email {
 	width: 200px;
 	height: 30px;
+	background-color: rgb(248 250 252);
+	border: 1px solid lightgray;
+	border-radius: 4px;
 }
 
 .input_education {
 	width: 200px;
 	height: 30px;
+	background-color: rgb(248 250 252);
+	border: 1px solid lightgray;
+	border-radius: 4px;
 }
 
 .input_major {
 	width: 200px;
 	height: 30px;
+	background-color: rgb(248 250 252);
+	border: 1px solid lightgray;
+	border-radius: 4px;
 }
 
 .input_certificate {
 	width: 430px;
 	height: 30px;
+	background-color: rgb(248 250 252);
+	border: 1px solid lightgray;
+	border-radius: 4px;
 }
 
 .input_career {
 	width: 430px;
 	height: 30px;
+	background-color: rgb(248 250 252);
+	border: 1px solid lightgray;
+	border-radius: 4px;
 }
 
 .input_meno {
 	width: 200px;
 	height: 30px;
-	
+	background-color: rgb(248 250 252);
+	border: 1px solid lightgray;
+	border-radius: 4px;
 }
 .input_date {
 	width: 200px;
 	height: 30px;
+	background-color: rgb(248 250 252);
+	border: 1px solid lightgray;
+	border-radius: 4px;
 }
 .input_male{
-    position: absolute;
-    clip: rect(0 0 0 0);
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    border:1px solid;
+    background-color: rgb(248 250 252);
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+.input_preview {
+	float:right;
 }
 </style>
 </head>
 <body>
+<%-- <jsp:include page="./Header7.jsp"></jsp:include> --%>
 	<main id="main_content">
 		<div class="body_entire">
 				<div class="back_page">
@@ -93,9 +116,8 @@ a{
 				</div>
 				<div class="profile-section">
 					<form class="img_modify">
-						<label> <img alt="" src="" alt="프로필 이미지 수정"> 이미지 <input
-							type="button" value="바꾸기"> <input type="button"
-							value="삭제하기">
+						<label> <img alt="" src="../img/user1.png" alt="프로필 이미지 수정" style="width:150px; height:100px;">
+						<input type="button" value="바꾸기"> <input type="button" value="삭제하기">
 						</label>
 					</form>
 				</div>
@@ -146,7 +168,6 @@ a{
 					</textarea>
 				</div>
 				<div>
-					<h3 style="margin-bottom:8px;">경력 / 업무경험</h3>
 					<input class="input_preview" type="button" value="미리보기">
 				</div>
 			</div>
