@@ -34,9 +34,9 @@
        </div>
        
        
-<!--        	<form action="auth/login.do" id="simpleForm" method="get">
+        	<form action="auth/login.do" id="simpleForm" method="get">
 			<input type="button"value="로그인 화면으로 이동" onclick="loginMoveFnc();">
-		</form> -->
+		</form> 
        
     </header>
 
