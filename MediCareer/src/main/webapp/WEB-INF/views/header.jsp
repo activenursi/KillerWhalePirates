@@ -71,7 +71,7 @@
 				<div class="sub-menu">
 					<ul class="menu">
 						<li><a href="/MediCareer/careerInfo.jsp">채용 공고</a></li>
-						<li><a href="/MediCareer/list.jsp">커뮤니티</a></li>
+						<li><a href="./board/board.do">커뮤니티</a></li>
 						<li><a href="/MediCareer/myPage.jsp">마이페이지</a></li>
 					</ul>
 					<span style="float: right;"> ${member.name}님 <a

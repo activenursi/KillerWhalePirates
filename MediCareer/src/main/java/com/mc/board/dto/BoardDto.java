@@ -14,6 +14,7 @@ public class BoardDto {
 	private Date write_date;
 	private Date mod_date;
 	private int cm_no;
+	private String category;
 	
 	public BoardDto() {
 		super();
@@ -23,7 +24,7 @@ public class BoardDto {
 	
 	
 	public BoardDto(int no, String writer, String title, String content, int view_count, int recommend, Date write_date,
-			Date mod_date, int cm_no) {
+			Date mod_date, int cm_no, String category) {
 		super();
 		this.no = no;
 		this.writer = writer;
@@ -34,6 +35,7 @@ public class BoardDto {
 		this.write_date = write_date;
 		this.mod_date = mod_date;
 		this.cm_no = cm_no;
+		this.category = category;
 	}
 
 
@@ -110,12 +112,28 @@ public class BoardDto {
 		this.cm_no = cm_no;
 	}
 
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "BoardDto [no=" + no + ", writer=" + writer + ", title=" + title + ", content=" + content
 				+ ", view_count=" + view_count + ", recommend=" + recommend + ", write_date=" + write_date
-				+ ", mod_date=" + mod_date + ", cm_no=" + cm_no + "]";
+				+ ", mod_date=" + mod_date + ", cm_no=" + cm_no + ", category=" + category + "]";
 	}
+
+	
 	
 	
 	

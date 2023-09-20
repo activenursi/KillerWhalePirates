@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mc.board.dto.BoardDto;
@@ -49,16 +52,17 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/board/add.do", method = RequestMethod.GET)
-	public String boardAdd(Model model) {
-		log.debug("Welcome boardController boardAdd!");
-
-		return "board/boardForm";
+	public String communityBoardAdd(HttpSession session ,Model model) {
+		log.debug("Welcome communityBoardController communityAdd!"+ session);
+		
+		model.addAttribute("boardDto",session);
+		return "board/BoardWrite";
 	}
 
 	@RequestMapping(value = "/board/addCtr.do", method = RequestMethod.POST)
 	public String boardAdd(BoardDto boardDto, MultipartHttpServletRequest mulRequest, Model model) {
-		log.debug("Welcome boardController boardAdd!" + boardDto);
-
+		log.debug("Welcome boardController boardAddCtr!" + boardDto);
+		System.out.println("이것도작동아하는데무슨");
 		try {
 			boardService.boardInsertOne(boardDto, mulRequest);
 		} catch (Exception e) {
@@ -67,7 +71,7 @@ public class BoardController {
 			e.printStackTrace();
 		}
 
-		return "redirect:/board/list.do";
+		return "redirect:/board/board.do";
 	}
 
 	@RequestMapping(value = "/board/update.do", method = RequestMethod.GET)
@@ -111,5 +115,34 @@ public class BoardController {
 
 		return "redirect:/board/list.do";
 	}
+	
+	@RequestMapping(value = "/community/bestlist.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public List<BoardDto> communityList(@RequestParam("category") String category, Model model) {
+		log.info("Welcome BoardController list!: {}", category);
 
+		
+		List<BoardDto> boardList = boardService.communityBestList(category);
+
+
+		return boardList;
+	}
+	
+	@RequestMapping(value = "/community/newlist.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public List<BoardDto> communityNewList(@RequestParam("category") String category, Model model) {
+		log.info("Welcome BoardController list!: {}", category);
+
+		
+		List<BoardDto> boardList = boardService.communityNewList(category);
+
+		return boardList;
+	}
+	@RequestMapping(value = "/board/board.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public String communityBoard(HttpSession  session, Model model) {
+		log.info("Welcome BoardController communitylist!: {}", session);
+		
+		
+		return "./board/BoardList";
+	}
 }

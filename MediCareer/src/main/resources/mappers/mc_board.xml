@@ -16,6 +16,7 @@
 		<result column="BOARD_MOD_DATE" property="mod_date" 
 			javaType="java.util.Date" />
 		<result column="CM_NO" property="cm_no"/>
+		<result column="CATEGORY" property="category"/>
 	</resultMap>
 	
 	<resultMap type="cs_boardDto" id="cs_boardResultMap">
@@ -83,12 +84,12 @@
           SELECT BOARD_NO_SEQ.NEXTVAL
          FROM DUAL
        </selectKey>
-      INSERT INTO COMMON_MEMBER
-      (BOARD_NO, BOARD_WRITER, BBOARD_TITLE
+      INSERT INTO BOARD
+      (BOARD_NO, BOARD_WRITER, BOARD_TITLE
 			, BOARD_CONTENT, BOARD_VIEW_COUNT, BOARD_RECOMMEND 
-			, BOARD_WRITE_DATE, CM_NO)
-      VALUES(#{no}, #{writer}, #{title}, #{content}, #{view_count}, #{recommend}
-      , SYSDATE, #{cm_no})
+			, BOARD_WRITE_DATE, BOARD_MOD_DATE, CM_NO, CATEGORY)
+      VALUES(#{no}, #{writer}, #{title}, #{content}, 0, 0
+      , SYSDATE, SYSDATE, #{cm_no},#{category})
    </insert>
 	
 <!-- 고객문의 -->
@@ -148,5 +149,37 @@
       ,SYSDATE, #{replyer})
    </insert>
    
-   
+   <select id="communityBestAllList"  resultMap="boardResultMap">
+		SELECT BOARD_NO, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT
+			,BOARD_VIEW_COUNT, BOARD_RECOMMEND, BOARD_WRITE_DATE
+			, BOARD_MOD_DATE, CM_NO, CATEGORY
+		FROM BOARD
+		ORDER BY BOARD_VIEW_COUNT DESC
+	</select>
+	
+	  <select id="communityBestList"  resultMap="boardResultMap">
+		SELECT BOARD_NO, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT
+			,BOARD_VIEW_COUNT, BOARD_RECOMMEND, BOARD_WRITE_DATE
+			, BOARD_MOD_DATE, CM_NO, CATEGORY
+		FROM BOARD
+		WHERE CATEGORY = #{category}
+		ORDER BY BOARD_VIEW_COUNT DESC
+	</select>
+	
+	  <select id="communityNewAllList"  resultMap="boardResultMap">
+		SELECT BOARD_NO, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT
+			,BOARD_VIEW_COUNT, BOARD_RECOMMEND, BOARD_WRITE_DATE
+			, BOARD_MOD_DATE, CM_NO, CATEGORY
+		FROM BOARD
+		ORDER BY BOARD_WRITE_DATE DESC
+	</select>
+	
+	  <select id="communityNewList"  resultMap="boardResultMap">
+		SELECT BOARD_NO, BOARD_WRITER, BOARD_TITLE, BOARD_CONTENT
+			,BOARD_VIEW_COUNT, BOARD_RECOMMEND, BOARD_WRITE_DATE
+			, BOARD_MOD_DATE, CM_NO, CATEGORY
+		FROM BOARD
+		WHERE CATEGORY = #{category}
+		ORDER BY BOARD_WRITE_DATE DESC
+	</select>
 </mapper>

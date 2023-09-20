@@ -18,4 +18,8 @@ public interface BoardDao {
 
 	public BoardDto boardSelectOne(int no);
 
+	public List<BoardDto> communityBestList(String category);
+
+	public List<BoardDto> communityNewList(String category);
+
 }

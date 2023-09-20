@@ -65,4 +65,16 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDao.boardDeleteOne(no);
 	}
+
+	@Override
+	public List<BoardDto> communityBestList(String category) {
+		// TODO Auto-generated method stub
+		return boardDao.communityBestList(category);
+	}
+
+	@Override
+	public List<BoardDto> communityNewList(String category) {
+		// TODO Auto-generated method stub
+		return boardDao.communityNewList(category);
+	}
 }

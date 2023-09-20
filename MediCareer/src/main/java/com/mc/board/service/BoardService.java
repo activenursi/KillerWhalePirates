@@ -21,5 +21,9 @@ public interface BoardService {
 
 	public int boardDeleteOne(int no);
 
+	public List<BoardDto> communityBestList(String category);
+
+	public List<BoardDto> communityNewList(String category);
+
 
 }

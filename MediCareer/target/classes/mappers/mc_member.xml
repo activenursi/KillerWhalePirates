@@ -1,79 +1,178 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mc.member">
 
-	<resultMap type="memberDto" id="memberResultMap">
-		<id column="CM_NO" property="no" />
-		<result column="CM_NAME" property="name"/>
-		<result column="CM_EMAIL" property="email"/>
-		<result column="CM_NICKNAME" property="nickName"/>
-		<result column="CM_PASSWORD" property="password"/>
-		<result column="CM_JOIN_DATE" property="createDate"
-			javaType="java.util.Date"/>
-		<result column="CM_MODIFY_DATE" property="modifyDate" 
-			javaType="java.util.Date" />
-	</resultMap>
-	
-	<select id="memberExist" parameterType="map" 
-		resultMap="memberResultMap">
-		SELECT CM_NAME, CM_EMAIL
-		FROM COMMON_MEMBER
-		WHERE CM_EMAIL = #{email}
-		AND CM_PASSWORD = #{pwd}
-	</select>
-	
-	<select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
-		SELECT MEMBER1.CM_NO,  CM_NAME, CM_EMAIL, CM_JOIN_DATE
-		FROM (  SELECT ROWNUM AS R_NUM, M.CM_NO, M.CM_NAME, M.CM_EMAIL, M.CM_JOIN_DATE 
-        		FROM (  SELECT CM_NO,  CM_NAME, CM_EMAIL, CM_JOIN_DATE
-		                FROM COMMON_MEMBER 
-		                ORDER BY CM_JOIN_DATE DESC) M
-		) MEMBER1
-		WHERE MEMBER1.R_NUM BETWEEN #{start} AND #{end}
-	</select>
-	
-	<select id="memberSelectOne" resultMap="memberResultMap">
-		SELECT CM_NO, CM_NAME, CM_EMAIL, CM_JOIN_DATE
-		FROM COMMON_MEMBER
-		WHERE MNO = #{no}
-	</select>
-	
-	<select id="memberSelectTotalCount" resultType="java.lang.Integer">
-		SELECT COUNT(*)
-		FROM COMMON_MEMBER
-	</select>
-	
-	 
-	<update id="memberUpdateOne" parameterType="memberDto">
-		UPDATE COMMON_MEMBER
-		<set>
-			<if test="name!=null">CM_NAME = #{name},</if>
-			<if test="email!=null">CM_EMAIL = #{email},</if>
-			CM_MOD_DATE = SYSDATE
-		</set>
-			WHERE CM_NO = #{no}
-	</update>
-	
-	<delete id="memberDeleteOne">
-		DELETE FROM COMMON_MEMBER WHERE CM_NO = #{no}
-	</delete>
-	
-	<insert id="memberInsertOne" parameterType="memberDto"
-       useGeneratedKeys="true" keyProperty="no">
-		<selectKey keyProperty="no" resultType="int" order="BEFORE">
-			SELECT CM_NO_SEQ.NEXTVAL
-			FROM DUAL
-		</selectKey>
-			INSERT INTO COMMON_MEMBER
-			(CM_NO, CM_NICKNAME, CM_EMAIL, CM_PASSWORD, CM_NAME, CM_JOIN_DATE, CM_MODIFY_DATE)
-			VALUES(#{no}, #{nickName}, #{email}, #{password}, #{name}, SYSDATE, SYSDATE)
-	</insert>
+   <resultMap type="memberDto" id="memberResultMap">
+      <id column="CM_NO" property="no" />
+      <result column="CM_NAME" property="name"/>
+      <result column="CM_EMAIL" property="email"/>
+      <result column="CM_NICKNAME" property="nickName"/>
+      <result column="CM_PASSWORD" property="password"/>
+      <result column="CM_JOIN_DATE" property="createDate"
+         javaType="java.util.Date"/>
+      <result column="CM_MODIFY_DATE" property="modifyDate" 
+         javaType="java.util.Date" />
+   </resultMap>
    
-	<select id="memberNicknameCheck" resultType="int">
-		SELECT COUNT(*)
-		FROM COMMON_MEMBER
-		WHERE CM_NICKNAME = #{nickName}
-	</select>
+   <resultMap type="resumeDto" id="resumeResultMap">
+      <id column="RESUME_NO" property="no" />
+      <result column="NAME" property="name"/>
+      <result column="CAREER_STATUS" property="career"/>
+      <result column="DESIRE_ANNUAL_SALARY" property="salary"/>
+      <result column="GENDER" property="gender"/>
+      <result column="BIRTH_DATE" property="birth_date"
+         javaType="java.util.Date"/>
+      <result column="PHONE_NUMBER" property="phone_no"/>
+      <result column="EMAIL" property="email"/>
+      <result column="ADDRESS" property="address"/>
+      <result column="FINAL_ACADEMIC_BACKGROUND" property="final_academic_background"/>
+      <result column="EDUCATIONAL_INSTITUTE" property="educational_institute"/>
+      <result column="MAJOR" property="major"/>
+      <result column="GRADUATION_STATUS" property="graduation_status"/>
+      <result column="ENTRANCE_DATE" property="entrance_date" 
+         javaType="java.util.Date" />
+      <result column="GRADUATION_DATE" property="graduation_date" 
+         javaType="java.util.Date" />
+      <result column="LICENSE_NAME" property="license_name"/>
+      <result column="LICENSE_ISSUING_AGENCY" property="license_issuing_agency"/>
+      <result column="LICENSE_PASSING_DATE" property="passing_date" 
+         javaType="java.util.Date" />
+      <result column="SELF_INTRODUCTION" property="self_introduction"/>
+      <result column="CM_NO" property="cm_no"/>
+      <result column="WRITE_DATE" property="write_date" 
+         javaType="java.util.Date" />
+   </resultMap>
+   
+   <select id="memberExist" parameterType="map" 
+      resultMap="memberResultMap">
+      SELECT CM_NAME, CM_EMAIL
+      FROM COMMON_MEMBER
+      WHERE CM_EMAIL = #{email}
+      AND CM_PASSWORD = #{pwd}
+   </select>
+   
+   <select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
+      SELECT MEMBER1.CM_NO,  CM_NAME, CM_EMAIL, CM_JOIN_DATE
+      FROM (  SELECT ROWNUM AS R_NUM, M.CM_NO, M.CM_NAME, M.CM_EMAIL, M.CM_JOIN_DATE 
+              FROM (  SELECT CM_NO,  CM_NAME, CM_EMAIL, CM_JOIN_DATE
+                      FROM COMMON_MEMBER 
+                      ORDER BY CM_JOIN_DATE DESC) M
+      ) MEMBER1
+      WHERE MEMBER1.R_NUM BETWEEN #{start} AND #{end}
+   </select>
+   
+   <select id="memberSelectOne" resultMap="memberResultMap">
+      SELECT CM_NO, CM_NAME, CM_EMAIL, CM_JOIN_DATE
+      FROM COMMON_MEMBER
+      WHERE MNO = #{no}
+   </select>
+   
+   <select id="memberSelectTotalCount" resultType="java.lang.Integer">
+      SELECT COUNT(*)
+      FROM COMMON_MEMBER
+   </select>
+   
+    
+   <update id="memberUpdateOne" parameterType="memberDto">
+      UPDATE COMMON_MEMBER
+      <set>
+         <if test="name!=null">CM_NAME = #{name},</if>
+         <if test="email!=null">CM_EMAIL = #{email},</if>
+         CM_MOD_DATE = SYSDATE
+      </set>
+         WHERE CM_NO = #{no}
+   </update>
+   
+   <delete id="memberDeleteOne">
+      DELETE FROM COMMON_MEMBER WHERE CM_NO = #{no}
+   </delete>
+   
+   <insert id="memberInsertOne" parameterType="memberDto"
+       useGeneratedKeys="true" keyProperty="no">
+       <selectKey keyProperty="no" resultType="int" order="BEFORE">
+         SELECT CM_NO_SEQ.NEXTVAL
+         FROM DUAL
+     </selectKey>
+      INSERT INTO RESUME
+      (CM_NO, CM_NICKNAME, CM_EMAIL, CM_PASSWORD, CM_NAME, CM_JOIN_DATE, CM_MODIFY_DATE)
+      VALUES(#{no}, #{nickName}, #{email}, #{password}, #{name}, SYSDATE, SYSDATE)
+   </insert>
+   
+  <!--이력서  sql -->
+ 
+   <select id="resumeSelectList" parameterType="map" resultMap="resumeResultMap">
+      SELECT resume1.RESUME_NO,  NAME, EMAIL, WRITE_DATE
+      FROM (  SELECT ROWNUM AS R_NUM, R.RESUME_NO, R.NAME, R.EMAIL, R.WRITE_DATE 
+              FROM (  SELECT RESUME_NO, NAME, EMAIL, WRITE_DATE
+                      FROM RESUME
+                      ORDER BY WRITE_DATE DESC) R
+      ) resume1
+      WHERE resume1.R_NUM BETWEEN #{start} AND #{end}
+   </select>
+   
+   <select id="resumeSelectOne" resultMap="resumeResultMap">
+      SELECT RESUME_NO, NAME, CAREER_STATUS, DESIRE_ANNUAL_SALARY, GENDER, BIRTH_DATE
+         , PHONE_NUMBER, EMAIL, ADDRESS, FINAL_ACADEMIC_BACKGROUND, EDUCATIONAL_INSTITUTE
+         , MAJOR, GRADUATION_STATUS, ENTRANCE_DATE, GRADUATION_DATE, LICENSE_NAME
+         , LICENSE_ISSUING_AGENCY, LICENSE_PASSING_DATE, SELF_INTRODUCTION, CM_NO, WRITE_DATE
+      FROM RESUME
+      WHERE RESUME_NO = #{no}
+   </select>
+   
+   <select id="resumeSelectTotalCount" resultType="java.lang.Integer">
+      SELECT COUNT(*)
+      FROM RESUME
+   </select>
+   
+    
+   <update id="resumeUpdateOne" parameterType="resumeDto">
+      UPDATE RESUME
+      <set>
+         <if test="name!=null">NAME = #{name},</if>
+         <if test="career!=null">CAREER_STATUS = #{career},</if>
+         <if test="salary!=null">DESIRE_ANNUAL_SALARY = #{salary},</if>
+         <if test="gender!=null">GENDER = #{gender},</if>
+         <if test="birth_date!=null">BIRTH_DATE = #{birth_date},</if>
+         <if test="phone_no!=null">PHONE_NUMBER = #{phone_no},</if>
+         <if test="email!=null">EMAIL = #{email},</if>
+         <if test="address!=null">ADDRESS = #{address},</if>
+         <if test="final_academic_background!=null">FINAL_ACADEMIC_BACKGROUND = #{final_academic_background},</if>
+         <if test="educational_institute!=null">EDUCATIONAL_INSTITUTE = #{educational_institute},</if>
+         <if test="major!=null">MAJOR = #{major},</if>
+         <if test="graduation_status!=null">GRADUATION_STATUS = #{graduation_status},</if>
+         <if test="entrance_date!=null">ENTRANCE_DATE = #{entrance_date},</if>
+         <if test="graduation_date!=null">GRADUATION_DATE = #{graduation_date},</if>
+         <if test="license_name!=null">LICENSE_NAME = #{license_name},</if>
+         <if test="license_issuing_agency!=null">LICENSE_ISSUING_AGENCY = #{license_issuing_agency},</if>
+         <if test="passing_date!=null">LICENSE_PASSING_DATE = #{passing_date},</if>
+         <if test="self_introduction!=null">SELF_INTRODUCTION = #{self_introduction},</if>
+         <if test="cm_no!=null">CM_NO = #{cm_no},</if>
+         WRITE_DATE = SYSDATE
+      </set>
+         WHERE RESUME_NO = #{no}
+   </update>
+   
+   <delete id="resumeDeleteOne">
+      DELETE FROM RESUME WHERE RESUME_NO = #{no}
+   </delete>
+   
+   <insert id="resumeInsertOne" parameterType="resumeDto"
+       useGeneratedKeys="true" keyProperty="no">
+      <selectKey keyProperty="no" resultType="int" order="BEFORE">
+          SELECT RESUME_NO_SEQ.NEXTVAL
+         FROM DUAL
+       </selectKey>
+      INSERT INTO RESUME
+      (RESUME_NO, NAME, CAREER_STATUS, DESIRE_ANNUAL_SALARY, GENDER, BIRTH_DATE
+      , PHONE_NUMBER, EMAIL, ADDRESS, FINAL_ACADEMIC_BACKGROUND, EDUCATIONAL_INSTITUTE
+      , MAJOR, GRADUATION_STATUS, ENTRANCE_DATE, GRADUATION_DATE, LICENSE_NAME
+      , LICENSE_ISSUING_AGENCY, LICENSE_PASSING_DATE, SELF_INTRODUCTION, CM_NO, WRITE_DATE)
+      VALUES(#{no}, #{name}, #{career}, #{salary}, #{gender}, #{birth_date}
+      , #{phone_no}, #{email}, #{address}, #{final_academic_background}
+      , #{educational_institute}, #{major}, #{graduation_status}, #{entrance_date}
+      , #{graduation_date}, #{license_name}, #{license_issuing_agency}, #{passing_date}
+      , #{self_introduction}, #{cm_no}, SYSDATE)
+   </insert>
 </mapper>

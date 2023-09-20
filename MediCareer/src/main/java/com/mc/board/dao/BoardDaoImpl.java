@@ -59,5 +59,27 @@ public class BoardDaoImpl implements BoardDao{
 		
 		return boardDto;
 	}
+
+	@Override
+	public List<BoardDto> communityBestList(String category) {
+		
+		if(category.equals("전체")) {
+			return sqlSession.selectList(namespace+"communityBestAllList");
+		}else {
+			return sqlSession.selectList(namespace+"communityBestList", category);
+		}
+		
+	}
+
+	@Override
+	public List<BoardDto> communityNewList(String category) {
+		// TODO Auto-generated method stub
+		if(category.equals("전체")) {
+			return sqlSession.selectList(namespace+"communityNewAllList");	
+		}else {
+			return sqlSession.selectList(namespace+"communityNewList", category);
+		}
+		
+	}
 	
 }
