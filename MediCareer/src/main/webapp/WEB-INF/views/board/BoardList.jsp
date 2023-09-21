@@ -111,7 +111,8 @@
  <section class="listskin ">
 
 
-		
+		<div>
+		</div>
         <div class="control">
             <a href="#" class="ctr_top"><i></i> <p class="skip">상단으로 이동</p></a>
 <!--             <?php if ($write_href) { ?><a href=<?php echo $write_href ?> class="ctr_write"><i></i> <p class="skip">글쓰기</p></a><?php } ?> -->
@@ -119,7 +120,7 @@
         </div>
         
 
-            <form name="fboardlist" id="fboardlist" action="<?php echo G5_BBS_URL; ?>/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
+            <form name="fboardlist" id="fboardlist" action="" onsubmit="return fboardlist_submit(this);" method="post">
                 <input type="hidden" name="cm_no" value="#">
                 <input type="hidden" name="writer" value="#">
                 <div class="header">
@@ -128,6 +129,7 @@
                             <li class="active" rel="전체">전체</li>
                             <li rel="취업">취업</li>
                             <li rel="일상">일상</li>
+                            <li rel="해외">해외</li>
                         </ul>
                     </div>
                     
@@ -201,6 +203,18 @@
 	            }
 	        }
 	    });
+	    
+	    $("div.tabs li").click(function () {
+	        $("div.tabs li").removeClass("active");
+	        $(this).addClass("active");
+	        $(".tab_content").hide();
+	        var activeTab = $(this).attr("rel");
+	        $("#" + activeTab).fadeIn();
+
+	        // 선택한 탭의 카테고리 값을 전달하여 함수 호출
+	        getBestList(activeTab);
+	        getNewList(activeTab);
+	    });
 	});
 	
     $(document).ready(function() {
@@ -219,64 +233,74 @@
         success: function(data) {
            
             var BestListObj = document.getElementById('bestList');
+            BestListObj.innerHTML = ''; // 목록 초기화
             var currentDate = new Date();
             
             
-            for (var i = 0; i < data.length; i++) {
-            	var writeDate = new Date(data[i].write_date);
-            	// 두 날짜 간의 차이를 계산
-            	var timeDifference = currentDate - writeDate;
-            	// 밀리초를 일로 변환 (1일 = 24시간 * 60분 * 60초 * 1000밀리초)
-            	var daysAgo = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
-            	
-                var html = '<li class="swiper-slide" onclick="location.href=\'\';">';
-                html += '<div class="flex">';
-                html += '<div class="lt-item">';
-                html += '<div class="head">';
-                html += '<div class="cate">';
+            if (data.length == 0) {
+                // data가 비어있을 경우 검색 결과가 없는 메시지를 추가
+                var html = '<div class="bot">';
+                html += '검색 결과가 없습니다.';
+                html += '</div>';
                 
-                // 조건에 따라 카테고리를 설정
-                if (data[i].category == '전체') {
-                    html += '<span class="cate01">전체</span>';
-                } else if (data[i].category == '일상') {
-                    html += '<span class="cate02">일상</span>';
-                } else if (data[i].category == '취업') {
-                    html += '<span class="cate03">취업</span>';
-               	}	else if (data[i].category == '해외') {
-                   html += '<span class="cate03">해외</span>';
-                }
-                
-                html += '</div>';
-                html += '<div class="hash">';
-                html += '<span>#수술</span> <span>#수술방</span> <span>#정형외과</span>';
-                html += '</div>';
-                html += '</div>';
-                html += '<div class="subject">';
-                html += '<a href="#">' + data[i].title + '</a>';
-                html += '</div>';
-                html += '<div class="text">';
-                html += '<a href="#">' + data[i].content + '</a>';
-                html += '</div>';
-                html += '</div>';
-                html += '</div>';
-                html += '<div class="bottom">';
-                html += '<div class="info">';
-                html += '<span>' + daysAgo + '일 전|</span>';
-                html += '<span>' + data[i].writer + '</span>';
-                html += '</div>';
-                html += '<div class="tool">';
-                html += '<a href="javascript:;"><img src="../resources/img/icon_latest_viewer.png"> <em>' + data[i].view_count + '</em></a>';
-                html += '<a href="javascript:;"><img src="../resources/img/icon_latest_bookmark.png"> <em>' + data[i].recommend + '</em></a>';
-                html += '<a href="javascript:;"><img src="../resources/img/icon_latest_comment.png"> <em>1</em></a>';
-                html += '</div>';
-                html += '</div>';
-                html += '</li>';
-                
-                // ul 요소에 HTML 코드 추가
+             // ul 요소에 HTML 코드 추가
                 BestListObj.innerHTML += html;
-                
-                
-            }
+            } else {
+	            for (var i = 0; i < data.length; i++) {
+	            	var writeDate = new Date(data[i].write_date);
+	            	// 두 날짜 간의 차이를 계산
+	            	var timeDifference = currentDate - writeDate;
+	            	// 밀리초를 일로 변환 (1일 = 24시간 * 60분 * 60초 * 1000밀리초)
+	            	var daysAgo = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
+	            	
+	                var html = '<li class="swiper-slide" onclick="location.href=\'\';">';
+	                html += '<div class="flex">';
+	                html += '<div class="lt-item">';
+	                html += '<div class="head">';
+	                html += '<div class="cate">';
+	                
+	                // 조건에 따라 카테고리를 설정
+	                if (data[i].category == '전체') {
+	                    html += '<span class="cate01">전체</span>';
+	                } else if (data[i].category == '일상') {
+	                    html += '<span class="cate02">일상</span>';
+	                } else if (data[i].category == '취업') {
+	                    html += '<span class="cate03">취업</span>';
+	               	}	else if (data[i].category == '해외') {
+	                   html += '<span class="cate03">해외</span>';
+	                }
+	                
+	                html += '</div>';
+	                html += '<div class="hash">';
+	                html += '<span>#수술</span> <span>#수술방</span> <span>#정형외과</span>';
+	                html += '</div>';
+	                html += '</div>';
+	                html += '<div class="subject">';
+	                html += '<a href="#">' + data[i].title + '</a>';
+	                html += '</div>';
+	                html += '<div class="text">';
+	                html += '<a href="#">' + data[i].content + '</a>';
+	                html += '</div>';
+	                html += '</div>';
+	                html += '</div>';
+	                html += '<div class="bottom">';
+	                html += '<div class="info">';
+	                html += '<span>' + daysAgo + '일 전|</span>';
+	                html += '<span>' + data[i].writer + '</span>';
+	                html += '</div>';
+	                html += '<div class="tool">';
+	                html += '<a href="javascript:;"><img src="../resources/img/icon_latest_viewer.png"> <em>' + data[i].view_count + '</em></a>';
+	                html += '<a href="javascript:;"><img src="../resources/img/icon_latest_bookmark.png"> <em>' + data[i].recommend + '</em></a>';
+	                html += '<a href="javascript:;"><img src="../resources/img/icon_latest_comment.png"> <em>1</em></a>';
+	                html += '</div>';
+	                html += '</div>';
+	                html += '</li>';
+	                
+	                // ul 요소에 HTML 코드 추가
+	                BestListObj.innerHTML += html;
+	                
+            	}//for 문종료  
+            }//else문 종료
         },
         error: function(xhr, status, error) {
             // 오류 처리
@@ -296,9 +320,10 @@
         success: function(data) {
            
             var NewListObj = document.getElementById('newList');
+            NewListObj.innerHTML = ''; // 목록 초기화
             var currentDate = new Date();
             
-            if (data.length === 0) {
+            if (data.boardList.length === 0) {
                 // data가 비어있을 경우 검색 결과가 없는 메시지를 추가
                 var html = '<div class="bot">';
                 html += '검색 결과가 없습니다.';
@@ -307,8 +332,8 @@
              // ul 요소에 HTML 코드 추가
                 NewListObj.innerHTML += html;
             } else {
-	            for (var i = 0; i < data.length; i++) {
-	            	var writeDate = new Date(data[i].write_date);
+	            for (var i = 0; i < data.boardList.length; i++) {
+	            	var writeDate = new Date(data.boardList[i].write_date);
 	            	// 두 날짜 간의 차이를 계산
 	            	var timeDifference = currentDate - writeDate;
 	            	// 밀리초를 일로 변환 (1일 = 24시간 * 60분 * 60초 * 1000밀리초)
@@ -319,22 +344,24 @@
 	            	html += '<div class="lt-item">';
 	            	html += '<div class="head">';
 	            	html += '<div class="cate">';
-	            		if (data[i].category == '전체') {
+	            		if (data.boardList[i].category == '전체') {
 	            	        html += '<span class="cate01">전체</span>';
-	            	    } else if (data[i].category == '일상') {
+	            	    } else if (data.boardList[i].category == '일상') {
 	            	        html += '<span class="cate02">일상</span>';
-	            	    } else if (data[i].category == '취업') {
+	            	    } else if (data.boardList[i].category == '취업') {
 	            	        html += '<span class="cate03">취업</span>';
-	            	    }
+	            	    } else if (data.boardList[i].category == '해외') {
+	            	        html += '<span class="cate03">해외</span>';
+	            	    }	
 	
 	            	html += '</div>';
 	            	html += '<div class="hash"><span>#수술</span> <span>#수술방</span> <span>#정형외과</span></div>';
 	            	html += '</div>';
 	            	html += '<div class="subject">';
-	            	html += '<a href="#">' + data[i].title + '</a>';
+	            	html += '<a href="#">' + data.boardList[i].title + '</a>';
 	            	html += '</div>';
 	            	html += '<div class="text">';
-	            	html += '<a href="#">' + data[i].content + '</a>';
+	            	html += '<a href="#">' + data.boardList[i].content + '</a>';
 	            	html += '</div>';
 	            	html += '</div>';
 	            	html += '<div class="rt-item"></div>';
@@ -350,9 +377,9 @@
 	            	html += '</div>';
 	            	html += '<div class="tool">';
 	            	html += '<a href="javascript:;"><img src="../resources/img/icon_latest_viewer.png">';
-	            	html +=	'<em>' + data[i].view_count + '</em></a>';
+	            	html +=	'<em>' + data.boardList[i].view_count + '</em></a>';
 	            	html += '<a href="javascript:;"><img src="../resources/img/icon_latest_bookmark.png">';
-	            	html +=	'<em>' + data[i].recommend + '</em></a>';
+	            	html +=	'<em>' + data.boardList[i].recommend + '</em></a>';
 	            	html += '<a href="javascript:;"><img src="../resources/img/icon_latest_comment.png"><em><span id="replyCnt">1</span></em></a>';
 	            	html += '</div>';
 	            	html += '</div>';

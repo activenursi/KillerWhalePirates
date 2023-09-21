@@ -20,6 +20,6 @@ public interface BoardDao {
 
 	public List<BoardDto> communityBestList(String category);
 
-	public List<BoardDto> communityNewList(String category);
+	public List<BoardDto> communityNewList(String category, int start, int end);
 
 }

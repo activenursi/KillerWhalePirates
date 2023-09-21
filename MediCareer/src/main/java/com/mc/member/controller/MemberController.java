@@ -66,7 +66,7 @@ public class MemberController {
 		
 		session.invalidate();
 		
-		return "redirect:/auth/login.do";
+		return "redirect:/home.do";
 	}
 	
 	@RequestMapping(value="/member/listOne.do" , method = RequestMethod.GET)

@@ -73,8 +73,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDto> communityNewList(String category) {
+	public List<BoardDto> communityNewList(String category, int start, int end) {
 		// TODO Auto-generated method stub
-		return boardDao.communityNewList(category);
+		return boardDao.communityNewList(category, start, end);
 	}
 }

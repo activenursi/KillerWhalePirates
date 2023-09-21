@@ -72,12 +72,16 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public List<BoardDto> communityNewList(String category) {
+	public List<BoardDto> communityNewList(String category, int start, int end) {
 		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
 		if(category.equals("전체")) {
-			return sqlSession.selectList(namespace+"communityNewAllList");	
+			return sqlSession.selectList(namespace+"communityNewAllList", map);	
 		}else {
-			return sqlSession.selectList(namespace+"communityNewList", category);
+			map.put("category", category);
+			return sqlSession.selectList(namespace+"communityNewList", map);
 		}
 		
 	}
