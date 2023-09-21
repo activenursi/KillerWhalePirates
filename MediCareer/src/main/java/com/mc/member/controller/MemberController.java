@@ -12,11 +12,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.mc.mail.MailSendService;
 import com.mc.member.dto.MemberDto;
 import com.mc.member.service.MemberService;
 import com.mc.util.Paging;
@@ -27,15 +30,15 @@ public class MemberController {
 	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 	@Autowired
 	public MemberService memberService;
-	
+	@Autowired
+	private MailSendService mailService;
+
 	@RequestMapping(value="/auth/login.do", method = RequestMethod.GET)
 	public String login(HttpSession session, Model model) {
 		log.info("Welcome MemberController login!");
 		
-		
 		return "./auth/MemberLoginForm";
 	}
-	
 	
 	@RequestMapping(value="/auth/loginCtr.do", method = RequestMethod.POST)
 	public String loginCtr(String email, String password, 
@@ -84,8 +87,6 @@ public class MemberController {
 		return "member/MemberListOneView";
 	}
 		
-		
-		
 	@RequestMapping(value = "/member/list.do", 
 			method = {RequestMethod.GET,RequestMethod.POST})
 	public String memberList(@RequestParam(defaultValue = "1") int curPage, Model model) {
@@ -95,10 +96,8 @@ public class MemberController {
 		
 		Paging memberPaging = new Paging(totalCount, curPage);
 		
-		
 		int start = memberPaging.getPageBegin();
 		int end = memberPaging.getPageEnd();
-		
 		
 		List<MemberDto> memberList = memberService.memberSelectList(start, end);
 		
@@ -123,12 +122,7 @@ public class MemberController {
 	public String memberAdd(MemberDto memberDto, Model model) throws Exception {
 		log.debug("Welcome MemberController memberAdd!" + memberDto);
 		
-		int result = memberService.memberNicknameCheck(memberDto);
-		
 		try {
-			if (result == 1) {
-				
-			}
 			memberService.memberInsertOne(memberDto);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -136,15 +130,27 @@ public class MemberController {
 			e.printStackTrace();
 		}
 			
-		return "redirect:/index.jsp";
+		return "redirect:/common_member/Complete";
 	}
 	
 	//닉네임 중복 체크
-	@RequestMapping(value="/member/nicknameCheck.do", method= RequestMethod.POST)
+	@ResponseBody
+	@RequestMapping(value="/member/nicknameCheck.do", method = RequestMethod.POST)
 	public int memberNicknameCheck(MemberDto memberDto) throws Exception {
+		log.info("Welcome MemberController memberNicknameCheck!" + memberDto);
 		int result = memberService.memberNicknameCheck(memberDto);
 		
 		return result;
+	}
+	
+	//이메일 인증
+	@GetMapping("/member/emailCheck.do")
+	@ResponseBody
+	public String mailCheck(String email) {
+		System.out.println("이메일 인증 요청이 들어옴!");
+		System.out.println("이메일 인증 이메일 : " + email);
+		
+		return mailService.joinEmail(email);
 	}
 	
 	@RequestMapping(value="/member/update.do", method = RequestMethod.GET)
