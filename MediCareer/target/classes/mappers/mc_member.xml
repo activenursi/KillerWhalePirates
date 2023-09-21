@@ -100,6 +100,12 @@
       VALUES(#{no}, #{nickName}, #{email}, #{password}, #{name}, SYSDATE, SYSDATE)
    </insert>
    
+   <select id="memberNicknameCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM COMMON_MEMBER
+		WHERE CM_NICKNAME = #{nickName}
+	</select>
+   
   <!--이력서  sql -->
  
    <select id="resumeSelectList" parameterType="map" resultMap="resumeResultMap">
