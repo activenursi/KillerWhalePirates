@@ -146,6 +146,13 @@ public class Paging implements Serializable{
 	public void setBlockEnd(int blockEnd) {
 		this.blockEnd = blockEnd;
 	}
+
+	@Override
+	public String toString() {
+		return "Paging [curPage=" + curPage + ", totPage=" + totPage + ", totBlock=" + totBlock + ", curBlock="
+				+ curBlock + ", prevBlock=" + prevBlock + ", nextBlock=" + nextBlock + ", pageBegin=" + pageBegin
+				+ ", pageEnd=" + pageEnd + ", blockBegin=" + blockBegin + ", blockEnd=" + blockEnd + "]";
+	}
 	
 	
 }

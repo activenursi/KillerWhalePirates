@@ -92,6 +92,36 @@
 		.board_recommend {
 			float: right;
 		}
+		
+		nav > ul {
+		   list-style-type: none;
+		    padding: 0;
+		    overflow: hidden;
+		    background-color: #333333;
+		/*     width: 1000px; */ /* 넓이를 주면 고정  */
+		    display: table; /* table을 주면  요소의 내용에 맞게 자동으로 크기 */
+		    margin-left: auto;
+		    margin-right: auto;
+	    
+		}
+	
+		nav > ul > li {
+		   float: left;
+		}
+		
+		nav > ul > li > a {
+		    display: block;
+		    color: white; 
+		    text-align: center;
+		    padding: 16px;
+		    text-decoration: none;
+		}
+		
+		nav > ul > li > a:hover {
+		    color: #FFD9EC;
+		    background-color: #5D5D5D;
+		    font-weight: bold;
+		}
 	</style>
 
 </head>
@@ -175,13 +205,19 @@
                 <div class="list">
                     <ul id="newList" class="paging_list">
                         
+                        
                     </ul>
                 </div>
             </form>
         </section>
     </div>
+
 </div>
-	<%@include file ="/footer.jsp" %>
+
+<nav class="newListPage">
+	
+</nav>
+
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -220,7 +256,7 @@
     $(document).ready(function() {
     
         getBestList('전체');
-        getNewList('전체');
+        getNewList('전체',1);
     });
 	
     function getBestList(type) {  //최신순으로
@@ -299,7 +335,8 @@
 	                // ul 요소에 HTML 코드 추가
 	                BestListObj.innerHTML += html;
 	                
-            	}//for 문종료  
+            	}//for 문종료
+            	            	
             }//else문 종료
         },
         error: function(xhr, status, error) {
@@ -310,20 +347,23 @@
         })
     }
     
-    function getNewList(type) {  //최신순으로
+    function getNewList(type,no) {  //최신순으로
         $.ajax({
         url:"../community/newlist.do",
         method: "GET",
         data:{
-        	category: type
+        	category: type,
+        	curPage : no
         },
         success: function(data) {
-           
+        	
             var NewListObj = document.getElementById('newList');
             NewListObj.innerHTML = ''; // 목록 초기화
             var currentDate = new Date();
+            var boardList = data.boardList;
             
-            if (data.boardList.length === 0) {
+            
+            if (boardList.length === 0) {
                 // data가 비어있을 경우 검색 결과가 없는 메시지를 추가
                 var html = '<div class="bot">';
                 html += '검색 결과가 없습니다.';
@@ -332,8 +372,8 @@
              // ul 요소에 HTML 코드 추가
                 NewListObj.innerHTML += html;
             } else {
-	            for (var i = 0; i < data.boardList.length; i++) {
-	            	var writeDate = new Date(data.boardList[i].write_date);
+	            for (var i = 0; i < boardList.length; i++) {
+	            	var writeDate = new Date(boardList[i].write_date);
 	            	// 두 날짜 간의 차이를 계산
 	            	var timeDifference = currentDate - writeDate;
 	            	// 밀리초를 일로 변환 (1일 = 24시간 * 60분 * 60초 * 1000밀리초)
@@ -344,13 +384,13 @@
 	            	html += '<div class="lt-item">';
 	            	html += '<div class="head">';
 	            	html += '<div class="cate">';
-	            		if (data.boardList[i].category == '전체') {
+	            		if (boardList[i].category == '전체') {
 	            	        html += '<span class="cate01">전체</span>';
-	            	    } else if (data.boardList[i].category == '일상') {
+	            	    } else if (boardList[i].category == '일상') {
 	            	        html += '<span class="cate02">일상</span>';
-	            	    } else if (data.boardList[i].category == '취업') {
+	            	    } else if (boardList[i].category == '취업') {
 	            	        html += '<span class="cate03">취업</span>';
-	            	    } else if (data.boardList[i].category == '해외') {
+	            	    } else if (boardList[i].category == '해외') {
 	            	        html += '<span class="cate03">해외</span>';
 	            	    }	
 	
@@ -358,10 +398,10 @@
 	            	html += '<div class="hash"><span>#수술</span> <span>#수술방</span> <span>#정형외과</span></div>';
 	            	html += '</div>';
 	            	html += '<div class="subject">';
-	            	html += '<a href="#">' + data.boardList[i].title + '</a>';
+	            	html += '<a href="#">' + boardList[i].title + '</a>';
 	            	html += '</div>';
 	            	html += '<div class="text">';
-	            	html += '<a href="#">' + data.boardList[i].content + '</a>';
+	            	html += '<a href="#">' + boardList[i].content + '</a>';
 	            	html += '</div>';
 	            	html += '</div>';
 	            	html += '<div class="rt-item"></div>';
@@ -369,24 +409,59 @@
 	            	html += '<div class="bottom">';
 	            	html += '<div class="info">';
 	            	html += '<span>' + daysAgo + '일 전|</span>';
-			            	if(data[i].writer == 'on'){
+			            	if(boardList[i].writer == 'on'){
 			            		html+= '<span>익명</span>';
 			            	}else{
-			            		html+= '<span>'+data[i].writer+'</span>';
+			            		html+= '<span>'+boardList[i].writer+'</span>';
 			            	}
 	            	html += '</div>';
 	            	html += '<div class="tool">';
 	            	html += '<a href="javascript:;"><img src="../resources/img/icon_latest_viewer.png">';
-	            	html +=	'<em>' + data.boardList[i].view_count + '</em></a>';
+	            	html +=	'<em>' + boardList[i].view_count + '</em></a>';
 	            	html += '<a href="javascript:;"><img src="../resources/img/icon_latest_bookmark.png">';
-	            	html +=	'<em>' + data.boardList[i].recommend + '</em></a>';
+	            	html +=	'<em>' + boardList[i].recommend + '</em></a>';
 	            	html += '<a href="javascript:;"><img src="../resources/img/icon_latest_comment.png"><em><span id="replyCnt">1</span></em></a>';
 	            	html += '</div>';
 	            	html += '</div>';
 	            	html += '</li>';
+	            	
+	            	
 	            	// ul 요소에 HTML 코드 추가
 	                NewListObj.innerHTML += html;
 	            }//else 안에 for문종료    
+	           
+	            
+	            var boardPaging = data.boardPaging; 
+	            var newPaging = document.getElementsByClassName('newListPage')[0];
+	            
+	            var pagehtml = '<ul>';
+
+                if (boardPaging.prevBlock !== 1) {
+                    pagehtml += '<li>';
+                    pagehtml += '<a href="#" class="pageNum" onclick="goPage(' + boardPaging.prevBlock + ');">';
+                    pagehtml += '<span>≪</span>';
+                    pagehtml += '</a>';
+                    pagehtml += '</li>';
+                }
+
+                for (var num = boardPaging.blockBegin; num <= boardPaging.blockEnd; num++) {
+                    pagehtml += '<li>';
+                    pagehtml += '<a href="#" onclick="goPage(\'' + data.category + '\',' + num + ')">' + num + '</a>';
+                    pagehtml += '</li>';
+                }
+
+                if (boardPaging.curBlock < boardPaging.totBlock) {
+                    pagehtml += '<li>';
+                    pagehtml += '<a href="#" onclick="goPage(\'' + data.category + '\',' + boardPaging.nextBlock + ');">';
+                    pagehtml += '<span>≫</span>';
+                    pagehtml += '</a>';
+                    pagehtml += '</li>';
+                }
+                
+                pagehtml += '</ul>';
+                newPaging.innerHTML = ''; //페이징초기화
+	            newPaging.innerHTML += pagehtml;
+	                  
         	}//else 종료
         },
         error: function(xhr, status, error) {
@@ -396,5 +471,8 @@
        
         })
     }
-      	
+    function goPage(category,pageNumber){
+		
+    	getNewList(category,pageNumber);
+	}  	
 </script>

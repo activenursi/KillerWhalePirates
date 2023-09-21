@@ -130,30 +130,27 @@ public class BoardController {
 	
 	@RequestMapping(value = "/community/newlist.do", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public Model communityNewList(@RequestParam("category") String category
+	public HashMap<String, Object> communityNewList(@RequestParam("category") String category
 			, @RequestParam(defaultValue = "1") int curPage,  Model model) {
 		log.info("Welcome BoardController newlist! category: {}\n curPage:{}", category, curPage);
 						
-		int totalCount = boardService.boardSelectTotalCount();
-
+		int totalCount = boardService.newListTotalCount(category);
+		
 		Paging boardPaging = new Paging(totalCount, curPage);
 
 		int start = boardPaging.getPageBegin();
 		int end = boardPaging.getPageEnd();
-
-		List<BoardDto> boardList = boardService.communityNewList(category, start, end);
-
-		HashMap<String, Object> pagingMap = new HashMap<>();
-		pagingMap.put("totalCount", totalCount);
-		pagingMap.put("boardPaging", boardPaging);
 		
-		HashMap<String, List<BoardDto>> boardListMap = new HashMap<>();
+		List<BoardDto> boardList = boardService.communityNewList(category, start, end);
+		
+		HashMap<String, Object> boardListMap = new HashMap<>();
+		boardListMap.put("totalCount", totalCount);
+		boardListMap.put("boardPaging", boardPaging);
 		boardListMap.put("boardList", boardList);
-
-		model.addAttribute("boardListMap", boardList);
-		model.addAttribute("pagingMap", pagingMap);
-
-		return model;
+		boardListMap.put("category", category);
+		System.out.println(boardListMap.get("boardPaging").toString());
+	
+		return boardListMap;
 	}
 	@RequestMapping(value = "/board/board.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String communityBoard(HttpSession  session, Model model) {

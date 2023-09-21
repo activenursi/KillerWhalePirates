@@ -25,5 +25,7 @@ public interface BoardService {
 
 	public List<BoardDto> communityNewList(String category, int start, int end);
 
+	public int newListTotalCount(String category);
+
 
 }

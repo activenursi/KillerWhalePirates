@@ -85,5 +85,17 @@ public class BoardDaoImpl implements BoardDao{
 		}
 		
 	}
+
+	@Override
+	public int newListTotalCount(String category) {
+		// TODO Auto-generated method stub
+		if(category.equals("전체")) {
+			return (int)sqlSession.selectOne(namespace+"newListTotalCount");
+		}else {
+			
+			return (int)sqlSession.selectOne(namespace+"newListSelectTotalCount",category);
+		}
+		
+	}
 	
 }

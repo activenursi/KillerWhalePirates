@@ -199,4 +199,16 @@
 		) NEWLIST
 		WHERE NEWLIST.R_NUM BETWEEN #{start} AND #{end}
 	</select>
+	
+	<select id="newListTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM BOARD
+	</select>
+	
+	
+	<select id="newListSelectTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM BOARD
+        WHERE CATEGORY = #{category} 
+	</select>
 </mapper>
