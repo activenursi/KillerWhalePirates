@@ -26,8 +26,8 @@
       <result column="SALARY" property="salary"/>
       <result column="GENDER" property="gender"/>
       <result column="AGE" property="age"/>
-      <result column="EDUCATION" property="career"/>
-      <result column="CAREER" property="education"/>
+      <result column="EDUCATION" property="education"/>
+      <result column="CAREER" property="career"/>
       <result column="PRIMARY_DUTIES1" property="primary_duties1"/>
       <result column="PRIMARY_DUTIES2" property="primary_duties2"/>
       <result column="PRIMARY_DUTIES3" property="primary_duties3"/>
@@ -148,7 +148,7 @@
        <set>
            <if test="title != null">JOBPOSTING_TITLE = #{title},</if>
            <if test="type != null">EMPLOYMENT_TYPE = #{type},</if>
-           <if test="email != null">LOCATION_NAME = #{location_name},</if>
+           <if test="location_name != null">LOCATION_NAME = #{location_name},</if>
            <if test="working_hour != null">WORKING_HOUR = #{working_hour},</if>
            <if test="salary != null">SALARY = #{salary},</if>
            <if test="gender != null">GENDER = #{gender},</if>
@@ -186,7 +186,7 @@
       , PRIMARY_DUTIES1, PRIMARY_DUTIES2, PRIMARY_DUTIES3, RECRUITER_NAME
       , RECRUITER_PHONE, RECRUITER_EMAIL, RECRUITMENT_PROCESS, EMPLOYEE_BENEFIT
       , ADDRESS, APPLICATION_PERIOD, CREATE_DATE, EM_NO, EM_NAME)
-      VALUES(#{no}, #{title}, #{type}, #{Location_name}, #{working_hour}
+      VALUES(#{no}, #{title}, #{type}, #{location_name}, #{working_hour}
       , #{salary}, #{gender}, #{age}, #{education}, #{career}, #{primary_duties1}
       , #{primary_duties2}, #{primary_duties3}, #{recruiter_name}, #{recruiter_phone}
       , #{recruiter_email}, #{recruiter_process}, #{employee_benefit}, #{address}
