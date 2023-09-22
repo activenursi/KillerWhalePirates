@@ -82,7 +82,7 @@ public class JobPostingController {
 	@RequestMapping(value="/jobPosting/em_addCtr.do", method = RequestMethod.POST)
 	public String jobPostingAddCtr(JobPostingDto jobPostingDto, MultipartHttpServletRequest mulRequest
 			, Model model) {
-		log.debug("Welcome jobPostingController jobPostingAdd!" + jobPostingDto);
+		log.debug("Welcome jobPostingController jobPostingAddCtr!" + jobPostingDto);
 		
 		try {
 			jobPostingService.jobPostingInsertOne(jobPostingDto, mulRequest);

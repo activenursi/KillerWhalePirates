@@ -130,7 +130,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 			
-		return "redirect:/index";
+		return "redirect:/home.do";
 	}
 	
 	//닉네임 중복 체크
