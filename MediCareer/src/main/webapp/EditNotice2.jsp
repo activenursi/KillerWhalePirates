@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>°ø°í ¼öÁ¤ Ãß°¡</title>
+<title>ê³µê³  ìˆ˜ì • ì¶”ê°€</title>
 <style>
 #bodyEntire {
 	width: 800px;
@@ -20,29 +20,53 @@
 }
 
 .a1 {
-	color: red; /* ¿øÇÏ´Â »ö»óÀ» ÁöÁ¤ÇÕ´Ï´Ù. ¿©±â¼­´Â »¡°£»ö(#FF0000)À» »ç¿ëÇÕ´Ï´Ù. */
-	text-decoration: none; /* ¹ØÁÙ Á¦°Å (¼±ÅÃ»çÇ×) */
+	color: red; /* ì›í•˜ëŠ” ìƒ‰ìƒì„ ì§€ì •í•©ë‹ˆë‹¤. ì—¬ê¸°ì„œëŠ” ë¹¨ê°„ìƒ‰(#FF0000)ì„ ì‚¬ìš©í•©ë‹ˆë‹¤. */
+	text-decoration: none; /* ë°‘ì¤„ ì œê±° (ì„ íƒì‚¬í•­) */
 }
 
 .a2 {
-	color: red; /* ¿øÇÏ´Â »ö»óÀ» ÁöÁ¤ÇÕ´Ï´Ù. ¿©±â¼­´Â »¡°£»ö(#FF0000)À» »ç¿ëÇÕ´Ï´Ù. */
-	text-decoration: none; /* ¹ØÁÙ Á¦°Å (¼±ÅÃ»çÇ×) */
+	color: red; /* ì›í•˜ëŠ” ìƒ‰ìƒì„ ì§€ì •í•©ë‹ˆë‹¤. ì—¬ê¸°ì„œëŠ” ë¹¨ê°„ìƒ‰(#FF0000)ì„ ì‚¬ìš©í•©ë‹ˆë‹¤. */
+	text-decoration: none; /* ë°‘ì¤„ ì œê±° (ì„ íƒì‚¬í•­) */
 }
-.job1, .job2, .job3, .job4, .job5, .job6, .job7 {
+.job1 {
+	list-style: none;
+}
+
+.job2 {
+	list-style: none;
+}
+
+.job3 {
+	list-style: none;
+}
+
+.job4 {
+	list-style: none;
+}
+
+.job5 {
+	list-style: none;
+}
+
+.job6 {
+	list-style: none;
+}
+
+.job7 {
 	list-style: none;
 }
 #content {
 	margin: 0 auto;
-	justify-content: center; /* °¡·Î Áß¾Ó Á¤·Ä */
-	align-items: center; /* ¼¼·Î Áß¾Ó Á¤·Ä */
+	justify-content: center; /* ê°€ë¡œ ì¤‘ì•™ ì •ë ¬ */
+	align-items: center; /* ì„¸ë¡œ ì¤‘ì•™ ì •ë ¬ */
 	height: 100vh;
 }
 
 .job_posting {
-	display: grid; /* ¶Ç´Â display: grid; */
-	justify-content: center; /* °¡·Î Áß¾Ó Á¤·Ä */
-	align-items: center; /* ¼¼·Î Áß¾Ó Á¤·Ä */
-	height: 1500px; /* È­¸é ³ôÀÌ¿¡ ¸ÂÃç ÄÁÅ×ÀÌ³ÊÀÇ ³ôÀÌ ¼³Á¤ */
+	display: grid; /* ë˜ëŠ” display: grid; */
+	justify-content: center; /* ê°€ë¡œ ì¤‘ì•™ ì •ë ¬ */
+	align-items: center; /* ì„¸ë¡œ ì¤‘ì•™ ì •ë ¬ */
+	height: 1500px; /* í™”ë©´ ë†’ì´ì— ë§ì¶° ì»¨í…Œì´ë„ˆì˜ ë†’ì´ ì„¤ì • */
 }
 
 .registration {
@@ -61,13 +85,13 @@
 }
 
 .circle {
-	width: 100px; /* ¿øÀÇ Áö¸§À» ¼³Á¤ÇÕ´Ï´Ù. */
-	height: 100px; /* ¿øÀÇ ³ôÀÌµµ Áö¸§°ú µ¿ÀÏÇÏ°Ô ¼³Á¤ÇÕ´Ï´Ù. */
-	background-color: #3498db; /* ¹è°æ»öÀ» ¼³Á¤ÇÕ´Ï´Ù. */
-	border-radius: 50%; /* ¿ø ¸ğ¾çÀ¸·Î ¸¸µì´Ï´Ù. */
-	text-align: center; /* ÅØ½ºÆ®¸¦ °¡¿îµ¥ Á¤·ÄÇÕ´Ï´Ù. */
-	line-height: 100px; /* ÅØ½ºÆ®¸¦ ¼öÁ÷ °¡¿îµ¥ Á¤·ÄÇÕ´Ï´Ù. */
-	color: white; /* ÅØ½ºÆ®ÀÇ »ö»óÀ» ¼³Á¤ÇÕ´Ï´Ù. */
+	width: 100px; /* ì›ì˜ ì§€ë¦„ì„ ì„¤ì •í•©ë‹ˆë‹¤. */
+	height: 100px; /* ì›ì˜ ë†’ì´ë„ ì§€ë¦„ê³¼ ë™ì¼í•˜ê²Œ ì„¤ì •í•©ë‹ˆë‹¤. */
+	background-color: #3498db; /* ë°°ê²½ìƒ‰ì„ ì„¤ì •í•©ë‹ˆë‹¤. */
+	border-radius: 50%; /* ì› ëª¨ì–‘ìœ¼ë¡œ ë§Œë“­ë‹ˆë‹¤. */
+	text-align: center; /* í…ìŠ¤íŠ¸ë¥¼ ê°€ìš´ë° ì •ë ¬í•©ë‹ˆë‹¤. */
+	line-height: 100px; /* í…ìŠ¤íŠ¸ë¥¼ ìˆ˜ì§ ê°€ìš´ë° ì •ë ¬í•©ë‹ˆë‹¤. */
+	color: white; /* í…ìŠ¤íŠ¸ì˜ ìƒ‰ìƒì„ ì„¤ì •í•©ë‹ˆë‹¤. */
 	list-style: none;
 }
 .my_class {
@@ -101,139 +125,140 @@
 		<div id="content">
 			<div id="icon_add">
 				<h3>
-				<span><h2>Ã¤¿ë°ø°í µî·Ï ¹æ½Ä</h2></span>
+				<span><h2>ì±„ìš©ê³µê³  ë“±ë¡ ë°©ì‹</h2></span>
 					<label> 
 						<input type="radio" name="user_writer" value="user_writer" onclick="/">
-							Á÷Á¢ ÀÔ·Â
+							ì§ì ‘ ì…ë ¥
 					</label> 
 					<label style="margin-left:60px;"> 
 						<input type="radio" name="add_img" value="add_img">
-							ÀÌ¹ÌÁö Ãß°¡
+							ì´ë¯¸ì§€ ì¶”ê°€
 					</label> 
 				</h3>
 			</div>
 			<div class="job_posting">
 				<form id="jobPostingAdd" action="./jobPosting/em_addCtr.do" method="POST">
 					<ul>
-						<h2>Ã¤¿ë°ø°í Á¦¸ñ</h2>
-						<p class="small_title">µî·ÏÇÏ½Ç °ø°í Á¦¸ñÀ» ±âÀÔÇØÁÖ¼¼¿ä.</p>
+						<h2>ì±„ìš©ê³µê³  ì œëª©</h2>
+						<p class="small_title">ë“±ë¡í•˜ì‹¤ ê³µê³  ì œëª©ì„ ê¸°ì…í•´ì£¼ì„¸ìš”.</p>
 						<li class="job1">
-							<input type="text" name="title" class="my_class" placeholder="°ø°í Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.">
+							<input type="text" name="title" class="my_class" placeholder="ê³µê³  ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.">
 						</li>
 					</ul>
 					<ul>
-						<h2>±Ù¹«Á¶°Ç</h2>
-						<p class="small_title">ÀÌ·± ±Ù¹«¿¡¼­ ÀÏÇØ¿ä</p>
+						<h2>ê·¼ë¬´ì¡°ê±´</h2>
+						<p class="small_title">ì´ëŸ° ê·¼ë¬´ì—ì„œ ì¼í•´ìš”</p>
 						<li class="job1">
-							±Ù¹«ÇüÅÂ : <input type="text" name="type" class="my_class" placeholder="Á¤±ÔÁ÷ / °è¾àÁ÷ / ´Ü±â">
+							ê·¼ë¬´í˜•íƒœ : <input type="text" name="type" class="my_class" placeholder="ì •ê·œì§ / ê³„ì•½ì§ / ë‹¨ê¸°">
 						</li>
 						<li class="job1">
-							±Ù¹«Áö¿ª : <input type="text" name="Location_name" class="my_class">
+							ê·¼ë¬´ì§€ì—­ : <input type="text" name="Location_name" class="my_class">
 						</li>
 						<li class="job1">
-							±Ù¹«½Ã°£ : <input type="text" name="working_hour" class="my_class">
+							ê·¼ë¬´ì‹œê°„ : <input type="text" name="working_hour" class="my_class">
 						</li>
 						
 						<li class="job1">
-							±Ş&nbsp;&nbsp;&nbsp;¿© : <input type="text" name="salary" class="my_class">
-							<strong> - ¸éÁ¢ ÈÄ °áÁ¤</strong>
+							ê¸‰&nbsp;&nbsp;&nbsp;ì—¬ : <input type="text" name="salary" class="my_class">
+							<strong> - ë©´ì ‘ í›„ ê²°ì •</strong>
 						</li>
 					</ul>
 					<ul>
-						<h2>Áö¿øÁ¶°Ç</h2>
-						<li class="job1"> ¼º&nbsp;&nbsp;&nbsp;º° : 
-							<input type="checkbox" name="gender" value="³²ÀÚ"> ³²ÀÚ
-							<input type="checkbox" name="gender" value="¿©ÀÚ"> ¿©ÀÚ
-							<input type="checkbox" name="gender" value="¹«°ü"> ¹«°ü
+						<h2>ì§€ì›ì¡°ê±´</h2>
+						<p class="small_title">ìš°ëŒ€ì¡°ê±´</p>
+						<li class="job1"> ì„±&nbsp;&nbsp;&nbsp;ë³„ : 
+							<input type="checkbox" name="gender" value="ë‚¨ì">
+							<input type="checkbox" name="gender" value="ì—¬ì">
+							<input type="checkbox" name="gender" value="ë¬´ê´€">
 						</li>
 						<label>
 							<li class="job2">
-								¿¬&nbsp;&nbsp;&nbsp;·É : <input type="text" name="age" class="my_class"></li>
+								ì—°&nbsp;&nbsp;&nbsp;ë ¹ : <input type="text" name="age" class="my_class"></li>
 						</label>
 						<label>
 							<li class="job2">
-								ÇĞ&nbsp;&nbsp;&nbsp;·Â : <input type="text" name="education" class="my_class"></li>
+								í•™&nbsp;&nbsp;&nbsp;ë ¥ : <input type="text" name="education" class="my_class"></li>
 						</label>
 						<label>
 							<li class="job2">
-								°æ&nbsp;&nbsp;&nbsp;·Â : <input type="text" name="career" class="my_class"></li>
+								ê²½&nbsp;&nbsp;&nbsp;ë ¥ : <input type="text" name="career" class="my_class"></li>
 						</label>
 					</ul>
 					<ul>
-						<h2>ÁÖ¿ä¾÷¹«</h2>
+						<h2>ì£¼ìš”ì—…ë¬´</h2>
 						<label>
-							<li class="job2">ÁÖ¿ä¾÷¹«1 : 
+							<li class="job2">ì£¼ìš”ì—…ë¬´1 : 
 							<input type="text" name="primary_duties1" class="my_class"></li>
 						</label>
 						<label>
-							<li class="job2">ÁÖ¿ä¾÷¹«2 : 
+							<li class="job2">ì£¼ìš”ì—…ë¬´2 : 
 							<input type="text" name="primary_duties2" class="my_class"></li>
 						</label>
 						<label>
-							<li class="job2">ÁÖ¿ä¾÷¹«3 : 
+							<li class="job2">ì£¼ìš”ì—…ë¬´3 : 
 							<input type="text" name="primary_duties3" class="my_class"></li>
 						</label>
 					</ul>
 					<ul>
-						<h2>Ã¤¿ë´ã´çÀÚ</h2>
+						<h2>ì±„ìš©ë‹´ë‹¹ì</h2>
 						<label>
-							<li class="job3">´ã´çÀÚ¸í : <input type="text" name="recruiter_name" class="my_class"></li>
+							<li class="job3">ë‹´ë‹¹ìëª… : <input type="text" name="recruiter_name" class="my_class"></li>
 						</label>
 						<label>
-							<li class="job3">´ã´çÀÚ ÀüÈ­¹øÈ£ : <input type="text" name="recruiter_phone" class="my_class"></li>
+							<li class="job3">ë‹´ë‹¹ì ì „í™”ë²ˆí˜¸ : <input type="text" name="recruiter_phone" class="my_class"></li>
 						</label>
 						<label>
-							<li class="job3">ÀÌ¸ŞÀÏ : <input type="email" name="recruiter_email" class="my_class"></li>
+							<li class="job3">ì´ë©”ì¼ : <input type="email" name="recruiter_email" class="my_class"></li>
 						</label>
 					</ul>
 					<div class="selection_procedure">
-						<h2>ÀüÇüÀıÂ÷ ¼±ÅÃ</h2>
-						<p class="small_title">µÎ °¡Áö À¯Çü Áß ¿øÇÏ´Â ÀüÇüÀıÂ÷¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.</p>
+						<h2>ì „í˜•ì ˆì°¨ ì„ íƒ</h2>
+						<p class="small_title">ë‘ ê°€ì§€ ìœ í˜• ì¤‘ ì›í•˜ëŠ” ì „í˜•ì ˆì°¨ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.</p>
 						<label style="display: flex; margin-bottom: 10px;">
 							<input type="radio" name="three_circle" class="procedure-list" name="recruiter_process">
-								<li class="circle">¼­·ù Á¦Ãâ</li>
-								<li class="arrow">&nbsp;¡µ&nbsp;</li>
-								<li class="circle">1Â÷ ¸éÁ¢</li>
-								<li class="arrow">&nbsp;¡µ&nbsp;</li>
-								<li class="circle">ÇÕ°İ °á°ú</li>
+								<li class="circle">ì„œë¥˜ ì œì¶œ</li>
+								<li class="arrow">&nbsp;ã€‰&nbsp;</li>
+								<li class="circle">1ì°¨ ë©´ì ‘</li>
+								<li class="arrow">&nbsp;ã€‰&nbsp;</li>
+								<li class="circle">í•©ê²© ê²°ê³¼</li>
 						</label>
 						<label style="display: flex;">
 							<input type="radio" name="four_circle" class="procedure-list" style="display: flex;">
-								<li class="circle">¼­·ù Á¦Ãâ</li>
-								<li class="arrow">&nbsp;¡µ&nbsp;</li>
-								<li class="circle">1Â÷ ¸éÁ¢</li>
-								<li class="arrow">&nbsp;¡µ&nbsp;</li>
-								<li class="circle">2Â÷ ¸éÁ¢</li>
-								<li class="arrow">&nbsp;¡µ&nbsp;</li>
-								<li class="circle">ÇÕ°İ °á°ú</li>
+								<li class="circle">ì„œë¥˜ ì œì¶œ</li>
+								<li class="arrow">&nbsp;ã€‰&nbsp;</li>
+								<li class="circle">1ì°¨ ë©´ì ‘</li>
+								<li class="arrow">&nbsp;ã€‰&nbsp;</li>
+								<li class="circle">2ì°¨ ë©´ì ‘</li>
+								<li class="arrow">&nbsp;ã€‰&nbsp;</li>
+								<li class="circle">í•©ê²© ê²°ê³¼</li>
 						</label>
 					</div>
 					<ul>
-						<h2>º¹¸®ÈÄ»ı</h2>
+						<h2>ë³µë¦¬í›„ìƒ</h2>
 						<label>
 							<li class="job5">
-								<input type="text" name="employee_benefit" class="my_class" placeholder="º¹¸®ÈÄ»ıÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.">
+								<input type="text" name="employee_benefit" class="my_class" placeholder="ë³µë¦¬í›„ìƒì„ ì…ë ¥í•´ì£¼ì„¸ìš”.">
 							</li>
 						</label>
 						</ul>
 					<ul>
-						<h2>±Ù¹«À§Ä¡</h2>
-						<li class="job6">#À§Ä¡</li>
+						<h2>ê·¼ë¬´ìœ„ì¹˜</h2>
+						<li class="job6">#ìœ„ì¹˜</li>
 						<br>
 						<li class="job6" 
-							style="border:1px solid; width:400px; height: 200px; background-color: green;">#Áöµµ</li>
+							style="border:1px solid; width:400px; height: 200px; background-color: green;">#ì§€ë„</li>
 						<br>
-						<li class="job6">ÁÖ&nbsp;&nbsp;&nbsp;¼Ò : 
+						<li class="job6">ì£¼&nbsp;&nbsp;&nbsp;ì†Œ : 
 							<input type="text" class="my_class" name="address"
-								placeholder="¿¹) ÃæºÏ ÃæÁÖ½Ã È£¾ÏÅä¼º3±æ 3" style="width:300px;">
+								placeholder="ì˜ˆ) ì¶©ë¶ ì¶©ì£¼ì‹œ í˜¸ì•”í† ì„±3ê¸¸ 3" style="width:300px;">
 						</li>
 					</ul>
 					<ul>
-						<h2>¸ğÁı ±â°£</h2>
-						<li class="job7">±â°£ : <input type="text" class="my_class" 
-							placeholder="¿¹) 2023.11.22~2024.12.25"></li>
+						<h2>ëª¨ì§‘ ê¸°ê°„</h2>
+						<li class="job7">ê¸°ê°„ : <input type="text" class="my_class" 
+							placeholder="ì˜ˆ) 2023.11.22~2024.12.25"></li>
 					</ul>
-						<label><input class="register" name="application_period" type="submit" value="µî·ÏÇÏ±â"></label>
+						<label><input class="register" name="application_period" type="submit" value="ë“±ë¡í•˜ê¸°"></label>
 				</form>
 			</div>
 		</div>
