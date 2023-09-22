@@ -39,6 +39,9 @@
 	.align-center img{
 	 	vertical-align: middle;
 	}
+	.answer {
+		height: 200px;
+	}
 </style>
 <body>
 <div class="wrap1" style="width:550px">
@@ -48,22 +51,28 @@
 		<br>
 		<div>
 		<form action="add" method="post">
-			<table>
-				<tr>
-					<td width="50px">작성자</td>
-					<td width="180px"><input type="text" name="id" style="width:170px"value="${boardDto.id}" readonly="readonly"></td>
+			<table style="background-color: rgb(248 250 252); padding: 10px;">
+				<tr style="border: 1px solid gray; border-right: none;">
+					<td width="50px" style="border: 1px solid gray">작성자</td>
+					<td width="180px"><input type="text" name="id" style="margin-left: 10px; width:170px" value="${boardDto.id}" readonly="readonly"></td>
 					<td width="150px"></td>
 					<td width="50px"></td>
 				</tr>
-				
-				<tr>
-					<td>제목</td>
-					<td colspan="2"><input type="text" name="title"style="width:320px"value="${boardDto.cTitle}" readonly="readonly"></td>
+				<tr style="border: 1px solid gray; border-right: none;">
+					<td style="border: 1px solid gray">제목</td>
+					<td colspan="2"><input type="text" name="title" style="width:320px; margin-left: 10px;"
+						value="${boardDto.cTitle}" readonly="readonly"></td>
 					<td></td>
 				</tr>
-				<tr class="contentTr" height="350px">
-					<td>내용</td>
-					<td colspan="3"><textarea name="contents" readonly="readonly">${boardDto.bContents}</textarea></td>
+				<tr class="contentTr" height="350px" style="border: 1px solid gray; border-right: none;">
+					<td style="border: 1px solid gray">내용</td>
+					<td colspan="3"><textarea style="margin-left: 10px;" name="contents" readonly="readonly">
+						${boardDto.bContents}</textarea></td>
+				</tr>
+				<tr class="contentTr1" style="border: 1px solid gray; border-right: none;">
+					<td style="border: 1px solid gray">답변하기</td>
+					<td colspan="3"><textarea style="margin-left: 10px;" class="answer" name="contents">
+						${boardDto.bContents}</textarea></td>
 				</tr>
 			</table>
 			<div>

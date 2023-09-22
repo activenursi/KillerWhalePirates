@@ -19,12 +19,12 @@
    <resultMap type="resumeDto" id="resumeResultMap">
       <id column="RESUME_NO" property="no" />
       <result column="NAME" property="name"/>
-      <result column="CAREER_STATUS" property="career"/>
-      <result column="DESIRE_ANNUAL_SALARY" property="salary"/>
+      <result column="CAREER_STATUS" property="career_status"/>
+      <result column="DESIRE_ANNUAL_SALARY" property="desire_annual_salary"/>
       <result column="GENDER" property="gender"/>
       <result column="BIRTH_DATE" property="birth_date"
          javaType="java.util.Date"/>
-      <result column="PHONE_NUMBER" property="phone_no"/>
+      <result column="PHONE_NUMBER" property="phone_number"/>
       <result column="EMAIL" property="email"/>
       <result column="ADDRESS" property="address"/>
       <result column="FINAL_ACADEMIC_BACKGROUND" property="final_academic_background"/>
@@ -37,11 +37,13 @@
          javaType="java.util.Date" />
       <result column="LICENSE_NAME" property="license_name"/>
       <result column="LICENSE_ISSUING_AGENCY" property="license_issuing_agency"/>
-      <result column="LICENSE_PASSING_DATE" property="passing_date" 
+      <result column="LICENSE_PASSING_DATE" property="license_passing_date" 
          javaType="java.util.Date" />
       <result column="SELF_INTRODUCTION" property="self_introduction"/>
       <result column="CM_NO" property="cm_no"/>
-      <result column="WRITE_DATE" property="write_date" 
+      <result column="RESUME_CREATE_DATE" property="create_date" 
+         javaType="java.util.Date" />
+         <result column="RESUME_MODIFY_DATE" property="modify_date" 
          javaType="java.util.Date" />
    </resultMap>
    
@@ -95,7 +97,7 @@
          SELECT CM_NO_SEQ.NEXTVAL
          FROM DUAL
      </selectKey>
-      INSERT INTO RESUME
+      INSERT INTO COMMON_MEMBER
       (CM_NO, CM_NICKNAME, CM_EMAIL, CM_PASSWORD, CM_NAME, CM_JOIN_DATE, CM_MODIFY_DATE)
       VALUES(#{no}, #{nickName}, #{email}, #{password}, #{name}, SYSDATE, SYSDATE)
    </insert>

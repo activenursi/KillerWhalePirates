@@ -28,31 +28,7 @@
 	color: red; /* 원하는 색상을 지정합니다. 여기서는 빨간색(#FF0000)을 사용합니다. */
 	text-decoration: none; /* 밑줄 제거 (선택사항) */
 }
-.job1 {
-	list-style: none;
-}
-
-.job2 {
-	list-style: none;
-}
-
-.job3 {
-	list-style: none;
-}
-
-.job4 {
-	list-style: none;
-}
-
-.job5 {
-	list-style: none;
-}
-
-.job6 {
-	list-style: none;
-}
-
-.job7 {
+.job1, .job2, .job3, .job4, .job5, .job6, .job7 {
 	list-style: none;
 }
 #content {
@@ -165,11 +141,10 @@
 					</ul>
 					<ul>
 						<h2>지원조건</h2>
-						<p class="small_title">우대조건</p>
 						<li class="job1"> 성&nbsp;&nbsp;&nbsp;별 : 
-							<input type="checkbox" name="gender" value="남자">
-							<input type="checkbox" name="gender" value="여자">
-							<input type="checkbox" name="gender" value="무관">
+							<input type="checkbox" name="gender" value="남자"> 남자
+							<input type="checkbox" name="gender" value="여자"> 여자
+							<input type="checkbox" name="gender" value="무관"> 무관
 						</li>
 						<label>
 							<li class="job2">
