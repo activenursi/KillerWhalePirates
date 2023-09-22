@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,7 +137,7 @@
 				</h3>
 			</div>
 			<div class="job_posting">
-				<form id="JobPostingAdd" action="./jobPosting/em_addCtr.do" method="POST" enctype="multipart/form-data">
+				<form id="jobPostingAdd" action="./jobPosting/em_addCtr.do" method="POST">
 					<ul>
 						<h2>채용공고 제목</h2>
 						<p class="small_title">등록하실 공고 제목을 기입해주세요.</p>
@@ -166,10 +166,10 @@
 					<ul>
 						<h2>지원조건</h2>
 						<p class="small_title">우대조건</p>
-						<li class="job1" > 성&nbsp;&nbsp;&nbsp;별 : 
-							<input type="checkbox" name="gender" value="남자"> 남자
-							<input type="checkbox" name="gender" value="여자"> 여자
-							<input type="checkbox" name="gender" value="무관"> 무관
+						<li class="job1"> 성&nbsp;&nbsp;&nbsp;별 : 
+							<input type="checkbox" name="gender" value="남자">
+							<input type="checkbox" name="gender" value="여자">
+							<input type="checkbox" name="gender" value="무관">
 						</li>
 						<label>
 							<li class="job2">
@@ -215,7 +215,7 @@
 						<h2>전형절차 선택</h2>
 						<p class="small_title">두 가지 유형 중 원하는 전형절차를 선택해주세요.</p>
 						<label style="display: flex; margin-bottom: 10px;">
-							<input type="radio" name="three_circle" class="procedure-list" name ="recruiter_process">
+							<input type="radio" name="three_circle" class="procedure-list" name="recruiter_process">
 								<li class="circle">서류 제출</li>
 								<li class="arrow">&nbsp;〉&nbsp;</li>
 								<li class="circle">1차 면접</li>
@@ -223,7 +223,7 @@
 								<li class="circle">합격 결과</li>
 						</label>
 						<label style="display: flex;">
-							<input type="radio" name="four_circle" class="procedure-list" name ="recruiter_process" style="display: flex;">
+							<input type="radio" name="four_circle" class="procedure-list" style="display: flex;">
 								<li class="circle">서류 제출</li>
 								<li class="arrow">&nbsp;〉&nbsp;</li>
 								<li class="circle">1차 면접</li>

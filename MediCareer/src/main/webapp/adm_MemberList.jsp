@@ -84,7 +84,7 @@
 </style>
 </head>
 <body>
-<%-- <jsp:include page="./Header7.jsp"></jsp:include> --%>
+<jsp:include page="./Header7.jsp"></jsp:include>
 	<div class="wrap-container">
 		<div>
 			<div class="admMemberCategory">
