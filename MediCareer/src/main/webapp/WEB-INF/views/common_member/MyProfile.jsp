@@ -89,7 +89,7 @@
 	</style>
 </head>
 <body>
-<jsp:include page="./Header7.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 	<div id="content_wrap">
 		<div class="body_entire"> 
 			<div class="profile_wrap">

@@ -234,7 +234,7 @@
 				console.log("data : " +  data);
 				code = data;
 				alert('인증번호가 전송되었습니다.');
-			}			
+			}
 		}); // end ajax
 	}
 	

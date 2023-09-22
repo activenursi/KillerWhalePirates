@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,18 +106,14 @@
       <div class="profile_wrap">
          <div class="box_sizing">
             <div class="box">
-               <p>???님</p>
-               <p>email@email.com</p>
-            <div style="display: flex; justify-content: space-around;">
-               <label>
-                  <li style="list-style: none;">
-                     <input class="mp_profileModify" type="submit" value="프로필 수정"></li>
-               </label> 
-               <label>
-                  <li style="list-style: none;">
-                     <input class="mp_profileDelete" type="submit" value="로그아웃"></li>
-               </label>
-            </div>
+               <p>${memberDto.name}님</p>
+               <p>${memberDto.email}</p>
+            	<div style="display: flex; justify-content: space-around;">
+	               <label>
+	                  <li style="list-style: none;">
+	                     <input class="mp_profileModify" type="submit" value="프로필 수정"></li>
+	               </label> 
+            	</div>
 			</div>
             <div class="box1">
                <p>??님</p>
