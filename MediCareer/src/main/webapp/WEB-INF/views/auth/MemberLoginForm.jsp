@@ -119,10 +119,7 @@
 
 					<div class="general_find_myInfo">
 						<div class="general_create_info">
-							<span>아이디가 없나요? &nbsp;&nbsp;&nbsp; <a href="../member/add.do">회원가입</a></span>
-						</div>
-						<div class="general_find_id">
-							<span>아이디를 잊었나요? &nbsp;&nbsp;&nbsp; <a href="/">아이디 찾기</a></span>
+							<span>아이디가 없나요? &nbsp;&nbsp;&nbsp; <a href="../member/add.do">회원가입</a>&nbsp;/&nbsp;<a href="/">기업회원가입</a></a></span>
 						</div>
 						<div class="general_find_password">
 							<span>비밀번호를 잊었나요? &nbsp;&nbsp;&nbsp; <a href="/">비밀번호

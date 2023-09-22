@@ -112,12 +112,11 @@ public class EnterpriseController {
 	}
 	
 	@RequestMapping(value="/enterprise/em_addCtr.do", method = RequestMethod.POST)
-	public String enterpriseAddCtr(EnterpriseDto enterpriseDto, MultipartHttpServletRequest mulRequest
-			, Model model) {
+	public String enterpriseAddCtr(EnterpriseDto enterpriseDto, Model model) {
 		log.debug("Welcome EnterpriseController enterpriseAdd!" + enterpriseDto);
 		
 		try {
-			enterpriseService.enterpriseInsertOne(enterpriseDto, mulRequest);
+			enterpriseService.enterpriseInsertOne(enterpriseDto);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("오류 처리할거 있음 한다");
@@ -147,16 +146,14 @@ public class EnterpriseController {
 	
 	@RequestMapping(value="/enterprise/em_updateCtr.do", method = RequestMethod.POST)
 	public String enterpriseUpdateCtr(EnterpriseDto enterpriseDto
-			, @RequestParam(value = "fileIdx", defaultValue ="-1") int fileIdx
-			, MultipartHttpServletRequest mulRequest
-			,Model model) {
+			, @RequestParam(value = "fileIdx", defaultValue ="-1") int fileIdx,Model model) {
 		log.info("Welcome EnterpriseController enterpriseUpdateCtr! enterpriseDto: {}\n fileIdx:{}"
 				, enterpriseDto ,fileIdx);
 		
 		int resultNum = 0;
 		
 		try {
-			resultNum = enterpriseService.enterpriseUpdateOne(enterpriseDto, mulRequest, fileIdx);
+			resultNum = enterpriseService.enterpriseUpdateOne(enterpriseDto, fileIdx);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

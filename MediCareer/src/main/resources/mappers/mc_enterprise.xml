@@ -1,195 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mc.enterprise">
 
-	<resultMap type="enterpriseDto" id="enterpriseResultMap">
-		<id column="EM_NO" property="no" />
-		<result column="EM_BRN" property="brNo"/>
-		<result column="EM_COMPANY_NAME" property="companyName"/>
-		<result column="EM_CEO_NAME" property="name"/>
-		<result column="EM_ADDRESS" property="address"/>
-		<result column="EM_REP" property="contactDetails"/>
-		<result column="EM_EMAIL" property="email"/>
-		<result column="EM_PASSWORD" property="pwd"/>
-		<result column="EM_JOIN_DATE" property="createDate"
-			javaType="java.util.Date"/>
-	</resultMap>
-	
-	<resultMap type="jobPostingDto" id="jobPostingResultMap">
-		<id column="JOBPOSTING_NO" property="no" />
-		<result column="JOBPOSTING_TITLE" property="title"/>
-		<result column="EMPLOYMENT_TYPE" property="type"/>
-		<result column="LOCATION_NAME" property="location_name"/>
-		<result column="WORKING_HOUR" property="working_hour"/>
-		<result column="SALARY" property="salary"/>
-		<result column="GENDER" property="gender"/>
-		<result column="AGE" property="age"/>
-		<result column="EDUCATION" property="education"/>
-		<result column="CAREER" property="career"/>
-		<result column="PRIMARY_DUTIES1" property="primary_duties1"/>
-		<result column="PRIMARY_DUTIES2" property="primary_duties2"/>
-		<result column="PRIMARY_DUTIES3" property="primary_duties3"/>
-		<result column="RECRUITER_NAME" property="recruiter_name"/>
-		<result column="RECRUITER_PHONE" property="recruiter_phone"/>
-		<result column="RECRUITER_EMAIL" property="recruiter_email"/>
-		<result column="RECRUITMENT_PROCESS" property="recruiter_process"/>
-		<result column="EMPLOYEE_BENEFIT" property="employee_benefit"/>
-		<result column="ADDRESS" property="address"/>
-		<result column="APPLICATION_PERIOD" property="application_period"/>
-		<result column="CREATE_DATE" property="create_date"
-			javaType="java.util.Date"/>
-		<result column="EM_NO" property="em_no"/>
-		<result column="EM_NAME" property="em_name"/>
-	</resultMap>
-	
-	<select id="enterpriseExist" parameterType="map" 
-		resultMap="enterpriseResultMap">
-		SELECT EM_NAME, EM_EMAIL
-		FROM ENTERPRISE_MEMBER
-		WHERE CM_EMAIL = #{email}
-		AND EM_PASSWORD = #{pwd}
-	</select>
-	
-	<select id="enterpriseSelectList" parameterType="map" resultMap="enterpriseResultMap">
-		SELECT MEMBER1.EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS, EM_REP
-		, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
-		FROM (  SELECT ROWNUM AS R_NUM, M.EM_NO, M.EM_BRN, M.EM_COMPANY_NAME, M.EM_CEO_NAME
-			, M.EM_ADDRESS, M.EM_REP, M.EM_EMAIL, M.EM_PASSWORD, M.EM_JOIN_DATE 
-        		FROM (  SELECT EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
-        		, EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
-		                FROM ENTERPRISE_MEMBER 
-		                ORDER BY EM_JOIN_DATE DESC) E
-		) MEMBER1
-		WHERE MEMBER1.R_NUM BETWEEN #{start} AND #{end}
-	</select>
-	
-	<select id="enterpriseSelectOne" resultMap="enterpriseResultMap">
-		SELECT EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS, EM_REP
-		, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
-		FROM ENTERPRISE_MEMBER
-		WHERE MNO = #{no}
-	</select>
-	
-	<select id="enterpriseSelectTotalCount" resultType="java.lang.Integer">
-		SELECT COUNT(*)
-		FROM ENTERPRISE_MEMBER
-	</select>
-	
-	 
-	<update id="enterpriseUpdateOne" parameterType="enterpriseDto">
-		UPDATE ENTERPRISE_MEMBER
-		<set>
-			<if test="name!=null">EM_NAME = #{name},</if>
-			<if test="email!=null">EM_EMAIL = #{email},</if>
-			EM_MOD_DATE = SYSDATE
-		</set>
-			WHERE EM_NO = #{no}
-	</update>
-	
-	<delete id="enterpriseDeleteOne">
-		DELETE FROM ENTERPRISE_MEMBER WHERE EM_NO = #{no}
-	</delete>
-	
-	<insert id="enterpriseInsertOne" parameterType="enterpriseDto"
+   <resultMap type="enterpriseDto" id="enterpriseResultMap">
+      <id column="EM_NO" property="no" />
+      <result column="EM_BRN" property="brNo"/>
+      <result column="EM_COMPANY_NAME" property="companyName"/>
+      <result column="EM_CEO_NAME" property="name"/>
+      <result column="EM_ADDRESS" property="address"/>
+      <result column="EM_REP" property="contactDetails"/>
+      <result column="EM_EMAIL" property="email"/>
+      <result column="EM_PASSWORD" property="pwd"/>
+      <result column="EM_JOIN_DATE" property="createDate"
+         javaType="java.util.Date"/>
+   </resultMap>
+   
+   <resultMap type="jobPostingDto" id="jobPostingResultMap">
+      <id column="JOBPOSTING_NO" property="no" />
+      <result column="JOBPOSTING_TITLE" property="title"/>
+      <result column="EMPLOYMENT_TYPE" property="type"/>
+      <result column="LOCATION_NAME" property="location_name"/>
+      <result column="WORKING_HOUR" property="working_hour"/>
+      <result column="SALARY" property="salary"/>
+      <result column="GENDER" property="gender"/>
+      <result column="AGE" property="age"/>
+      <result column="EDUCATION" property="education"/>
+      <result column="CAREER" property="career"/>
+      <result column="PRIMARY_DUTIES1" property="primary_duties1"/>
+      <result column="PRIMARY_DUTIES2" property="primary_duties2"/>
+      <result column="PRIMARY_DUTIES3" property="primary_duties3"/>
+      <result column="RECRUITER_NAME" property="recruiter_name"/>
+      <result column="RECRUITER_PHONE" property="recruiter_phone"/>
+      <result column="RECRUITER_EMAIL" property="recruiter_email"/>
+      <result column="RECRUITMENT_PROCESS" property="recruiter_process"/>
+      <result column="EMPLOYEE_BENEFIT" property="employee_benefit"/>
+      <result column="ADDRESS" property="address"/>
+      <result column="APPLICATION_PERIOD" property="application_period"/>
+      <result column="CREATE_DATE" property="create_date"
+         javaType="java.util.Date"/>
+      <result column="EM_NO" property="em_no"/>
+      <result column="EM_NAME" property="em_name"/>
+   </resultMap>
+   
+   <select id="enterpriseExist" parameterType="map" 
+      resultMap="enterpriseResultMap">
+      SELECT EM_NAME, EM_EMAIL
+      FROM ENTERPRISE_MEMBER
+      WHERE CM_EMAIL = #{email}
+      AND EM_PASSWORD = #{pwd}
+   </select>
+   
+   <select id="enterpriseSelectList" parameterType="map" resultMap="enterpriseResultMap">
+      SELECT MEMBER1.EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS, EM_REP
+      , EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+      FROM (  SELECT ROWNUM AS R_NUM, M.EM_NO, M.EM_BRN, M.EM_COMPANY_NAME, M.EM_CEO_NAME
+         , M.EM_ADDRESS, M.EM_REP, M.EM_EMAIL, M.EM_PASSWORD, M.EM_JOIN_DATE 
+              FROM (  SELECT EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
+              , EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+                      FROM ENTERPRISE_MEMBER 
+                      ORDER BY EM_JOIN_DATE DESC) E
+      ) MEMBER1
+      WHERE MEMBER1.R_NUM BETWEEN #{start} AND #{end}
+   </select>
+   
+   <select id="enterpriseSelectOne" resultMap="enterpriseResultMap">
+      SELECT EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS, EM_REP
+      , EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+      FROM ENTERPRISE_MEMBER
+      WHERE MNO = #{no}
+   </select>
+   
+   <select id="enterpriseSelectTotalCount" resultType="java.lang.Integer">
+      SELECT COUNT(*)
+      FROM ENTERPRISE_MEMBER
+   </select>
+   
+    
+   <update id="enterpriseUpdateOne" parameterType="enterpriseDto">
+      UPDATE ENTERPRISE_MEMBER
+      <set>
+         <if test="name!=null">EM_NAME = #{name},</if>
+         <if test="email!=null">EM_EMAIL = #{email},</if>
+         EM_MOD_DATE = SYSDATE
+      </set>
+         WHERE EM_NO = #{no}
+   </update>
+   
+   <delete id="enterpriseDeleteOne">
+      DELETE FROM ENTERPRISE_MEMBER WHERE EM_NO = #{no}
+   </delete>
+   
+   <insert id="enterpriseInsertOne" parameterType="enterpriseDto"
        useGeneratedKeys="true" keyProperty="no">
        <selectKey keyProperty="no" resultType="int" order="BEFORE">
           SELECT CM_NO_SEQ.NEXTVAL
          FROM DUAL
        </selectKey>
       INSERT INTO ENTERPRISE_MEMBER
-		VALUE(EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
-		, EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE)
-		VALUES(EM_NO_SEQ.NEXTVAL, #{brNo}, #{companyName}, #{name}
-		, #{address}, #{contactDetails}, #{email}, #{pwd}, SYSDATE)
+      VALUE(EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
+      , EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE)
+      VALUES(EM_NO_SEQ.NEXTVAL, #{brNo}, #{companyName}, #{name}
+      , #{address}, #{contactDetails}, #{email}, #{pwd}, SYSDATE)
    </insert>
    
    
    <!-- 채용공고  -->
    
    <select id="jobPostingSelectList" parameterType="map" resultMap="jobPostingResultMap">
-		SELECT POSTING.JOBPOSTING_NO, POSTING.JOBPOSTING_TITLE, POSTING.CREATE_DATE, POSTING.EM_NAME
-		FROM (  SELECT ROWNUM AS R_NUM, P.JOBPOSTING_NO, P.JOBPOSTING_TITLE, P.EMPLOYMENT_TYPE
-						, P.LOCATION_NAME, P.WORKING_HOUR, P.SALARY, P.GENDER, P.AGE, P.EDUCATION
-						, P.CAREER, P.PRIMARY_DUTIES1, P.PRIMARY_DUTIES2, P.PRIMARY_DUTIES3
-						, P.RECRUITER_NAME, P.RECRUITER_PHONE, P.RECRUITER_EMAIL, P.RECRUITMENT_PROCESS
-						, P.EMPLOYEE_BENEFIT, P.ADDRESS, P.APPLICATION_PERIOD, P.CREATE_DATE, P.EM_NO
-						, P.EM_NAME
-        		FROM (  SELECT JOBPOSTING_NO, JOBPOSTING_TITLE, EMPLOYMENT_TYPE
-						, LOCATION_NAME, WORKING_HOUR, SALARY, GENDER, AGE, EDUCATION, CAREER
-						, PRIMARY_DUTIES1, PRIMARY_DUTIES2, PRIMARY_DUTIES3, RECRUITER_NAME
-						, RECRUITER_PHONE, RECRUITER_EMAIL, RECRUITMENT_PROCESS, EMPLOYEE_BENEFIT
-						, ADDRESS, APPLICATION_PERIOD, CREATE_DATE, EM_NO, EM_NAME
-		                FROM JOBPOSTING 
-		                ORDER BY CREATE_DATE DESC) P
-		) POSTING
-		WHERE POSTING.R_NUM BETWEEN #{start} AND #{end}
-	</select>
-	
-	<select id="jobPostingSelectOne" resultMap="jobPostingResultMap">
-		SELECT JOBPOSTING_NO, JOBPOSTING_TITLE, EMPLOYMENT_TYPE
-			, LOCATION_NAME, WORKING_HOUR, SALARY, GENDER, AGE, EDUCATION, CAREER
-			, PRIMARY_DUTIES1, PRIMARY_DUTIES2, PRIMARY_DUTIES3, RECRUITER_NAME
-			, RECRUITER_PHONE, RECRUITER_EMAIL, RECRUITMENT_PROCESS, EMPLOYEE_BENEFIT
-			, ADDRESS, APPLICATION_PERIOD, CREATE_DATE, EM_NO, EM_NAME
-		FROM JOBPOSTING
-		WHERE JOBPOSTING_NO = #{no}
-	</select>
-	
-	<select id="jobPostingSelectTotalCount" resultType="java.lang.Integer">
-		SELECT COUNT(*)
-		FROM JOBPOSTING
-	</select>
-	
-	 
-	<update id="jobPostingUpdateOne" parameterType="jobPostingDto">
-	    UPDATE JOBPOSTING
-	    <set>
-	        <if test="title != null">JOBPOSTING_TITLE = #{title},</if>
-	        <if test="type != null">EMPLOYMENT_TYPE = #{type},</if>
-	        <if test="location_name != null">LOCATION_NAME = #{location_name},</if>
-	        <if test="working_hour != null">WORKING_HOUR = #{working_hour},</if>
-	        <if test="salary != null">SALARY = #{salary},</if>
-	        <if test="gender != null">GENDER = #{gender},</if>
-	        <if test="age != null">AGE = #{age},</if>
-	        <if test="education != null">EDUCATION = #{education},</if>
-	        <if test="career != null">CAREER = #{career},</if>
-	        <if test="primary_duties1 != null">PRIMARY_DUTIES1 = #{primary_duties1},</if>
-	        <if test="primary_duties2 != null">PRIMARY_DUTIES2 = #{primary_duties2},</if>
-	        <if test="primary_duties3 != null">PRIMARY_DUTIES3 = #{primary_duties3},</if>
-	        <if test="recruiter_name != null">RECRUITER_NAME = #{recruiter_name},</if>
-	        <if test="recruiter_phone != null">RECRUITER_PHONE = #{recruiter_phone},</if>
-	        <if test="recruiter_email != null">RECRUITER_EMAIL = #{recruiter_email},</if>
-	        <if test="recruiter_process != null">RECRUITMENT_PROCESS = #{recruiter_process},</if>
-	        <if test="employee_benefit != null">EMPLOYEE_BENEFIT = #{employee_benefit},</if>
-	        <if test="address != null">ADDRESS = #{address},</if>
-	        <if test="application_period != null">APPLICATION_PERIOD = #{application_period},</if>
-	        CREATE_DATE = SYSDATE
-	    </set>
-	    WHERE JOBPOSTING_NO = #{no}
-	</update>
-	
-	<delete id="jobPostingDeleteOne">
-		DELETE FROM JOBPOSTING WHERE JOBPOSTING_NO = #{no}
-	</delete>
-	
-	<insert id="jobPostingInsertOne" parameterType="jobPostingDto"
+      SELECT POSTING.JOBPOSTING_NO, POSTING.JOBPOSTING_TITLE, POSTING.CREATE_DATE, POSTING.EM_NAME
+      FROM (  SELECT ROWNUM AS R_NUM, P.JOBPOSTING_NO, P.JOBPOSTING_TITLE, P.EMPLOYMENT_TYPE
+                  , P.LOCATION_NAME, P.WORKING_HOUR, P.SALARY, P.GENDER, P.AGE, P.EDUCATION
+                  , P.CAREER, P.PRIMARY_DUTIES1, P.PRIMARY_DUTIES2, P.PRIMARY_DUTIES3
+                  , P.RECRUITER_NAME, P.RECRUITER_PHONE, P.RECRUITER_EMAIL, P.RECRUITMENT_PROCESS
+                  , P.EMPLOYEE_BENEFIT, P.ADDRESS, P.APPLICATION_PERIOD, P.CREATE_DATE, P.EM_NO
+                  , P.EM_NAME
+              FROM (  SELECT JOBPOSTING_NO, JOBPOSTING_TITLE, EMPLOYMENT_TYPE
+                  , LOCATION_NAME, WORKING_HOUR, SALARY, GENDER, AGE, EDUCATION, CAREER
+                  , PRIMARY_DUTIES1, PRIMARY_DUTIES2, PRIMARY_DUTIES3, RECRUITER_NAME
+                  , RECRUITER_PHONE, RECRUITER_EMAIL, RECRUITMENT_PROCESS, EMPLOYEE_BENEFIT
+                  , ADDRESS, APPLICATION_PERIOD, CREATE_DATE, EM_NO, EM_NAME
+                      FROM JOBPOSTING 
+                      ORDER BY CREATE_DATE DESC) P
+      ) POSTING
+      WHERE POSTING.R_NUM BETWEEN #{start} AND #{end}
+   </select>
+   
+   <select id="jobPostingSelectOne" resultMap="jobPostingResultMap">
+      SELECT JOBPOSTING_NO, JOBPOSTING_TITLE, EMPLOYMENT_TYPE
+         , LOCATION_NAME, WORKING_HOUR, SALARY, GENDER, AGE, EDUCATION, CAREER
+         , PRIMARY_DUTIES1, PRIMARY_DUTIES2, PRIMARY_DUTIES3, RECRUITER_NAME
+         , RECRUITER_PHONE, RECRUITER_EMAIL, RECRUITMENT_PROCESS, EMPLOYEE_BENEFIT
+         , ADDRESS, APPLICATION_PERIOD, CREATE_DATE, EM_NO, EM_NAME
+      FROM JOBPOSTING
+      WHERE JOBPOSTING_NO = #{no}
+   </select>
+   
+   <select id="jobPostingSelectTotalCount" resultType="java.lang.Integer">
+      SELECT COUNT(*)
+      FROM JOBPOSTING
+   </select>
+   
+    
+   <update id="jobPostingUpdateOne" parameterType="jobPostingDto">
+       UPDATE JOBPOSTING
+       <set>
+           <if test="title != null">JOBPOSTING_TITLE = #{title},</if>
+           <if test="type != null">EMPLOYMENT_TYPE = #{type},</if>
+           <if test="location_name != null">LOCATION_NAME = #{location_name},</if>
+           <if test="working_hour != null">WORKING_HOUR = #{working_hour},</if>
+           <if test="salary != null">SALARY = #{salary},</if>
+           <if test="gender != null">GENDER = #{gender},</if>
+           <if test="age != null">AGE = #{age},</if>
+           <if test="education != null">EDUCATION = #{education},</if>
+           <if test="career != null">CAREER = #{career},</if>
+           <if test="primary_duties1 != null">PRIMARY_DUTIES1 = #{primary_duties1},</if>
+           <if test="primary_duties2 != null">PRIMARY_DUTIES2 = #{primary_duties2},</if>
+           <if test="primary_duties3 != null">PRIMARY_DUTIES3 = #{primary_duties3},</if>
+           <if test="recruiter_name != null">RECRUITER_NAME = #{recruiter_name},</if>
+           <if test="recruiter_phone != null">RECRUITER_PHONE = #{recruiter_phone},</if>
+           <if test="recruiter_email != null">RECRUITER_EMAIL = #{recruiter_email},</if>
+           <if test="recruiter_process != null">RECRUITMENT_PROCESS = #{recruiter_process},</if>
+           <if test="employee_benefit != null">EMPLOYEE_BENEFIT = #{employee_benefit},</if>
+           <if test="address != null">ADDRESS = #{address},</if>
+           <if test="application_period != null">APPLICATION_PERIOD = #{application_period},</if>
+           CREATE_DATE = SYSDATE
+       </set>
+       WHERE JOBPOSTING_NO = #{no}
+   </update>
+   
+   <delete id="jobPostingDeleteOne">
+      DELETE FROM JOBPOSTING WHERE JOBPOSTING_NO = #{no}
+   </delete>
+   
+   <insert id="jobPostingInsertOne" parameterType="jobPostingDto"
        useGeneratedKeys="true" keyProperty="no">
        <selectKey keyProperty="no" resultType="int" order="BEFORE">
           SELECT JOBPOSTING_NO_SEQ.NEXTVAL
          FROM DUAL
        </selectKey>
       INSERT INTO JOBPOSTING
-		VALUE(JOBPOSTING_NO, JOBPOSTING_TITLE, EMPLOYMENT_TYPE
-		, LOCATION_NAME, WORKING_HOUR, SALARY, GENDER, AGE, EDUCATION, CAREER
-		, PRIMARY_DUTIES1, PRIMARY_DUTIES2, PRIMARY_DUTIES3, RECRUITER_NAME
-		, RECRUITER_PHONE, RECRUITER_EMAIL, RECRUITMENT_PROCESS, EMPLOYEE_BENEFIT
-		, ADDRESS, APPLICATION_PERIOD, CREATE_DATE, EM_NO, EM_NAME)
-		VALUES(#{no}, #{title}, #{type}, #{location_name}, #{working_hour}
-		, #{salary}, #{gender}, #{age}, #{education}, #{career}, #{primary_duties1}
-		, #{primary_duties2}, #{primary_duties3}, #{recruiter_name}, #{recruiter_phone}
-		, #{recruiter_email}, #{recruiter_process}, #{employee_benefit}, #{address}
-		, #{application_period}, SYSDATE, #{em_no}, #{em_name})
+      VALUE(JOBPOSTING_NO, JOBPOSTING_TITLE, EMPLOYMENT_TYPE
+      , LOCATION_NAME, WORKING_HOUR, SALARY, GENDER, AGE, EDUCATION, CAREER
+      , PRIMARY_DUTIES1, PRIMARY_DUTIES2, PRIMARY_DUTIES3, RECRUITER_NAME
+      , RECRUITER_PHONE, RECRUITER_EMAIL, RECRUITMENT_PROCESS, EMPLOYEE_BENEFIT
+      , ADDRESS, APPLICATION_PERIOD, CREATE_DATE, EM_NO, EM_NAME)
+      VALUES(#{no}, #{title}, #{type}, #{location_name}, #{working_hour}
+      , #{salary}, #{gender}, #{age}, #{education}, #{career}, #{primary_duties1}
+      , #{primary_duties2}, #{primary_duties3}, #{recruiter_name}, #{recruiter_phone}
+      , #{recruiter_email}, #{recruiter_process}, #{employee_benefit}, #{address}
+      , #{application_period}, SYSDATE, #{em_no}, #{em_name})
    </insert>
 </mapper>

@@ -19,7 +19,7 @@
 	text-align: center;
 }
 /* 입력란 */
-.ent_wrapInputBox{
+.ent_wrapInputBox {
 	margin: 0 auto;
 	width: 200px;
 	height: 50px;
@@ -88,59 +88,59 @@
 			</div>
 			<div id="info_wrap">
 				<h3><p style="text-align: left;">서비스 이용을 위한 기업정보를 등록해주세요</p></h3>			
-				<form class="ent_wrapInputBox">
+				<form action="./enterprise/em_addCtr.do" method="POST"class="ent_wrapInputBox">
 					<div>
 						<label>
 							<li class="ent_inputItems">
 								<p class="ent_inputWrap">기업명<span style="color:red;">*</span></p>
-								<input class="ent_InputCompanyName" type="text" placeholder="예) 메디커리어"></li>
+								<input class="ent_InputCompanyName" name="companyName" type="text" placeholder="예) 메디커리어"></li>
 						</label>
 					</div>
 					<div>
 						<label>
 							<li class="ent_inputItems">
 							<p class="ent_inputWrap">사업자등록번호<span style="color:red;">*</span></p>
-								<input class="ent_inputId" type="text" placeholder="'-'제외 10자리"></li>
+								<input class="ent_inputId" name="brNo" type="text" placeholder="'-'제외 10자리"></li>
 						</label>
 					</div>	
 					<div>
 						<label>
 							<li class="ent_inputItems">
 								<p class="ent_inputWrap">담당자이름<span style="color:red;">*</span></p>
-								<input class="ent_inputName" type="text" placeholder="예) 홍길동"></li>
+								<input class="ent_inputName" name="name" type="text" placeholder="예) 홍길동"></li>
 						</label>
 					</div>
 					<div>
 						<label>
 							<li class="ent_inputItems">
 								<p class="ent_inputWrap">담당자 전화번호<span style="color:red;">*</span></p>
-								<input class="ent_inputEstablishment" type="tel" placeholder="예) 010-5654-7897"></li>
+								<input class="ent_inputEstablishment" name="contactDetails" type="tel" placeholder="예) 010-5654-7897"></li>
 						</label>
 					</div>
 					<div>
 						<label>
 							<li class="ent_inputItems">
 							<p class="ent_inputWrap">기업 회원회사 주소<span style="color:red;">*</span></p>
-							<input class="ent_inputAddr" type="address" placeholder="예) ㅇㅇ시 ㅇㅇ구 ㅇㅇ동"></li>
+							<input class="ent_inputAddr" name="address" type="text" placeholder="예) ㅇㅇ시 ㅇㅇ구 ㅇㅇ동"></li>
 						</label>
 					</div>
 					<div>
 						<label>
 							<li class="ent_inputItems">
 							<p class="ent_inputWrap">기업 회원회사 이메일<span style="color:red;">*</span></p>
-								<input class="ent_inputEmail" type="email" placeholder="예) email@email.com"></li>
+								<input class="ent_inputEmail" name="email" type="email" placeholder="예) email@email.com"></li>
 						</label>
 					</div>
 					<div>
 						<label>
 							<li class="ent_inputItems">
 							<p class="ent_inputWrap">기업 회원회사 비밀번호<span style="color:red;">*</span></p>
-								<input class="ent_inputCompanyPwd" type="password" placeholder="비밀번호"></li>
+								<input class="ent_inputCompanyPwd" name="pwd" type="password" placeholder="비밀번호"></li>
 						</label>
 					</div>
 					<div>
 						<label> 
-							<input type="button" class="cre_input_joinMembership" value="회원가입">
+							<button type="submit" class="cre_input_joinMembership">회원가입</button>
 						</label>
 					</div>
 				</form>

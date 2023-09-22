@@ -15,7 +15,7 @@ public interface JobPostingService {
 
 	public List<JobPostingDto> jobPostingSelectList(int start, int end);
 
-	public void jobPostingInsertOne(JobPostingDto jobPostingDto, MultipartHttpServletRequest mulRequest);
+	public void jobPostingInsertOne(JobPostingDto jobPostingDto);
 
 	public int jobPostingUpdateOne(JobPostingDto jobPostingDto, MultipartHttpServletRequest mulRequest, int fileIdx);
 

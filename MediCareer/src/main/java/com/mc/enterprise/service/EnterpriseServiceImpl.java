@@ -46,13 +46,13 @@ public class EnterpriseServiceImpl implements EnterpriseService{
 	}
 
 	@Override
-	public void enterpriseInsertOne(EnterpriseDto enterpriseDto, MultipartHttpServletRequest mulRequest) {
+	public void enterpriseInsertOne(EnterpriseDto enterpriseDto) {
 		enterpriseDao.enterpriseInsertOne(enterpriseDto);
 		
 	}
 
 	@Override
-	public int enterpriseUpdateOne(EnterpriseDto enterpriseDto, MultipartHttpServletRequest mulRequest, int fileIdx) {
+	public int enterpriseUpdateOne(EnterpriseDto enterpriseDto, int fileIdx) {
 		// TODO Auto-generated method stub
 		int resultNum = 0;
 		

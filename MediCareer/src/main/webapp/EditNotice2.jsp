@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>공고 수정 추가</title>
 <style>
 #bodyEntire {
@@ -142,24 +142,24 @@
 						<h2>채용공고 제목</h2>
 						<p class="small_title">등록하실 공고 제목을 기입해주세요.</p>
 						<li class="job1">
-							<input type="text" name="title" class="my_class" placeholder="공고 제목을 입력해주세요.">
+							<input type="text" name="title" class="my_class" placeholder="공고 제목을 입력해주세요." value="Medi와 함께할 가족모집">
 						</li>
 					</ul>
 					<ul>
 						<h2>근무조건</h2>
 						<p class="small_title">이런 근무에서 일해요</p>
 						<li class="job1">
-							근무형태 : <input type="text" name="type" class="my_class" placeholder="정규직 / 계약직 / 단기">
+							근무형태 : <input type="text" name="type" class="my_class" placeholder="정규직 / 계약직 / 단기" value="정규직">
 						</li>
 						<li class="job1">
-							근무지역 : <input type="text" name="Location_name" class="my_class">
+							근무지역 : <input type="text" name="Location_name" class="my_class" value="서울 강남">
 						</li>
 						<li class="job1">
-							근무시간 : <input type="text" name="working_hour" class="my_class">
+							근무시간 : <input type="text" name="working_hour" class="my_class" value="일 8시간 2교대">
 						</li>
 						
 						<li class="job1">
-							급&nbsp;&nbsp;&nbsp;여 : <input type="text" name="salary" class="my_class">
+							급&nbsp;&nbsp;&nbsp;여 : <input type="text" name="salary" class="my_class" value="세전 월 320만원">
 							<strong> - 면접 후 결정</strong>
 						</li>
 					</ul>
@@ -168,54 +168,54 @@
 						<p class="small_title">우대조건</p>
 						<li class="job1"> 성&nbsp;&nbsp;&nbsp;별 : 
 							<input type="checkbox" name="gender" value="남자">
-							<input type="checkbox" name="gender" value="여자">
+							<input type="checkbox" name="gender" value="여자" checked="checked">
 							<input type="checkbox" name="gender" value="무관">
 						</li>
 						<label>
 							<li class="job2">
-								연&nbsp;&nbsp;&nbsp;령 : <input type="text" name="age" class="my_class"></li>
+								연&nbsp;&nbsp;&nbsp;령 : <input type="text" name="age" class="my_class" value="24세"></li>
 						</label>
 						<label>
 							<li class="job2">
-								학&nbsp;&nbsp;&nbsp;력 : <input type="text" name="education" class="my_class"></li>
+								학&nbsp;&nbsp;&nbsp;력 : <input type="text" name="education" class="my_class" value="고졸이상"></li>
 						</label>
 						<label>
 							<li class="job2">
-								경&nbsp;&nbsp;&nbsp;력 : <input type="text" name="career" class="my_class"></li>
+								경&nbsp;&nbsp;&nbsp;력 : <input type="text" name="career" class="my_class" value="동종경험우대"></li>
 						</label>
 					</ul>
 					<ul>
 						<h2>주요업무</h2>
 						<label>
 							<li class="job2">주요업무1 : 
-							<input type="text" name="primary_duties1" class="my_class"></li>
+							<input type="text" name="primary_duties1" class="my_class" value="수술서브"></li>
 						</label>
 						<label>
 							<li class="job2">주요업무2 : 
-							<input type="text" name="primary_duties2" class="my_class"></li>
+							<input type="text" name="primary_duties2" class="my_class" value="수술"></li>
 						</label>
 						<label>
 							<li class="job2">주요업무3 : 
-							<input type="text" name="primary_duties3" class="my_class"></li>
+							<input type="text" name="primary_duties3" class="my_class" value="응대"></li>
 						</label>
 					</ul>
 					<ul>
 						<h2>채용담당자</h2>
 						<label>
-							<li class="job3">담당자명 : <input type="text" name="recruiter_name" class="my_class"></li>
+							<li class="job3">담당자명 : <input type="text" name="recruiter_name" class="my_class" value="김메디"></li>
 						</label>
 						<label>
-							<li class="job3">담당자 전화번호 : <input type="text" name="recruiter_phone" class="my_class"></li>
+							<li class="job3">담당자 전화번호 : <input type="text" name="recruiter_phone" class="my_class" value="010-2544-4111"></li>
 						</label>
 						<label>
-							<li class="job3">이메일 : <input type="email" name="recruiter_email" class="my_class"></li>
+							<li class="job3">이메일 : <input type="email" name="recruiter_email" class="my_class" value="kimmeDi@naver.com"></li>
 						</label>
 					</ul>
 					<div class="selection_procedure">
 						<h2>전형절차 선택</h2>
 						<p class="small_title">두 가지 유형 중 원하는 전형절차를 선택해주세요.</p>
 						<label style="display: flex; margin-bottom: 10px;">
-							<input type="radio" name="three_circle" class="procedure-list" name="recruiter_process">
+							<input type="radio" checked="checked" name="three_circle" class="procedure-list" name="recruiter_process">
 								<li class="circle">서류 제출</li>
 								<li class="arrow">&nbsp;〉&nbsp;</li>
 								<li class="circle">1차 면접</li>
@@ -237,7 +237,7 @@
 						<h2>복리후생</h2>
 						<label>
 							<li class="job5">
-								<input type="text" name="employee_benefit" class="my_class" placeholder="복리후생을 입력해주세요.">
+								<input type="text" name="employee_benefit" class="my_class" placeholder="복리후생을 입력해주세요." value="기본3종">
 							</li>
 						</label>
 						</ul>
@@ -250,13 +250,13 @@
 						<br>
 						<li class="job6">주&nbsp;&nbsp;&nbsp;소 : 
 							<input type="text" class="my_class" name="address"
-								placeholder="예) 충북 충주시 호암토성3길 3" style="width:300px;">
+								placeholder="예) 충북 충주시 호암토성3길 3" style="width:300px;" value="서울시 강남구 논현동 ez빌딩 medi">
 						</li>
 					</ul>
 					<ul>
 						<h2>모집 기간</h2>
 						<li class="job7">기간 : <input type="text" class="my_class" 
-							placeholder="예) 2023.11.22~2024.12.25"></li>
+							placeholder="예) 2023.11.22~2024.12.25" value="2023.11.22~2024.12.25"></li>
 					</ul>
 						<label><input class="register" name="application_period" type="submit" value="등록하기"></label>
 				</form>

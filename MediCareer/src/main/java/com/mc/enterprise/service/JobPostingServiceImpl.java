@@ -45,7 +45,7 @@ public class JobPostingServiceImpl implements JobPostingService{
 	}
 
 	@Override
-	public void jobPostingInsertOne(JobPostingDto jobPostingDto, MultipartHttpServletRequest mulRequest) {
+	public void jobPostingInsertOne(JobPostingDto jobPostingDto) {
 		// TODO Auto-generated method stub
 		jobPostingDao.jobPostingInsertOne(jobPostingDto);
 	}

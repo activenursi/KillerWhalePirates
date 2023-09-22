@@ -80,12 +80,11 @@ public class JobPostingController {
 	}
 	
 	@RequestMapping(value="/jobPosting/em_addCtr.do", method = RequestMethod.POST)
-	public String jobPostingAddCtr(JobPostingDto jobPostingDto, MultipartHttpServletRequest mulRequest
-			, Model model) {
+	public String jobPostingAddCtr(JobPostingDto jobPostingDto, Model model) {
 		log.debug("Welcome jobPostingController jobPostingAddCtr!" + jobPostingDto);
 		
 		try {
-			jobPostingService.jobPostingInsertOne(jobPostingDto, mulRequest);
+			jobPostingService.jobPostingInsertOne(jobPostingDto);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("오류 처리할거 있음 한다");

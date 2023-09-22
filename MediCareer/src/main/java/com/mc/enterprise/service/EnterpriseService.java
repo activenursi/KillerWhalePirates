@@ -17,9 +17,9 @@ public interface EnterpriseService {
 
 	public List<EnterpriseDto> enterpriseSelectList(int start, int end);
 
-	public void enterpriseInsertOne(EnterpriseDto enterpriseDto, MultipartHttpServletRequest mulRequest);
+	public void enterpriseInsertOne(EnterpriseDto enterpriseDto);
 
-	public int enterpriseUpdateOne(EnterpriseDto enterpriseDto, MultipartHttpServletRequest mulRequest, int fileIdx);
+	public int enterpriseUpdateOne(EnterpriseDto enterpriseDto, int fileIdx);
 
 	public int enterpriseDeleteOne(int no);;
 }
