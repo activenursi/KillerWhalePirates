@@ -87,7 +87,7 @@
 					<ul class="menu1">
 						<li><a href="#">채용 공고</a></li>
 						<li><a href="#">커뮤니티</a></li>
-						<li><a href="#">마이페이지</a></li>
+						<li><a href="./common_member/MyPage3.jsp">마이페이지</a></li>
 					</ul>
 					<span style="float: right;"> <a style="color: white;"
 						href="./auth/login.do">로그인</a>
