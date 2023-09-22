@@ -26,8 +26,8 @@
 		<result column="SALARY" property="salary"/>
 		<result column="GENDER" property="gender"/>
 		<result column="AGE" property="age"/>
-		<result column="EDUCATION" property="career"/>
-		<result column="CAREER" property="education"/>
+		<result column="EDUCATION" property="education"/>
+		<result column="CAREER" property="career"/>
 		<result column="PRIMARY_DUTIES1" property="primary_duties1"/>
 		<result column="PRIMARY_DUTIES2" property="primary_duties2"/>
 		<result column="PRIMARY_DUTIES3" property="primary_duties3"/>
@@ -78,31 +78,14 @@
 	</select>
 	
 	 
-	<update id="jobPostingUpdateOne" parameterType="jobPostingDto">
-	    UPDATE JOBPOSTING
-	    <set>
-	        <if test="title != null">JOBPOSTING_TITLE = #{title},</if>
-	        <if test="type != null">EMPLOYMENT_TYPE = #{type},</if>
-	        <if test="email != null">LOCATION_NAME = #{location_name},</if>
-	        <if test="working_hour != null">WORKING_HOUR = #{working_hour},</if>
-	        <if test="salary != null">SALARY = #{salary},</if>
-	        <if test="gender != null">GENDER = #{gender},</if>
-	        <if test="age != null">AGE = #{age},</if>
-	        <if test="education != null">EDUCATION = #{education},</if>
-	        <if test="career != null">CAREER = #{career},</if>
-	        <if test="primary_duties1 != null">PRIMARY_DUTIES1 = #{primary_duties1},</if>
-	        <if test="primary_duties2 != null">PRIMARY_DUTIES2 = #{primary_duties2},</if>
-	        <if test="primary_duties3 != null">PRIMARY_DUTIES3 = #{primary_duties3},</if>
-	        <if test="recruiter_name != null">RECRUITER_NAME = #{recruiter_name},</if>
-	        <if test="recruiter_phone != null">RECRUITER_PHONE = #{recruiter_phone},</if>
-	        <if test="recruiter_email != null">RECRUITER_EMAIL = #{recruiter_email},</if>
-	        <if test="recruiter_process != null">RECRUITMENT_PROCESS = #{recruiter_process},</if>
-	        <if test="employee_benefit != null">EMPLOYEE_BENEFIT = #{employee_benefit},</if>
-	        <if test="address != null">ADDRESS = #{address},</if>
-	        <if test="application_period != null">APPLICATION_PERIOD = #{application_period},</if>
-	        CREATE_DATE = SYSDATE
-	    </set>
-	    	WHERE JOBPOSTING_NO = #{no}
+	<update id="enterpriseUpdateOne" parameterType="enterpriseDto">
+		UPDATE ENTERPRISE_MEMBER
+		<set>
+			<if test="name!=null">EM_NAME = #{name},</if>
+			<if test="email!=null">EM_EMAIL = #{email},</if>
+			EM_MOD_DATE = SYSDATE
+		</set>
+			WHERE EM_NO = #{no}
 	</update>
 	
 	<delete id="enterpriseDeleteOne">
@@ -161,30 +144,30 @@
 	
 	 
 	<update id="jobPostingUpdateOne" parameterType="jobPostingDto">
-		UPDATE JOBPOSTING
-		<set>
-			<if test="title!=null">JOBPOSTING_TITLE = #{title},</if>
-			<if test="type!=null">EMPLOYMENT_TYPE = #{type},</if>
-			<if test="email!=null">LOCATION_NAME = #{email},</if>
-			<if test="email!=null">WORKING_HOUR = #{email},</if>
-			<if test="email!=null">SALARY = #{email},</if>
-			<if test="email!=null">GENDER = #{email},</if>
-			<if test="email!=null">AGE = #{email},</if>
-			<if test="email!=null">EDUCATION = #{email},</if>
-			<if test="email!=null">CAREER = #{email},</if>
-			<if test="email!=null">PRIMARY_DUTIES1 = #{email},</if>
-			<if test="email!=null">PRIMARY_DUTIES2 = #{email},</if>
-			<if test="email!=null">PRIMARY_DUTIES3 = #{email},</if>
-			<if test="email!=null">RECRUITER_NAME = #{email},</if>
-			<if test="email!=null">RECRUITER_PHONE = #{email},</if>
-			<if test="email!=null">RECRUITER_EMAIL = #{email},</if>
-			<if test="email!=null">RECRUITMENT_PROCESS = #{email},</if>
-			<if test="email!=null">EMPLOYEE_BENEFIT = #{email},</if>
-			<if test="email!=null">ADDRESS = #{email},</if>
-			<if test="email!=null">APPLICATION_PERIOD = #{email},</if>
-			CREATE_DATE = SYSDATE
-		</set>
-			WHERE JOBPOSTING_NO = #{no}
+	    UPDATE JOBPOSTING
+	    <set>
+	        <if test="title != null">JOBPOSTING_TITLE = #{title},</if>
+	        <if test="type != null">EMPLOYMENT_TYPE = #{type},</if>
+	        <if test="location_name != null">LOCATION_NAME = #{location_name},</if>
+	        <if test="working_hour != null">WORKING_HOUR = #{working_hour},</if>
+	        <if test="salary != null">SALARY = #{salary},</if>
+	        <if test="gender != null">GENDER = #{gender},</if>
+	        <if test="age != null">AGE = #{age},</if>
+	        <if test="education != null">EDUCATION = #{education},</if>
+	        <if test="career != null">CAREER = #{career},</if>
+	        <if test="primary_duties1 != null">PRIMARY_DUTIES1 = #{primary_duties1},</if>
+	        <if test="primary_duties2 != null">PRIMARY_DUTIES2 = #{primary_duties2},</if>
+	        <if test="primary_duties3 != null">PRIMARY_DUTIES3 = #{primary_duties3},</if>
+	        <if test="recruiter_name != null">RECRUITER_NAME = #{recruiter_name},</if>
+	        <if test="recruiter_phone != null">RECRUITER_PHONE = #{recruiter_phone},</if>
+	        <if test="recruiter_email != null">RECRUITER_EMAIL = #{recruiter_email},</if>
+	        <if test="recruiter_process != null">RECRUITMENT_PROCESS = #{recruiter_process},</if>
+	        <if test="employee_benefit != null">EMPLOYEE_BENEFIT = #{employee_benefit},</if>
+	        <if test="address != null">ADDRESS = #{address},</if>
+	        <if test="application_period != null">APPLICATION_PERIOD = #{application_period},</if>
+	        CREATE_DATE = SYSDATE
+	    </set>
+	    WHERE JOBPOSTING_NO = #{no}
 	</update>
 	
 	<delete id="jobPostingDeleteOne">
@@ -203,7 +186,7 @@
 		, PRIMARY_DUTIES1, PRIMARY_DUTIES2, PRIMARY_DUTIES3, RECRUITER_NAME
 		, RECRUITER_PHONE, RECRUITER_EMAIL, RECRUITMENT_PROCESS, EMPLOYEE_BENEFIT
 		, ADDRESS, APPLICATION_PERIOD, CREATE_DATE, EM_NO, EM_NAME)
-		VALUES(#{no}, #{title}, #{type}, #{Location_name}, #{working_hour}
+		VALUES(#{no}, #{title}, #{type}, #{location_name}, #{working_hour}
 		, #{salary}, #{gender}, #{age}, #{education}, #{career}, #{primary_duties1}
 		, #{primary_duties2}, #{primary_duties3}, #{recruiter_name}, #{recruiter_phone}
 		, #{recruiter_email}, #{recruiter_process}, #{employee_benefit}, #{address}
