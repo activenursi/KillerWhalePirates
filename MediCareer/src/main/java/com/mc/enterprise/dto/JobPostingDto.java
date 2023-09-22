@@ -7,7 +7,7 @@ public class JobPostingDto {
 	private int no;
 	private String title;
 	private String type;
-	private String Location_name;
+	private String location_name;
 	private String working_hour;
 	private String salary;
 	private String gender;
@@ -27,7 +27,7 @@ public class JobPostingDto {
 	private Date create_date;
 	private int em_no;
 	private String em_name;
-	
+
 	public JobPostingDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -42,7 +42,7 @@ public class JobPostingDto {
 		this.no = no;
 		this.title = title;
 		this.type = type;
-		Location_name = location_name;
+		this.location_name = location_name;
 		this.working_hour = working_hour;
 		this.salary = salary;
 		this.gender = gender;
@@ -88,12 +88,12 @@ public class JobPostingDto {
 		this.type = type;
 	}
 
-	public String getLocation_name() {
-		return Location_name;
+	public String getlocation_name() {
+		return location_name;
 	}
 
-	public void setLocation_name(String location_name) {
-		Location_name = location_name;
+	public void setlocation_name(String location_name) {
+		this.location_name = location_name;
 	}
 
 	public String getWorking_hour() {
@@ -250,7 +250,7 @@ public class JobPostingDto {
 
 	@Override
 	public String toString() {
-		return "JobPostingDto [no=" + no + ", title=" + title + ", type=" + type + ", Location_name=" + Location_name
+		return "JobPostingDto [no=" + no + ", title=" + title + ", type=" + type + ", location_name=" + location_name
 				+ ", working_hour=" + working_hour + ", salary=" + salary + ", gender=" + gender + ", age=" + age
 				+ ", education=" + education + ", career=" + career + ", primary_duties1=" + primary_duties1
 				+ ", primary_duties2=" + primary_duties2 + ", primary_duties3=" + primary_duties3 + ", recruiter_name="
@@ -259,6 +259,5 @@ public class JobPostingDto {
 				+ address + ", application_period=" + application_period + ", create_date=" + create_date + ", em_no="
 				+ em_no + ", em_name=" + em_name + "]";
 	}
-	
-	
+
 }
