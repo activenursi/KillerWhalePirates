@@ -33,7 +33,7 @@
 	.deleteBtn{
 		text-align: right;
 		margin-bottom: 14px;
-		background-color: rgb(52, 152, 219);
+		background-color: gray;
 		float:right;
 		border:none;
 		text-align:center;
@@ -84,7 +84,7 @@
 			<input class="deleteBtn" type="button" value="선택삭제"> 
 		</div>
 		<div>
-			<table>
+			<table style="width: 772px;">
 				<tr>
 					<th><input type="checkbox"></th>
 					<th>회원아이디</th>
