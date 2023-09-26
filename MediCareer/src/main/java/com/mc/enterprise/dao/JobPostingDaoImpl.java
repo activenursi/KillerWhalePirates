@@ -52,11 +52,6 @@ public class JobPostingDaoImpl implements JobPostingDao{
 		return sqlSession.update(namespace+"jobPostingUpdateOne", jobPostingDto);
 	}
 
-	@Override
-	public int fileDelete(int parentSeq) {
-		// TODO Auto-generated method stub
-		return sqlSession.delete(namespace+"fileDelete", parentSeq);
-	}
 
 	@Override
 	public int jobPostingDeleteOne(int no) {
@@ -64,4 +59,28 @@ public class JobPostingDaoImpl implements JobPostingDao{
 		return sqlSession.delete(namespace+"jobPostingDeleteOne", no);
 	}
 
+	@Override
+	public void insertFile(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.insert(namespace+"insertFile", map);
+	}
+
+	@Override
+	public List<Map<String, Object>> fileSelectList(int no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace + "fileSelectList", no);
+	}
+
+	@Override
+	public Map<String, Object> fileSelectStoredFileName(int parentSeq) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+"fileSelectStoredFileName", parentSeq);
+	}
+	
+	
+	@Override
+	public int fileDelete(int parentSeq) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(namespace+"fileDelete", parentSeq);
+	}
 }

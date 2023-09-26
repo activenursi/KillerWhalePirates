@@ -1,6 +1,7 @@
 package com.mc.enterprise.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.mc.enterprise.dto.EnterpriseDto;
 import com.mc.enterprise.dto.JobPostingDto;
@@ -20,5 +21,12 @@ public interface JobPostingDao {
 	public int fileDelete(int no);
 
 	public int jobPostingDeleteOne(int no);
+
+	public void insertFile(Map<String, Object> map);
+	
+	List<Map<String, Object>> fileSelectList(int no);
+
+	Map<String, Object> fileSelectStoredFileName(int parentSeq);
+
 
 }

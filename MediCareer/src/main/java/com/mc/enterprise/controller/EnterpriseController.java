@@ -34,7 +34,7 @@ public class EnterpriseController {
 	public String login(HttpSession session, Model model) {
 		log.info("Welcome EnterPriseController login!");
 		
-		return "./auth/EnterpriseLoginForm";
+		return "auth/EnterpriseLoginForm";
 	}
 	
 	@RequestMapping(value="/auth/em_loginCtr.do", method = RequestMethod.POST)
@@ -108,7 +108,7 @@ public class EnterpriseController {
 	public String enterpriseAdd(Model model) {
 		log.debug("Welcome EnterpriseController enterpriseAdd!");
 		
-		return "enterprise/EnterpriseForm";
+		return "enterprise/EnterpriseAddForm";
 	}
 	
 	@RequestMapping(value="/enterprise/em_addCtr.do", method = RequestMethod.POST)

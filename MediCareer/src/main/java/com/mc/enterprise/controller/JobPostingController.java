@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.mc.enterprise.dto.JobPostingDto;
 import com.mc.enterprise.service.JobPostingService;
@@ -69,7 +69,7 @@ public class JobPostingController {
 		model.addAttribute("jobPostingList", jobPostingList);
 		model.addAttribute("pagingMap", pagingMap);
 		
-		return "jobPosting/jobPostingListView";
+		return "enterprise/JobPostingList";
 	}
 	
 	@RequestMapping(value="/jobPosting/em_add.do", method = RequestMethod.GET)
@@ -80,11 +80,11 @@ public class JobPostingController {
 	}
 	
 	@RequestMapping(value="/jobPosting/em_addCtr.do", method = RequestMethod.POST)
-	public String jobPostingAddCtr(JobPostingDto jobPostingDto, Model model) {
+	public String jobPostingAddCtr(JobPostingDto jobPostingDto, Model model, MultipartHttpServletRequest  req) {
 		log.debug("Welcome jobPostingController jobPostingAddCtr!" + jobPostingDto);
 		
 		try {
-			jobPostingService.jobPostingInsertOne(jobPostingDto);
+			jobPostingService.jobPostingInsertOne(jobPostingDto, req);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("오류 처리할거 있음 한다");
