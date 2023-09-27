@@ -76,7 +76,7 @@ public class JobPostingController {
 	public String jobPostingAdd(Model model) {
 		log.debug("Welcome jobPostingController jobPostingAdd!");
 		
-		return "jobPosting/jobPostingForm";
+		return "enterprise/JobPostingForm";
 	}
 	
 	@RequestMapping(value="/jobPosting/em_addCtr.do", method = RequestMethod.POST)
