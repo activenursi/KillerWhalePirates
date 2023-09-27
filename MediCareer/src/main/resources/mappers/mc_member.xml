@@ -49,7 +49,7 @@
    
    <select id="memberExist" parameterType="map" 
       resultMap="memberResultMap">
-      SELECT CM_NAME, CM_EMAIL
+      SELECT CM_NO, CM_NAME, CM_EMAIL
       FROM COMMON_MEMBER
       WHERE CM_EMAIL = #{email}
       AND CM_PASSWORD = #{pwd}
@@ -66,9 +66,9 @@
    </select>
    
    <select id="memberSelectOne" resultMap="memberResultMap">
-      SELECT CM_NO, CM_NAME, CM_EMAIL, CM_JOIN_DATE
+      SELECT CM_NO, CM_NAME, CM_NICKNAME, CM_EMAIL
       FROM COMMON_MEMBER
-      WHERE MNO = #{no}
+      WHERE CM_NO = #{no}
    </select>
    
    <select id="memberSelectTotalCount" resultType="java.lang.Integer">

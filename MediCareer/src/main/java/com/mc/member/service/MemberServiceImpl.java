@@ -29,25 +29,29 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return memberDao.memberExist(email, password);
 	}
+	
 	@Override
 	public Map<String, Object> memberSelectOne(int no) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		
-		
 		MemberDto memberDto = memberDao.memberSelectOne(no);
 		resultMap.put("memberDto", memberDto);
+		
 		return resultMap;
 	}
+	
 	@Override
 	public int memberSelectTotalCount() {
 		// TODO Auto-generated method stub
 		return memberDao.memberSelectTotalCount();
 	}
+	
 	@Override
 	public List<MemberDto> memberSelectList(int start, int end) {
 		// TODO Auto-generated method stub
 		return memberDao.memberSelectList(start, end);
 	}
+	
 	@Override
 	public void memberInsertOne(MemberDto memberDto) {
 		memberDao.memberInsertOne(memberDto);

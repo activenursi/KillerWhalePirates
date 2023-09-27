@@ -68,22 +68,17 @@ public class MemberController {
 		return "redirect:/home.do";
 	}
 	
-	@RequestMapping(value="/member/listOne.do" , method = RequestMethod.GET)
+	@RequestMapping(value="/member/myPage.do", method = RequestMethod.GET)
 	public String memberListOne(int no, Model model) {
 		log.debug("Welcome MemberController memberlistOne - {}!" + no);
 		
-		Map<String, Object> map =  memberService.memberSelectOne(no);
+		Map<String, Object> map = memberService.memberSelectOne(no);
 		
 		MemberDto memberDto = (MemberDto)map.get("memberDto");
-		//파일첨부??
-		List<Map<String,Object>> fileList
-			= (List<Map<String, Object>>) map.get("fileList");
-		
+	
 		model.addAttribute("memberDto", memberDto);
-		//파일첨부??
-		model.addAttribute("fileList", fileList);
 		
-		return "member/MemberListOneView";
+		return "common_member/cm_MyPage";
 	}
 		
 	@RequestMapping(value = "/member/list.do", 
