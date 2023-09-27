@@ -1,5 +1,6 @@
 package com.mc.enterprise.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class JobPostingDto {
@@ -247,7 +248,11 @@ public class JobPostingDto {
 	public void setEm_name(String em_name) {
 		this.em_name = em_name;
 	}
-
+	
+	 public String getFormattedCreateDate() {
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+	        return dateFormat.format(this.create_date);
+    }
 	@Override
 	public String toString() {
 		return "JobPostingDto [no=" + no + ", title=" + title + ", type=" + type + ", location_name=" + location_name

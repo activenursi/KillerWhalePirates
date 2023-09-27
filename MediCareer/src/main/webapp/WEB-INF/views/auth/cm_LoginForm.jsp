@@ -76,12 +76,7 @@
 }
 </style>
 <script type="text/javascript">
-	function EnterpriseLogFnc() {
-		window.open("Enterprise.jsp"); // 기업 로그인으로 이동
-	}
-	function GeneralMembershipLogFnc() {
-		window.open("GeneralMemberLog.jsp"); // 일반 로그인으로 이동
-	}
+	
 </script>
 </head>
 <body>
@@ -96,9 +91,9 @@
 				</p>
 			</div>
 			<div style="text-align: center; margin-bottom: 20px;">
-				<a class="generalMemeber_log" href="/" onclick="GeneralMembershipLogFnc()" target="_blank"
+				<a class="generalMemeber_log" href="./login.do"  target="_blank"
 					style="margin-right: 40px;">일반회원 로그인</a> 
-				<a class="enterprise_log" href="/" onclick="EnterpriseLogFnc()" target="_blank">기업회원 로그인</a>
+				<a class="enterprise_log" href="./em_login.do"  target="_blank">기업회원 로그인</a>
 			</div>
 				<div class="general_containerMenu">
 					<form action='./loginCtr.do' method='post' style="list-style: none;" width="150px;" height="30px" action=>

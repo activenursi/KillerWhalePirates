@@ -70,7 +70,7 @@
 			<c:when test="${sessionScope.member.email ne null}">
 				<div class="sub-menu">
 					<ul class="menu">
-						<li><a href="/MediCareer/careerInfo.jsp">채용 공고</a></li>
+						<li><a href="./jobPosting/em_list.do">채용 공고</a></li>
 						<li><a href="./board/board.do">커뮤니티</a></li>
 						<li><a href="./member/myPage.do?no=${member.no}">마이페이지</a></li>
 					</ul>

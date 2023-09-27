@@ -75,14 +75,7 @@
 	font-weight: 800;
 }
 </style>
-<script type="text/javascript">
-	function EnterpriseLogFnc() {
-		window.open("Enterprise.jsp"); // 기업 로그인으로 이동
-	}
-	function GeneralMembershipLogFnc() {
-		window.open("GeneralMemberLog.jsp"); // 일반 로그인으로 이동
-	}
-</script>
+
 </head>
 <body>
 	<div id="general_contentWrap">
@@ -96,9 +89,9 @@
 				</p>
 			</div>
 			<div style="text-align: center; margin-bottom: 20px;">
-				<a class="generalMemeber_log" href="/" onclick="GeneralMembershipLogFnc()" target="_blank"
+				<a class="generalMemeber_log" href="./login.do" onclick="GeneralMembershipLogFnc()" target="_blank"
 					style="margin-right: 40px;">일반회원 로그인</a> 
-				<a class="enterprise_log" href="/" onclick="EnterpriseLogFnc()" target="_blank">기업회원 로그인</a>
+				<a class="enterprise_log" href="./em_login.do" onclick="EnterpriseLogFnc()" target="_blank">기업회원 로그인</a>
 			</div>
 				<div class="general_containerMenu">
 					<form action='./loginCtr.do' method='post' style="list-style: none;" width="150px;" height="30px" action=>
@@ -119,7 +112,10 @@
 
 					<div class="general_find_myInfo">
 						<div class="general_create_info">
-							<span>아이디가 없나요? &nbsp;&nbsp;&nbsp; <a href="../member/add.do">회원가입</a>&nbsp;/&nbsp;<a href="/">기업회원가입</a></a></span>
+							<span>아이디가 없나요? &nbsp;&nbsp;&nbsp; <a href="../member/add.do">회원가입</a>&nbsp;/&nbsp;<a href="../enterprise/em_add.do">기업회원가입</a></a></span>
+						</div>
+						<div class="general_find_id">
+							<span>아이디를 잊었나요? &nbsp;&nbsp;&nbsp; <a href="/">아이디 찾기</a></span>
 						</div>
 						<div class="general_find_password">
 							<span>비밀번호를 잊었나요? &nbsp;&nbsp;&nbsp; <a href="/">비밀번호

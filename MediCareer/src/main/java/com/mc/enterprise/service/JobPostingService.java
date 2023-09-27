@@ -15,9 +15,11 @@ public interface JobPostingService {
 
 	public List<JobPostingDto> jobPostingSelectList(int start, int end);
 
-	public void jobPostingInsertOne(JobPostingDto jobPostingDto);
+	public void jobPostingInsertOne(JobPostingDto jobPostingDto
+			, MultipartHttpServletRequest req) throws Exception;
 
-	public int jobPostingUpdateOne(JobPostingDto jobPostingDto, MultipartHttpServletRequest mulRequest, int fileIdx);
+	public int jobPostingUpdateOne(JobPostingDto jobPostingDto
+			, MultipartHttpServletRequest req, int fileIdx) throws Exception;
 
 	public int jobPostingDeleteOne(int no);
 

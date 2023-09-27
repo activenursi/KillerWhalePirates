@@ -75,14 +75,7 @@
 	font-weight: 800;
 }
 </style>
-<script type="text/javascript">
-	function EnterpriseLogFnc() {
-		window.open("Enterprise.jsp"); // 기업 로그인으로 이동
-	}
-	function GeneralMembershipLogFnc() {
-		window.open("GeneralMemberLog.jsp"); // 일반 로그인으로 이동
-	}
-</script>
+
 </head>
 <body>
 	<div id="ent_contentWrap">
@@ -96,12 +89,12 @@
 				</p>
 			</div>
 			<div style="text-align: center; margin-bottom: 20px;">
-				<a class="generalMemeber_log" href="/" onclick="GeneralMembershipLogFnc()" target="_blank"
+				<a class="generalMemeber_log" href="./login.do"  target="_blank"
 					style="margin-right: 40px;">일반회원 로그인</a> 
-				<a class="enterprise_log" href="/" onclick="EnterpriseLogFnc()" target="_blank">기업회원 로그인</a>
+				<a class="enterprise_log" href="./em_login.do"  target="_blank">기업회원 로그인</a>
 			</div>
 				<div class="ent_containerMenu">
-					<form action='./em_login.do' method='post' style="list-style: none;" width="150px;" height="30px">
+					<form action='./em_loginCtr.do' method='post' style="list-style: none;" width="150px;" height="30px">
 						<label>
 							<li class="ent_inputWrap1"><input class="ent_creId"
 								type="text" title="여기에 이메일 기입" placeholder="이메일" name="email">
@@ -118,7 +111,7 @@
 
 					<div class="ent_find_myInfo">
 						<div class="ent_create_info">
-							<span>아이디가 없나요? &nbsp;&nbsp;&nbsp; <a href="/">회원가입</a></span>
+							<span>아이디가 없나요? &nbsp;&nbsp;&nbsp; <a href="../enterprise/em_add.do">회원가입</a></span>
 						</div>
 						<div class="ent_find_id">
 							<span>아이디를 잊었나요? &nbsp;&nbsp;&nbsp; <a href="/">아이디 찾기</a></span>

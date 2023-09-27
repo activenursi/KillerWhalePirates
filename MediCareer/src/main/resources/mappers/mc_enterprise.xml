@@ -54,11 +54,11 @@
    
    <select id="enterpriseSelectList" parameterType="map" resultMap="enterpriseResultMap">
       SELECT MEMBER1.EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS, EM_REP
-      , EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
-      FROM (  SELECT ROWNUM AS R_NUM, M.EM_NO, M.EM_BRN, M.EM_COMPANY_NAME, M.EM_CEO_NAME
-         , M.EM_ADDRESS, M.EM_REP, M.EM_EMAIL, M.EM_PASSWORD, M.EM_JOIN_DATE 
+         , EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+      FROM (  SELECT ROWNUM AS R_NUM, E.EM_NO, E.EM_BRN, E.EM_COMPANY_NAME, E.EM_CEO_NAME
+               , E.EM_ADDRESS, E.EM_REP, E.EM_EMAIL, E.EM_PASSWORD, E.EM_JOIN_DATE 
               FROM (  SELECT EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
-              , EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
+                       , EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
                       FROM ENTERPRISE_MEMBER 
                       ORDER BY EM_JOIN_DATE DESC) E
       ) MEMBER1
@@ -69,7 +69,7 @@
       SELECT EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS, EM_REP
       , EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE
       FROM ENTERPRISE_MEMBER
-      WHERE MNO = #{no}
+      WHERE EM_NO = #{no}
    </select>
    
    <select id="enterpriseSelectTotalCount" resultType="java.lang.Integer">
@@ -79,13 +79,17 @@
    
     
    <update id="enterpriseUpdateOne" parameterType="enterpriseDto">
-      UPDATE ENTERPRISE_MEMBER
-      <set>
-         <if test="name!=null">EM_NAME = #{name},</if>
-         <if test="email!=null">EM_EMAIL = #{email},</if>
-         EM_MOD_DATE = SYSDATE
-      </set>
-         WHERE EM_NO = #{no}
+       UPDATE ENTERPRISE_MEMBER
+       <set>
+           <if test="brNo != null">EM_BRN = #{brNo},</if>
+           <if test="companyName != null">EM_COMPANY_NAME = #{companyName},</if>
+           <if test="name != null">EM_CEO_NAME = #{name},</if>
+           <if test="address != null">EM_ADDRESS = #{address},</if>
+           <if test="contactDetails != null">EM_REP = #{contactDetails},</if>
+           <if test="email != null">EM_EMAIL = #{email},</if>
+           <if test="pwd != null">EM_PASSWORD = #{pwd}</if>
+       </set>
+       WHERE EM_NO = #{no}
    </update>
    
    <delete id="enterpriseDeleteOne">
@@ -95,13 +99,13 @@
    <insert id="enterpriseInsertOne" parameterType="enterpriseDto"
        useGeneratedKeys="true" keyProperty="no">
        <selectKey keyProperty="no" resultType="int" order="BEFORE">
-          SELECT CM_NO_SEQ.NEXTVAL
+          SELECT EM_NO_SEQ.NEXTVAL
          FROM DUAL
        </selectKey>
       INSERT INTO ENTERPRISE_MEMBER
       VALUE(EM_NO, EM_BRN, EM_COMPANY_NAME, EM_CEO_NAME, EM_ADDRESS
       , EM_REP, EM_EMAIL, EM_PASSWORD, EM_JOIN_DATE)
-      VALUES(EM_NO_SEQ.NEXTVAL, #{brNo}, #{companyName}, #{name}
+      VALUES(#{no}, #{brNo}, #{companyName}, #{name}
       , #{address}, #{contactDetails}, #{email}, #{pwd}, SYSDATE)
    </insert>
    
@@ -109,7 +113,8 @@
    <!-- 채용공고  -->
    
    <select id="jobPostingSelectList" parameterType="map" resultMap="jobPostingResultMap">
-      SELECT POSTING.JOBPOSTING_NO, POSTING.JOBPOSTING_TITLE, POSTING.CREATE_DATE, POSTING.EM_NAME
+      SELECT POSTING.JOBPOSTING_NO, JOBPOSTING_TITLE, CREATE_DATE, EM_NAME
+      	,EMPLOYMENT_TYPE, PRIMARY_DUTIES1, CAREER
       FROM (  SELECT ROWNUM AS R_NUM, P.JOBPOSTING_NO, P.JOBPOSTING_TITLE, P.EMPLOYMENT_TYPE
                   , P.LOCATION_NAME, P.WORKING_HOUR, P.SALARY, P.GENDER, P.AGE, P.EDUCATION
                   , P.CAREER, P.PRIMARY_DUTIES1, P.PRIMARY_DUTIES2, P.PRIMARY_DUTIES3
@@ -189,7 +194,37 @@
       VALUES(#{no}, #{title}, #{type}, #{location_name}, #{working_hour}
       , #{salary}, #{gender}, #{age}, #{education}, #{career}, #{primary_duties1}
       , #{primary_duties2}, #{primary_duties3}, #{recruiter_name}, #{recruiter_phone}
-      , #{recruiter_email}, #{recruiter_process}, #{employee_benefit}, #{address}
-      , #{application_period}, SYSDATE, #{em_no}, #{em_name})
+      , #{recruiter_email}, '진행중', #{employee_benefit}, #{address}
+      , #{application_period}, SYSDATE, 1, '진병원')
    </insert>
+   
+   <insert id="insertFile" parameterType="map" >
+		INSERT INTO JOBPOSTING_IMAGE
+			(JPI_INDEX, JP_NO, JPI_ORIGINAL_FILE_NAME, JPI_AFTER_FILE_NAME
+			, JPI_FILE_SIZE, JPI_UPLOAD_DATE)
+		VALUES
+			(JPI_INDEX_SEQ.nextval, #{parentSeq}, #{original_file_name}, 
+			#{stored_file_name}, #{file_size}, SYSDATE)
+	
+	</insert>
+	
+	<select id="fileSelectList" parameterType="int" resultType="map">
+		SELECT JPI_INDEX, JPI_ORIGINAL_FILE_NAME, JPI_AFTER_FILE_NAME
+			, ROUND(JPI_FILE_SIZE/1024, 1)AS JPI_FILE_SIZE
+		FROM JOBPOSTING_IMAGE
+		WHERE JP_NO = #{no}
+	</select>
+	
+	<select id="fileSelectStoredFileName" parameterType="int"
+		resultType="map">
+		SELECT JPI_INDEX, JPI_AFTER_FILE_NAME
+		FROM JOBPOSTING_IMAGE
+		WHERE JP_NO = #{parentSeq}
+		
+	</select>
+	
+	<delete id="fileDelete" parameterType="int">
+		DELETE FROM JOBPOSTING_IMAGE WHERE JP_NO = #{parentSeq}
+	</delete>
+	
 </mapper>
