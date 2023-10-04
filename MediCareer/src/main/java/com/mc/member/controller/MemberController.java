@@ -80,6 +80,58 @@ public class MemberController {
 		
 		return "common_member/cm_MyPage";
 	}
+	
+	@RequestMapping(value="/member/AccountSetting.do", method = RequestMethod.GET)
+	public String memberSetting(int no, Model model) {
+		log.debug("Welcome MemberController memberlistOne - {}!" + no);
+		
+		Map<String, Object> map = memberService.memberSelectOne(no);
+		
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+	
+		model.addAttribute("memberDto", memberDto);
+		
+		return "common_member/cm_AccountSetting";
+	}
+	
+	@RequestMapping(value="/member/BoardManagement.do", method = RequestMethod.GET)
+	public String memberBoardManagement(int no, Model model) {
+		log.debug("Welcome MemberController memberlistOne - {}!" + no);
+		
+		Map<String, Object> map = memberService.memberSelectOne(no);
+		
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+	
+		model.addAttribute("memberDto", memberDto);
+		
+		return "common_member/cm_BoardManagement";
+	}
+	
+	@RequestMapping(value="/member/ApplicationStatus.do", method = RequestMethod.GET)
+	public String memberApplicationStatus(int no, Model model) {
+		log.debug("Welcome MemberController memberlistOne - {}!" + no);
+		
+		Map<String, Object> map = memberService.memberSelectOne(no);
+		
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+	
+		model.addAttribute("memberDto", memberDto);
+		
+		return "common_member/cm_ApplicationStatus";
+	}
+	
+	@RequestMapping(value="/member/ResumeManagement.do", method = RequestMethod.GET)
+	public String memberResumeManagement(int no, Model model) {
+		log.debug("Welcome MemberController memberlistOne - {}!" + no);
+		
+		Map<String, Object> map = memberService.memberSelectOne(no);
+		
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+	
+		model.addAttribute("memberDto", memberDto);
+		
+		return "common_member/cm_ResumeManagement";
+	}
 		
 	@RequestMapping(value = "/member/list.do", 
 			method = {RequestMethod.GET,RequestMethod.POST})
@@ -183,8 +235,21 @@ public class MemberController {
 		return "common/successPage";
 	}
 	
-	@RequestMapping(value="/member/delete.do", method= RequestMethod.GET)
+	@RequestMapping(value="/member/AccountDeletion.do", method = RequestMethod.GET)
 	public String memberDelete(int no, Model model) {
+		log.debug("Welcome MemberController memberlistOne - {}!" + no);
+		
+		Map<String, Object> map = memberService.memberSelectOne(no);
+		
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+	
+		model.addAttribute("memberDto", memberDto);
+		
+		return "common_member/cm_AccountDeletion";
+	}
+	
+	@RequestMapping(value="/member/deleteCtr.do", method= RequestMethod.GET)
+	public String memberDeleteCtr(int no, Model model) {
 		log.info("Welcome MemberController memberDelete!"+ no);
 		
 		memberService.memberDeleteOne(no);

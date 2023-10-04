@@ -161,12 +161,12 @@
             <!-- 사이드 메뉴 내용 -->
             <h2>${memberDto.nickName}님</h2>
             <ul class="list_group">
-                <li class="my_everything"><a href="#">전체</a></li>
-                <li class="application_status"><a href="#">지원 현황</a></li>
-                <li class="resume_management"><a href="#">이력서 관리</a></li>
-                <li class="my_posts"><a href="#">내가 쓴 글</a></li>
-                <li class="account_settings"><a href="#">계정 설정</a></li>
-                <li class="account_deletion"><a href="#">계정 탈퇴</a></li>
+                <li class="my_everything"><a href="./myPage.do?no=${member.no}">전체</a></li>
+                <li class="application_status"><a href="./ApplicationStatus.do?no=${member.no}">지원 현황</a></li>
+                <li class="resume_management"><a href="./ResumeManagement.do?no=${member.no}">이력서 관리</a></li>
+                <li class="BoardManagement"><a href="./BoardManagement.do?no=${member.no}">내가 쓴 글</a></li>
+                <li class="account_settings"><a href="./AccountSetting.do?no=${member.no}">계정 설정</a></li>
+                <li class="account_deletion"><a href="./AccountDeletion.do?no=${member.no}">계정 탈퇴</a></li>
             </ul>
         </aside>
         <div id="myPage_content">
