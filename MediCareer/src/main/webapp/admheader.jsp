@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="resources/css/index.css">
 </head>
 <body>
-
 	<header>
        <div class="inner">
            <a href="/MediCareer/index.jsp" class="logo">
