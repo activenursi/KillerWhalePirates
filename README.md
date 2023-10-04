@@ -16,11 +16,10 @@
 
 <br/>
 
-## 👀 What Project is It?
+### 👀 What Project is It?
 
 우리의 목표는 의료 분야에서 서로를 빠르고 정확하게 연결하여 의료 서비스의 품질을 향상시키는 데 기여하는 것입니다.✍️ 
-이를 통해 의료 현장의 효율성을 증대시키고, 더 나은 의료 인력 관리를 가능케 하는 것 입니다.🎉
-
+이를 통해 의료 현장의 효율성을 증대시키고, 더 나은 의료시스템을 만드는 것에 기여하는 것 입니다.🎉
 
 <br/>
 
@@ -46,9 +45,8 @@
 
 ### 😎 Work breakdown structure
 <p>
-  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/1119f3f3-be16-4071-b6fe-e6bf50a08ae7">
+  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/055311e7-9584-468d-96cb-f352b4312ca4">
 </p>
-
 <br/>
 <br/>
 
