@@ -112,7 +112,7 @@
      
 ## 💡 Project Architecture
 <p>
-  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/e0918f4b-320b-413d-9369-b7b19258a324">
+  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/de3ed312-40a8-48a8-9139-971c67c2e1b4">
 </p>
 
 <br/>
