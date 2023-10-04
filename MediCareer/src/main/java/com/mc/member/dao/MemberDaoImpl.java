@@ -23,11 +23,10 @@ public class MemberDaoImpl implements MemberDao{
 	public MemberDto memberExist(String email, String password) {
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("email", email);
-		paramMap.put("pwd", password);
+		paramMap.put("password", password);
 		return sqlSession.selectOne(namespace+"memberExist", paramMap);
 	}
-
-
+	
 	@Override
 	public MemberDto memberSelectOne(int no) {
 		MemberDto memberDto = sqlSession.selectOne(namespace+"memberSelectOne", no);
@@ -82,6 +81,15 @@ public class MemberDaoImpl implements MemberDao{
 	public int memberNicknameCheck(MemberDto memberDto) throws Exception {
 		// TODO Auto-generated method stub
 		int result = sqlSession.selectOne(namespace+"memberNicknameCheck", memberDto);
+		
+		return result;
+	}
+
+
+	@Override
+	public int memberEmailIdentify(MemberDto memberDto) throws Exception {
+		// TODO Auto-generated method stub
+		int result = sqlSession.selectOne(namespace+"memberEmailIdentify", memberDto);
 		
 		return result;
 	}

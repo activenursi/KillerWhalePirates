@@ -34,7 +34,7 @@ public class EnterpriseController {
 	public String login(HttpSession session, Model model) {
 		log.info("Welcome EnterPriseController login!");
 		
-		return "auth/EnterpriseLoginForm";
+		return "auth/em_LoginForm";
 	}
 	
 	@RequestMapping(value="/auth/em_loginCtr.do", method = RequestMethod.POST)

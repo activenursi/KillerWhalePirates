@@ -36,7 +36,7 @@ public class MemberController {
 	public String login(HttpSession session, Model model) {
 		log.info("Welcome MemberController login!");
 		
-		return "./auth/MemberLoginForm";
+		return "./auth/cm_LoginForm";
 	}
 	
 	@RequestMapping(value="/auth/loginCtr.do", method = RequestMethod.POST)
@@ -60,13 +60,49 @@ public class MemberController {
 	}
 	// 로그아웃
 	@RequestMapping(value="/auth/logout.do", method = RequestMethod.GET)
-	public String loginout(HttpSession session, Model model) {
+	public String loginOut(HttpSession session, Model model) {
 		log.info("Welcome MemberController loginout!");
 		
 		session.invalidate();
 		
 		return "redirect:/home.do";
 	}
+	
+	//====================== 일반회원 비밀번호 찾기 ========================
+	
+	@RequestMapping(value="/member/resetPassword.do", method = RequestMethod.GET)
+	public String resetPassword(Model model) {
+		log.info("Welcome MemberController findPassword!");
+		
+		return "./common_member/cm_ResetPassword";
+	}
+	
+	@RequestMapping(value="/member/resetPasswordCtr.do", method = RequestMethod.POST)
+	public String resetPassword(MemberDto memberDto, Model model) throws Exception {
+		log.debug("Welcome MemberController findPassword!" + memberDto);
+		
+		try {
+			memberService.memberInsertOne(memberDto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("오류 처리할거 있음 한다");
+			e.printStackTrace();
+		}
+			
+		return "redirect:/home.do";
+	}
+	
+	//이메일 확인
+	@ResponseBody
+	@RequestMapping(value="/member/emailIdentify.do", method = RequestMethod.POST)
+	public int memberEmailIdentify(MemberDto memberDto) throws Exception {
+		log.info("Welcome MemberController memberNicknameCheck!" + memberDto);
+		int result = memberService.memberEmailIdentify(memberDto);
+		
+		return result;
+	}
+	
+	//====================== 마이페이지 ========================
 	
 	@RequestMapping(value="/member/myPage.do", method = RequestMethod.GET)
 	public String memberListOne(int no, Model model) {

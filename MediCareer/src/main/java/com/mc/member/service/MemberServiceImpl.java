@@ -82,4 +82,12 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public int memberEmailIdentify(MemberDto memberDto) throws Exception {
+		// TODO Auto-generated method stub
+		int result = memberDao.memberEmailIdentify(memberDto);
+		
+		return result;
+	}
+
 }

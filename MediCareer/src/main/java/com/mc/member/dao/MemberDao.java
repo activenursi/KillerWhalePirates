@@ -23,5 +23,7 @@ public interface MemberDao {
 	public int memberDeleteOne(int no);
 	
 	public int memberNicknameCheck(MemberDto memberDto) throws Exception;
+	
+	public int memberEmailIdentify(MemberDto memberDto) throws Exception;
 
 }
