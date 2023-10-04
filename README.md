@@ -14,14 +14,15 @@
 
 <b>의료인을 대상으로 하는 선배 QnA 커뮤니티 플랫폼 구축</b>
 
-<br>
+<br/>
+
 ## 👀 What Project is It?
 
 우리의 목표는 의료 분야에서 서로를 빠르고 정확하게 연결하여 의료 서비스의 품질을 향상시키는 데 기여하는 것입니다.✍️ 
 이를 통해 의료 현장의 효율성을 증대시키고, 더 나은 의료 인력 관리를 가능케 하는 것 입니다.🎉
 
 
-<br>
+<br/>
 
 ### 📆 프로젝트 기간
 
@@ -41,8 +42,7 @@
 🌰 9월 말<br>
 - 단위/통합 테스트<br>
 
-<br>
-
+<br/>
 
 ### 😎 Work breakdown structure
 <p>
@@ -56,9 +56,7 @@
 <p>
   <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/64b4f717-6f9c-4f40-87a9-a4d73d1928ca">
 </p>
-<p>
-  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/e0918f4b-320b-413d-9369-b7b19258a324">
-</p>
+
 
 ## 🛠 Tech Stack 
 <p>✨ Platforms & Languages ✨</p>
@@ -102,56 +100,33 @@
 
 ## 📚 List of Major Features
 
-1. 유저 타입 :
-   - 구인 기관 관리자(병원)
-   - 구직자(간호사)
-   - 관리자
+1. 질문 답변 기능이 구현된 커뮤니티 페이지 
+   - 질문 게시물
+   - 답변 게시물
+   - 페이징
+   - 인기 게시글
 
-2. 기업 회원 시스템 :
-   - 기업 회원 등록 및 관리 
-   - 공고 등록/관리
-   - 인재 검색
-   - 주요 소식, 뉴스 등록
-   - 배너광고 관리
-  
-3. 구직자 회원 시스템 :
-   - 회원 정보 등록 및 관리
-   - 구직 지원
-   - 공고 검색
-   - 마이페이지, 실수령액 계산기, sns 알림 등
-  
-4. 부가 기능 :
-   - 카카오 챗봇을 통한 자연어 수집 및 회원 데이터베이스 등록
-   - 카카오톡 로그인, 애플 로그인, 네이버 로그인
-   - 옵션 필터링 및 기업과 구직자 매칭
-   - 결제 
-
-## 🎨 Library
-
-사용한 라이브러리 정리해서 넣어야함!
-
+2. 회원 시스템 
+   - 회원가입
+   - 이메일 인증
+   - 닉네임 중복검사
+   - 유효성 검사
+     
 ## 💡 Project Architecture
+<p>
+  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/e0918f4b-320b-413d-9369-b7b19258a324">
+</p>
 
-이쁘게 아키텍쳐 꾸며서 넣어야함!
+<br/>
 
 ## 🔌 Main Page
 
 웹 스크린샷 찍어서 넣어야함!
 
-## 🌟 API
-
-api 넣어야함 https://github.com/new-place-Team/InSplace-BE 여기 참고
+<br/>
 
 ### 🛠️ ERD 
 
 erd 넣어야함 https://github.com/new-place-Team/InSplace-BE 여기 참고
 
-## ✨ Test
-
-부하테스트 넣어야함 https://github.com/new-place-Team/InSplace-BE 여기 참고
-
 # 🙏 Thank You
-
-향후 목표 넣어야함
-
-- 원티드, 사람인, 커리어리, 메디알바, 병원잡, 닥터잡, 널스잡, 메디게이트, 인터엠디 등
