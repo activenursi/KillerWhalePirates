@@ -67,6 +67,7 @@
 	color: gray;
 	font-weight: 800;
 	margin-bottom: 20px;
+	margin-right: 40px;
 }
 
 .enterprise_log {
@@ -89,39 +90,37 @@
 				</p>
 			</div>
 			<div style="text-align: center; margin-bottom: 20px;">
-				<a class="generalMemeber_log" href="./login.do"  target="_blank"
-					style="margin-right: 40px;">일반회원 로그인</a> 
-				<a class="enterprise_log" href="./em_login.do"  target="_blank">기업회원 로그인</a>
+				<a class="generalMemeber_log" href="./login.do">일반회원 로그인</a> 
+				<a class="enterprise_log" href="./em_login.do">기업회원 로그인</a>
 			</div>
-				<div class="ent_containerMenu">
-					<form action='./em_loginCtr.do' method='post' style="list-style: none;" width="150px;" height="30px">
-						<label>
-							<li class="ent_inputWrap1"><input class="ent_creId"
-								type="text" title="여기에 이메일 기입" placeholder="이메일" name="email">
+			<div class="ent_containerMenu">
+				<form action='./em_loginCtr.do' method='post' style="list-style: none;" width="150px;" height="30px">
+					<label>
+						<li class="ent_inputWrap1"><input class="ent_creId" name="email"
+							type="text" title="여기에 이메일 기입" placeholder="이메일">
 						</li>
-						</label> <label>
-							<li class="ent_inputWrap2"><input class="ent_crepassword"
-								type="password" maxlength="8" title="pw입력" name="pwd"
-								placeholder="비밀번호"></li>
-						</label> <label>
-							<li class="ent_inputWrap3"><input type="submit" value="로그인"
-								class="ent_logBtn"></li>
-						</label>
-					</form>
-
-					<div class="ent_find_myInfo">
-						<div class="ent_create_info">
-							<span>아이디가 없나요? &nbsp;&nbsp;&nbsp; <a href="../enterprise/em_add.do">회원가입</a></span>
-						</div>
-						<div class="ent_find_id">
-							<span>아이디를 잊었나요? &nbsp;&nbsp;&nbsp; <a href="/">아이디 찾기</a></span>
-						</div>
-						<div class="ent_find_password">
-							<span>비밀번호를 잊었나요? &nbsp;&nbsp;&nbsp; <a href="/">비밀번호
-									찾기</a></span>
-						</div>
+					</label> 
+					<label>
+						<li class="ent_inputWrap2"><input class="ent_crepassword"
+							type="password" maxlength="8" title="pw입력" name="pwd"
+							placeholder="비밀번호">
+						</li>
+					</label>
+					<label>
+						<li class="ent_inputWrap3"><input type="submit" value="로그인"
+							class="ent_logBtn">
+						</li>
+					</label>
+				</form>
+				<div class="ent_find_myInfo">
+					<div class="general_create_info">
+						<span><a href="../enterprise/em_add.do">기업 회원가입</a></span>
+					</div>
+					<div class="ent_find_password">
+						<span><a href="/">기업 회원 비밀번호 찾기</a></span>
 					</div>
 				</div>
+			</div>
 		</div>
 	</div>
 	<footer> </footer>

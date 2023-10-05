@@ -67,6 +67,7 @@
 	color: black;
 	font-weight: 800;
 	margin-bottom: 20px;
+	margin-right: 40px;
 }
 
 .enterprise_log {
@@ -75,9 +76,7 @@
 	font-weight: 800;
 }
 </style>
-<script type="text/javascript">
-	
-</script>
+
 </head>
 <body>
 	<div id="general_contentWrap">
@@ -91,40 +90,37 @@
 				</p>
 			</div>
 			<div style="text-align: center; margin-bottom: 20px;">
-				<a class="generalMemeber_log" href="./login.do"  target="_blank"
-					style="margin-right: 40px;">일반회원 로그인</a> 
-				<a class="enterprise_log" href="./em_login.do"  target="_blank">기업회원 로그인</a>
+				<a class="generalMemeber_log" href="./login.do">일반회원 로그인</a> 
+				<a class="enterprise_log" href="./em_login.do">기업회원 로그인</a>
 			</div>
-				<div class="general_containerMenu">
-					<form action='./loginCtr.do' method='post' style="list-style: none;" width="150px;" height="30px" action=>
-						<label>
-							<li class="general_inputWrap1">
-							<input class="general_creId"
-								type="text" title="여기에 이메일기입" placeholder="이메일" name="email">
-						</li>
-						</label> <label>
-							<li class="general_inputWrap2">
+			<div class="general_containerMenu">
+				<form action='./loginCtr.do' method='post' style="list-style: none;" width="150px;" height="30px" action=>
+					<label>
+						<li class="general_inputWrap1">
+						<input class="general_creId" type="text" title="여기에 이메일기입" name="email" 
+							placeholder="이메일">
+					</li>
+					</label> <label>
+						<li class="general_inputWrap2">
 							<input class="general_crepassword" type="password" title="pw입력" name="password"
-								placeholder="비밀번호"></li>
-						</label> <label>
-							<li class="general_inputWrap3">
-							<input type="submit" value="로그인" class="general_logBtn"></li>
-						</label>
-					</form>
-
-					<div class="general_find_myInfo">
-						<div class="general_create_info">
-							<span>아이디가 없나요? &nbsp;&nbsp;&nbsp; <a href="/">회원가입</a></span>
-						</div>
-						<div class="general_find_id">
-							<span>아이디를 잊었나요? &nbsp;&nbsp;&nbsp; <a href="/">아이디 찾기</a></span>
-						</div>
-						<div class="general_find_password">
-							<span>비밀번호를 잊었나요? &nbsp;&nbsp;&nbsp; <a href="/">비밀번호
-									찾기</a></span>
-						</div>
+							placeholder="비밀번호">
+						</li>
+					</label> 
+					<label>
+						<li class="general_inputWrap3">
+							<input type="submit" value="로그인" class="general_logBtn">
+						</li>
+					</label>
+				</form>
+				<div class="general_find_myInfo">
+					<div class="general_create_info">
+						<span><a href="../member/add.do">일반 회원가입</a></span>
+					</div>
+					<div class="ent_find_password">
+						<span><a href="../member/resetPassword.do">일반 회원 비밀번호 찾기</a></span>
 					</div>
 				</div>
+			</div>
 		</div>
 	</div>
 	<footer> </footer>

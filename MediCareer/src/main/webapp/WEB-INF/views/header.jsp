@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/index.css">
+
 <style>
 /* 모달 스타일링 */
 .modal {
@@ -30,7 +32,6 @@
   text-align: center;
 }
 </style>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/index.css">
 
 <script type="text/javascript">
 	// 해당 a 태그들을 클릭했을 때의 동작
@@ -62,7 +63,6 @@
 			</a>
 		</div>
 
-
 		<!--        	<form action="auth/login.do" id="simpleForm" method="get">
 			<input type="button"value="로그인 화면으로 이동" onclick="loginMoveFnc();">
 		</form> -->
@@ -72,40 +72,36 @@
 					<ul class="menu">
 						<li><a href="./jobPosting/em_list.do">채용 공고</a></li>
 						<li><a href="./board/board.do">커뮤니티</a></li>
-						<li><a href="/MediCareer/myPage.jsp">마이페이지</a></li>
+						<li><a href="./member/myPage.do?no=${member.no}">마이페이지</a></li>
 					</ul>
 					<span style="float: right;"> ${member.name}님 <a
 						style="color: white;"
 						href="#" onclick="showLogoutModal()">로그아웃</a>
 					</span>
-
 				</div>
-
 			</c:when>
 			<c:otherwise>
 				<div class="sub-menu">
 					<ul class="menu1">
 						<li><a href="#">채용 공고</a></li>
 						<li><a href="#">커뮤니티</a></li>
-						<li><a href="./common_member/MyPage3.jsp">마이페이지</a></li>
+						<li><a href="#">마이페이지</a></li>
 					</ul>
 					<span style="float: right;"> <a style="color: white;"
 						href="./auth/login.do">로그인</a>
 					</span>
 				</div>
-
 			</c:otherwise>
 		</c:choose>
-		
 	</header>
 	
-		<div id="logoutModal" class="modal">
-	        <div class="modal-content">
-		       <p>로그아웃 하시겠습니까?</p>
-		       <button onclick="confirmLogout()">확인</button>
-		       <button onclick="cancelLogout()">취소</button>
-	        </div>
-		</div>
+	<div id="logoutModal" class="modal">
+        <div class="modal-content">
+	       <p>로그아웃 하시겠습니까?</p>
+	       <button onclick="confirmLogout()">확인</button>
+	       <button onclick="cancelLogout()">취소</button>
+        </div>
+	</div>
 </body>
 	<script type="text/javascript">
 		var modal = document.getElementById('logoutModal');

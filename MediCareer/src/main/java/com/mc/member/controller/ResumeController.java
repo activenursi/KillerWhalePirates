@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.mc.member.dto.MemberDto;
 import com.mc.member.dto.ResumeDto;
 import com.mc.member.service.ResumeService;
 import com.mc.util.Paging;
@@ -42,8 +43,6 @@ public class ResumeController {
       
       return "resume/resumeListOneView";
    }
-      
-      
       
    @RequestMapping(value = "/resume/list.do", 
          method = {RequestMethod.GET,RequestMethod.POST})

@@ -17,11 +17,11 @@
 	margin-top: 100px;
 }
 
-h2 {
+.editMember-information {
 	text-decoration: underline;
 }
 
-table {
+.userinfo-table {
 	border-collapse: collapse; /* 셀 간의 경계를 합치기 */
 	background-color: lightgray;
 	border: 1px solid black;
@@ -30,7 +30,7 @@ table {
 	height: 300px;
 }
 
-table td {
+.userinfo-table td {
 	border: 1px solid black; /* 셀 테두리 설정 (선택 사항) */
 	border-collapse: collapse;
 	background-color: white;
@@ -79,14 +79,14 @@ table th {
 	<div class="warp-container">
 		<div class="adm-member-update">
 			<div>
-				<h2>회원정보수정</h2>
+				<h2 class="editMember-information">회원정보수정</h2>
 			</div>
 			<form>
 				<div>
-					<table>
+					<table class="userinfo-table">
 						<tr>
 							<th>닉네임</th>
-							<td><input type="text"></td>
+							<td class=""><input type="text"></td>
 						</tr>
 						<tr>
 							<th>이름</th>

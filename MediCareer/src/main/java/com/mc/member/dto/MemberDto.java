@@ -17,7 +17,7 @@ public class MemberDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public MemberDto(int no, String name, String nickName, String email, String password, Date createDate,
 			Date modifyDate) {
 		super();
@@ -29,7 +29,7 @@ public class MemberDto {
 		this.createDate = createDate;
 		this.modifyDate = modifyDate;
 	}
-
+	
 	public String getNickName() {
 		return nickName;
 	}

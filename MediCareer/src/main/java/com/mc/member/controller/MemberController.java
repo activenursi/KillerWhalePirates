@@ -36,7 +36,7 @@ public class MemberController {
 	public String login(HttpSession session, Model model) {
 		log.info("Welcome MemberController login!");
 		
-		return "./auth/MemberLoginForm";
+		return "./auth/cm_LoginForm";
 	}
 	
 	@RequestMapping(value="/auth/loginCtr.do", method = RequestMethod.POST)
@@ -60,7 +60,7 @@ public class MemberController {
 	}
 	// 로그아웃
 	@RequestMapping(value="/auth/logout.do", method = RequestMethod.GET)
-	public String loginout(HttpSession session, Model model) {
+	public String loginOut(HttpSession session, Model model) {
 		log.info("Welcome MemberController loginout!");
 		
 		session.invalidate();
@@ -68,22 +68,105 @@ public class MemberController {
 		return "redirect:/home.do";
 	}
 	
-	@RequestMapping(value="/member/listOne.do" , method = RequestMethod.GET)
+	//====================== 일반회원 비밀번호 찾기 ========================
+	
+	@RequestMapping(value="/member/resetPassword.do", method = RequestMethod.GET)
+	public String resetPassword(Model model) {
+		log.info("Welcome MemberController findPassword!");
+		
+		return "./common_member/cm_ResetPassword";
+	}
+	
+	@RequestMapping(value="/member/resetPasswordCtr.do", method = RequestMethod.POST)
+	public String resetPassword(MemberDto memberDto, Model model) throws Exception {
+		log.debug("Welcome MemberController findPassword!" + memberDto);
+		
+		try {
+			memberService.memberInsertOne(memberDto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("오류 처리할거 있음 한다");
+			e.printStackTrace();
+		}
+			
+		return "redirect:/home.do";
+	}
+	
+	//이메일 확인
+	@ResponseBody
+	@RequestMapping(value="/member/emailIdentify.do", method = RequestMethod.POST)
+	public int memberEmailIdentify(MemberDto memberDto) throws Exception {
+		log.info("Welcome MemberController memberNicknameCheck!" + memberDto);
+		int result = memberService.memberEmailIdentify(memberDto);
+		
+		return result;
+	}
+	
+	//====================== 마이페이지 ========================
+	
+	@RequestMapping(value="/member/myPage.do", method = RequestMethod.GET)
 	public String memberListOne(int no, Model model) {
 		log.debug("Welcome MemberController memberlistOne - {}!" + no);
 		
-		Map<String, Object> map =  memberService.memberSelectOne(no);
+		Map<String, Object> map = memberService.memberSelectOne(no);
 		
 		MemberDto memberDto = (MemberDto)map.get("memberDto");
-		//파일첨부??
-		List<Map<String,Object>> fileList
-			= (List<Map<String, Object>>) map.get("fileList");
-		
+	
 		model.addAttribute("memberDto", memberDto);
-		//파일첨부??
-		model.addAttribute("fileList", fileList);
 		
-		return "member/MemberListOneView";
+		return "common_member/cm_MyPage";
+	}
+	
+	@RequestMapping(value="/member/AccountSetting.do", method = RequestMethod.GET)
+	public String memberSetting(int no, Model model) {
+		log.debug("Welcome MemberController memberlistOne - {}!" + no);
+		
+		Map<String, Object> map = memberService.memberSelectOne(no);
+		
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+	
+		model.addAttribute("memberDto", memberDto);
+		
+		return "common_member/cm_AccountSetting";
+	}
+	
+	@RequestMapping(value="/member/BoardManagement.do", method = RequestMethod.GET)
+	public String memberBoardManagement(int no, Model model) {
+		log.debug("Welcome MemberController memberlistOne - {}!" + no);
+		
+		Map<String, Object> map = memberService.memberSelectOne(no);
+		
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+	
+		model.addAttribute("memberDto", memberDto);
+		
+		return "common_member/cm_BoardManagement";
+	}
+	
+	@RequestMapping(value="/member/ApplicationStatus.do", method = RequestMethod.GET)
+	public String memberApplicationStatus(int no, Model model) {
+		log.debug("Welcome MemberController memberlistOne - {}!" + no);
+		
+		Map<String, Object> map = memberService.memberSelectOne(no);
+		
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+	
+		model.addAttribute("memberDto", memberDto);
+		
+		return "common_member/cm_ApplicationStatus";
+	}
+	
+	@RequestMapping(value="/member/ResumeManagement.do", method = RequestMethod.GET)
+	public String memberResumeManagement(int no, Model model) {
+		log.debug("Welcome MemberController memberlistOne - {}!" + no);
+		
+		Map<String, Object> map = memberService.memberSelectOne(no);
+		
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+	
+		model.addAttribute("memberDto", memberDto);
+		
+		return "common_member/cm_ResumeManagement";
 	}
 		
 	@RequestMapping(value = "/member/list.do", 
@@ -188,8 +271,21 @@ public class MemberController {
 		return "common/successPage";
 	}
 	
-	@RequestMapping(value="/member/delete.do", method= RequestMethod.GET)
+	@RequestMapping(value="/member/AccountDeletion.do", method = RequestMethod.GET)
 	public String memberDelete(int no, Model model) {
+		log.debug("Welcome MemberController memberlistOne - {}!" + no);
+		
+		Map<String, Object> map = memberService.memberSelectOne(no);
+		
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+	
+		model.addAttribute("memberDto", memberDto);
+		
+		return "common_member/cm_AccountDeletion";
+	}
+	
+	@RequestMapping(value="/member/deleteCtr.do", method= RequestMethod.GET)
+	public String memberDeleteCtr(int no, Model model) {
 		log.info("Welcome MemberController memberDelete!"+ no);
 		
 		memberService.memberDeleteOne(no);
