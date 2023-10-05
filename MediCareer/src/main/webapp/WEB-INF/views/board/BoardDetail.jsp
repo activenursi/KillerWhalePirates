@@ -91,7 +91,7 @@
             <div class="like">
                 <a href="javascript:setGood();" id="good_buttonA"><i class="ic-like-o"></i> 
 					<p>
-						<span id="gCnt">추천수</span>
+						<span id="gCnt">조회수</span>
 					</p>
 				</a>
             </div>

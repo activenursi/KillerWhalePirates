@@ -8,8 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/index.css">
 
+<link rel="stylesheet" type="text/css" href="./resources/css/index.css">
 <style>
 /* 모달 스타일링 */
 .modal {
@@ -57,10 +57,11 @@
 
 	<header>
 		<div class="inner">
-			<a href="./home.do" class="logo"> <img
-				src="./resources/images/medicareer_logo.png" style="width: 100px;"
+			<a href="./home.do" class="logo"> 
+			<img src="./resources/images/medicareer_logo.png" style="width: 100px;"
 				alt="메디커리어">
 			</a>
+			
 		</div>
 
 		<!--        	<form action="auth/login.do" id="simpleForm" method="get">
@@ -73,6 +74,7 @@
 						<li><a href="./jobPosting/em_list.do">채용 공고</a></li>
 						<li><a href="./board/board.do">커뮤니티</a></li>
 						<li><a href="./member/myPage.do?no=${member.no}">마이페이지</a></li>
+						
 					</ul>
 					<span style="float: right;"> ${member.name}님 <a
 						style="color: white;"

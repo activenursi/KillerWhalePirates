@@ -90,8 +90,9 @@ header .sub-menu ul.menu li a {background-color: transparent; font-size: 16px; c
 #community .listskin .slider .con:before{content:'';position:absolute;top:0;left:-30px;width:30px;height:100%;background:#ffffff;z-index:2;}
 #community .listskin .slider .con:after{content:'';position:absolute;top:0;right:-30px;width:30px;height:100%;background:#ffffff;z-index:2;}
 #community .listskin .slider .con ul{}
-#community .listskin .slider .con li.swiper-slide{padding: 20px 15px;border-radius:15px;border:1px solid #e2e2e2;width: 345px;margin-right: 10px;}
-#community .listskin .slider .con li .flex{display:flex;align-items:flex-end;justify-content:space-between}
+#community .listskin .slider .con li.swiper-slide{}
+#community .listskin .slider .con li.swiper-slide{padding: 20px 15px;border-radius:15px;border:1px solid #e2e2e2;width: 310px;margin-right: 10px;}
+#community .listskin .slider .con li .flex{align-items:flex-end;justify-content:space-between}
 #community .listskin .slider .con li .flex .head{display:flex;align-items:center;gap: 10px;margin:0 0 10px;}
 #community .listskin .slider .con li .flex .cate{}
 #community .listskin .slider .con li .flex .cate span{display:flex;align-items: center;justify-content: center;min-width: 40px;height: 20px;padding: 0 6px;border-radius: 15px;background: #fafafa;font-size: 12px;font-weight: bold;}

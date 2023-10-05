@@ -115,8 +115,13 @@
 		    background-color: #5D5D5D;
 		    font-weight: bold;
 		}
-	
-		
+	.swiper-slide{		
+		border-radius:15px;
+		border:1px solid #e2e2e2;
+		padding : 10px;
+		width: 310px;				
+	}
+			
 	</style>
 
 </head>
@@ -467,6 +472,7 @@
     
     //내가쓴글보기
     function myList(no2) {  //최신순으로
+    	alert(no2);
         $.ajax({
         url:"../community/newlist.do",
         method: "GET",

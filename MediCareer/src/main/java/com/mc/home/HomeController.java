@@ -31,4 +31,19 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "home1.do", method = RequestMethod.GET)
+	public String home1(Locale locale, Model model) {
+		
+		log.info("Welcome home! The client locale is{}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat
+			= DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formatedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formatedDate);
+		return "header";
+	}
+	
 }

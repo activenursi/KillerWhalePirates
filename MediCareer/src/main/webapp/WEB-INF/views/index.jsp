@@ -8,7 +8,7 @@
 <title>당신보다 당신을 더 잘 아는 메디커리어</title>
 
 <!-- main.css 파일을 연결 -->
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/css/index.css">
+<link rel="stylesheet" type="text/css" href="./resources/css/index.css">
 
 <style>
 

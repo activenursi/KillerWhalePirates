@@ -105,10 +105,10 @@ public class BoardDaoImpl implements BoardDao{
 		map.put("end", end);
 		map.put("memberNo", writerNo);
 		if(category.equals("전체")) {
-			return sqlSession.selectList(namespace+"communityNewAllList", map);	
+			return sqlSession.selectList(namespace+"communityMyNewAllList", map);	
 		}else {
 			map.put("category", category);
-			return sqlSession.selectList(namespace+"communityNewList", map);
+			return sqlSession.selectList(namespace+"communityMyNewList", map);
 		}
 	}
 	
