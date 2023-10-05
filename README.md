@@ -119,8 +119,9 @@
 
 ## 🔌 Main Page
 
-웹 스크린샷 찍어서 넣어야함!
-
+<p>
+  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/a8dc60cc-0a1e-4a9e-a3c4-f2b05ea0fe80">
+</p>
 <br/>
 
 ## 🛠️ ERD 
