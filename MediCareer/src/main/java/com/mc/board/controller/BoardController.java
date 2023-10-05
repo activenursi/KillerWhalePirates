@@ -130,10 +130,12 @@ public class BoardController {
 	
 	@RequestMapping(value = "/community/newlist.do", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public HashMap<String, Object> communityNewList(@RequestParam("category") String category
-			, @RequestParam(defaultValue = "1") int curPage,  Model model) {
-		log.info("Welcome BoardController newlist! category: {}\n curPage:{}", category, curPage);
-						
+	public HashMap<String, Object> communityNewList(@RequestParam(defaultValue = "전체") String category
+			, @RequestParam(defaultValue = "1") int curPage, @RequestParam(defaultValue = "-1") int writerNo
+			, Model model) {
+		log.info("Welcome BoardController newlist! category: {}\n curPage:{}\n"+"writerNo:"+writerNo, category, curPage);
+		
+		
 		int totalCount = boardService.newListTotalCount(category);
 		
 		Paging boardPaging = new Paging(totalCount, curPage);
@@ -141,7 +143,7 @@ public class BoardController {
 		int start = boardPaging.getPageBegin();
 		int end = boardPaging.getPageEnd();
 		
-		List<BoardDto> boardList = boardService.communityNewList(category, start, end);
+		List<BoardDto> boardList = boardService.communityNewList(category, start, end, writerNo);
 		
 		HashMap<String, Object> boardListMap = new HashMap<>();
 		boardListMap.put("totalCount", totalCount);

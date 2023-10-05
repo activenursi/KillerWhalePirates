@@ -155,6 +155,7 @@
 			, BOARD_MOD_DATE, CM_NO, CATEGORY
 		FROM BOARD
 		ORDER BY BOARD_VIEW_COUNT DESC
+		
 	</select>
 	
 	  <select id="communityBestList"  resultMap="boardResultMap">
@@ -164,6 +165,7 @@
 		FROM BOARD
 		WHERE CATEGORY = #{category}
 		ORDER BY BOARD_VIEW_COUNT DESC
+	
 	</select>
 	
 	  <select id="communityNewAllList"  parameterType="map" resultMap="boardResultMap">
@@ -178,7 +180,8 @@
 							, BOARD_CONTENT, BOARD_VIEW_COUNT, BOARD_RECOMMEND 
 							, BOARD_WRITE_DATE, CM_NO, CATEGORY
 		                FROM BOARD 
-		                ORDER BY BOARD_WRITE_DATE DESC) B
+		                ORDER BY BOARD_WRITE_DATE DESC
+		                <if test="memberNo!==-1">WHERE CM_NO = #{memberNo}</if>) B
 		) NEWLIST
 		WHERE NEWLIST.R_NUM BETWEEN #{start} AND #{end}
 	</select>

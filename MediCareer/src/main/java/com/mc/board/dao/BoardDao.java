@@ -24,4 +24,6 @@ public interface BoardDao {
 
 	public int newListTotalCount(String category);
 
+	public List<BoardDto> communityMyNewList(String category, int start, int end, int writerNo);
+
 }

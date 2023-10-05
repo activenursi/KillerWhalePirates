@@ -25,6 +25,8 @@
 
 	<!-- Demo styles -->
 	<style>
+		
+	
 		html,
 		body {
 			position: relative;
@@ -43,14 +45,6 @@
 			height: 100%;
 		}
 		
-		.swiper-slide {
-			text-align: center;
-			font-size: 18px;
-			background: #fff;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
 		
 		.swiper-slide img {
 			display: block;
@@ -65,13 +59,13 @@
 			color: gray;
 		}
 		
-		.board_title {
+		.subject {
 			text-align: left;
 			font-size: 25px;
 			font-weight: bold;
 		}
 		
-		.board_content {
+		.text {
 			text-align: left;
 			font-size: 14px;
 		}
@@ -97,7 +91,6 @@
 		   list-style-type: none;
 		    padding: 0;
 		    overflow: hidden;
-		    background-color: #333333;
 		/*     width: 1000px; */ /* 넓이를 주면 고정  */
 		    display: table; /* table을 주면  요소의 내용에 맞게 자동으로 크기 */
 		    margin-left: auto;
@@ -111,7 +104,7 @@
 		
 		nav > ul > li > a {
 		    display: block;
-		    color: white; 
+		    color: black; 
 		    text-align: center;
 		    padding: 16px;
 		    text-decoration: none;
@@ -122,6 +115,8 @@
 		    background-color: #5D5D5D;
 		    font-weight: bold;
 		}
+	
+		
 	</style>
 
 </head>
@@ -145,7 +140,6 @@
 		</div>
         <div class="control">
             <a href="#" class="ctr_top"><i></i> <p class="skip">상단으로 이동</p></a>
-<!--             <?php if ($write_href) { ?><a href=<?php echo $write_href ?> class="ctr_write"><i></i> <p class="skip">글쓰기</p></a><?php } ?> -->
           
         </div>
         
@@ -166,7 +160,7 @@
                     <div class="tool">
                         <ul>
                             <li><a href="./add.do" class="btn btn_08"><span>글쓰기</span></a></li>
-                            <li><a href="#" class="btn btn_01"><span>답변하기</span></a></li>
+                            <!-- <li><a href="#" class="btn btn_01"><span>답변하기</span></a></li> -->
                         </ul>
                     </div>
                     
@@ -174,7 +168,6 @@
                 <div class="slider bestslider">
                     <div class="tit">Today Best</div>
                     <div class="con">
-                        <!--id="bestList"-->
                         <ul class="swiper-wrapper" id="bestList">
 							
 
@@ -190,7 +183,7 @@
                 <div class="middle">
                     <div class="onlyme">
                         <label>
-                            <input type="checkbox"><p>내 질문만 보기</p>
+                            <input type="checkbox" onclick="myList(${member.no})"><p> ${member.no}내가 쓴글 만 보기</p>
                         </label>
                     </div>
                     
@@ -289,7 +282,7 @@
 	            	// 밀리초를 일로 변환 (1일 = 24시간 * 60분 * 60초 * 1000밀리초)
 	            	var daysAgo = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
 	            	
-	                var html = '<li class="swiper-slide" onclick="location.href=\'\';">';
+	            	var html = '<li class="swiper-slide" onclick="location.href=\'\';" style="width: 310px;">';
 	                html += '<div class="flex">';
 	                html += '<div class="lt-item">';
 	                html += '<div class="head">';
@@ -321,7 +314,7 @@
 	                html += '</div>';
 	                html += '<div class="bottom">';
 	                html += '<div class="info">';
-	                html += '<span>' + daysAgo + '일 전|</span>';
+	                html += '<span>' + daysAgo + '일 전</span>';
 	                html += '<span>' + data[i].writer + '</span>';
 	                html += '</div>';
 	                html += '<div class="tool">';
@@ -438,7 +431,7 @@
 
                 if (boardPaging.prevBlock !== 1) {
                     pagehtml += '<li>';
-                    pagehtml += '<a href="#" class="pageNum" onclick="goPage(' + boardPaging.prevBlock + ');">';
+                    pagehtml += '<a href="#" class="pageNum" onclick="goPage(\'' + data.category + '\',' + boardPaging.prevBlock + ');">';
                     pagehtml += '<span>≪</span>';
                     pagehtml += '</a>';
                     pagehtml += '</li>';
@@ -471,8 +464,149 @@
        
         })
     }
+    
+    //내가쓴글보기
+    function myList(no2) {  //최신순으로
+        $.ajax({
+        url:"../community/newlist.do",
+        method: "GET",
+        data:{
+        	writerNo : no2
+        },
+        success: function(data) {
+        	
+            var NewListObj = document.getElementById('newList');
+            NewListObj.innerHTML = ''; // 목록 초기화
+            var currentDate = new Date();
+            var boardList = data.boardList;
+            
+            
+            if (boardList.length === 0) {
+                // data가 비어있을 경우 검색 결과가 없는 메시지를 추가
+                var html = '<div class="bot">';
+                html += '검색 결과가 없습니다.';
+                html += '</div>';
+                
+             // ul 요소에 HTML 코드 추가
+                NewListObj.innerHTML += html;
+            } else {
+	            for (var i = 0; i < boardList.length; i++) {
+	            	var writeDate = new Date(boardList[i].write_date);
+	            	// 두 날짜 간의 차이를 계산
+	            	var timeDifference = currentDate - writeDate;
+	            	// 밀리초를 일로 변환 (1일 = 24시간 * 60분 * 60초 * 1000밀리초)
+	            	var daysAgo = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
+	            	
+	            	var html = '<li onclick="location.href=글경로">';
+	            	html += '<div class="flex">';
+	            	html += '<div class="lt-item">';
+	            	html += '<div class="head">';
+	            	html += '<div class="cate">';
+	            		if (boardList[i].category == '전체') {
+	            	        html += '<span class="cate01">전체</span>';
+	            	    } else if (boardList[i].category == '일상') {
+	            	        html += '<span class="cate02">일상</span>';
+	            	    } else if (boardList[i].category == '취업') {
+	            	        html += '<span class="cate03">취업</span>';
+	            	    } else if (boardList[i].category == '해외') {
+	            	        html += '<span class="cate03">해외</span>';
+	            	    }	
+	
+	            	html += '</div>';
+	            	html += '<div class="hash"><span>#수술</span> <span>#수술방</span> <span>#정형외과</span></div>';
+	            	html += '</div>';
+	            	html += '<div class="subject">';
+	            	html += '<a href="#">' + boardList[i].title + '</a>';
+	            	html += '</div>';
+	            	html += '<div class="text">';
+	            	html += '<a href="#">' + boardList[i].content + '</a>';
+	            	html += '</div>';
+	            	html += '</div>';
+	            	html += '<div class="rt-item"></div>';
+	            	html += '</div>';
+	            	html += '<div class="bottom">';
+	            	html += '<div class="info">';
+	            	html += '<span>' + daysAgo + '일 전|</span>';
+			            	if(boardList[i].writer == 'on'){
+			            		html+= '<span>익명</span>';
+			            	}else{
+			            		html+= '<span>'+boardList[i].writer+'</span>';
+			            	}
+	            	html += '</div>';
+	            	html += '<div class="tool">';
+	            	html += '<a href="javascript:;"><img src="../resources/img/icon_latest_viewer.png">';
+	            	html +=	'<em>' + boardList[i].view_count + '</em></a>';
+	            	html += '<a href="javascript:;"><img src="../resources/img/icon_latest_bookmark.png">';
+	            	html +=	'<em>' + boardList[i].recommend + '</em></a>';
+	            	html += '<a href="javascript:;"><img src="../resources/img/icon_latest_comment.png"><em><span id="replyCnt">1</span></em></a>';
+	            	html += '</div>';
+	            	html += '</div>';
+	            	html += '</li>';
+	            	
+	            	
+	            	// ul 요소에 HTML 코드 추가
+	                NewListObj.innerHTML += html;
+	            }//else 안에 for문종료    
+	           
+	            
+	            var boardPaging = data.boardPaging; 
+	            var newPaging = document.getElementsByClassName('newListPage')[0];
+	            
+	            var pagehtml = '<ul>';
+
+                if (boardPaging.prevBlock !== 1) {
+                    pagehtml += '<li>';
+                    pagehtml += '<a href="#" class="pageNum" onclick="goPage(\'' + data.category + '\',' + boardPaging.prevBlock + ');">';
+                    pagehtml += '<span>≪</span>';
+                    pagehtml += '</a>';
+                    pagehtml += '</li>';
+                }
+
+                for (var num = boardPaging.blockBegin; num <= boardPaging.blockEnd; num++) {
+                    pagehtml += '<li>';
+                    pagehtml += '<a href="#" onclick="goPage(\'' + data.category + '\',' + num + ')">' + num + '</a>';
+                    pagehtml += '</li>';
+                }
+
+                if (boardPaging.curBlock < boardPaging.totBlock) {
+                    pagehtml += '<li>';
+                    pagehtml += '<a href="#" onclick="goPage(\'' + data.category + '\',' + boardPaging.nextBlock + ');">';
+                    pagehtml += '<span>≫</span>';
+                    pagehtml += '</a>';
+                    pagehtml += '</li>';
+                }
+                
+                pagehtml += '</ul>';
+                newPaging.innerHTML = ''; //페이징초기화
+	            newPaging.innerHTML += pagehtml;
+	                  
+        	}//else 종료
+        },
+        error: function(xhr, status, error) {
+            // 오류 처리
+            alert("오류남");
+        }
+       
+        })
+    }
+    
+    
     function goPage(category,pageNumber){
 		
     	getNewList(category,pageNumber);
-	}  	
+	}
+    
+    var pageLinks = document.querySelectorAll(".pagination .page");
+
+    pageLinks.forEach(function(link) {
+      link.addEventListener("click", function() {
+        // 모든 페이지 링크의 활성 클래스 제거
+        pageLinks.forEach(function(page) {
+          page.classList.remove("active");
+        });
+        
+        // 현재 클릭한 페이지 링크에 활성 클래스 추가
+        this.classList.add("active");
+      });
+    });
 </script>

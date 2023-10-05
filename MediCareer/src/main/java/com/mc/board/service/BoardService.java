@@ -23,7 +23,7 @@ public interface BoardService {
 
 	public List<BoardDto> communityBestList(String category);
 
-	public List<BoardDto> communityNewList(String category, int start, int end);
+	public List<BoardDto> communityNewList(String category, int start, int end, int writerNo);
 
 	public int newListTotalCount(String category);
 

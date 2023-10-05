@@ -73,14 +73,20 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDto> communityNewList(String category, int start, int end) {
+	public List<BoardDto> communityNewList(String category, int start, int end,int writerNo) {
 		// TODO Auto-generated method stub
-		return boardDao.communityNewList(category, start, end);
+		if(writerNo == -1) {
+			return boardDao.communityNewList(category, start, end);
+		}else {
+			return boardDao.communityMyNewList(category, start, end, writerNo);
+		}
+		
 	}
 
 	@Override
 	public int newListTotalCount(String category) {
 		// TODO Auto-generated method stub
+		
 		return boardDao.newListTotalCount(category);
 	}
 }
