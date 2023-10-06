@@ -10,20 +10,20 @@
 범고래 해적단의 팀 프로젝트입니다.
 </h4>
 
-# MyMerci
+## MyMerci
 
 <b>의료인을 대상으로 하는 선배 QnA 커뮤니티 플랫폼 구축</b>
 
 <br/>
 
-### 👀 What Project is It?
+## 👀 What Project is It?
 
 우리의 목표는 의료 분야에서 서로를 빠르고 정확하게 연결하여 의료 서비스의 품질을 향상시키는 데 기여하는 것입니다.✍️ 
 이를 통해 의료 현장의 효율성을 증대시키고, 더 나은 의료시스템을 만드는 것에 기여하는 것 입니다.🎉
 
 <br/>
 
-### 📆 프로젝트 기간
+## 📆 프로젝트 기간
 
 - 2023.08.01 ~ 2023.10.11
 
@@ -43,14 +43,14 @@
 
 <br/>
 
-### 😎 Work breakdown structure
+## 😎 Work breakdown structure
 <p>
   <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/055311e7-9584-468d-96cb-f352b4312ca4">
 </p>
 <br/>
 <br/>
 
-### 😊 Information Architechture
+## 😊 Information Architechture
 <p>
   <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/64b4f717-6f9c-4f40-87a9-a4d73d1928ca">
 </p>
@@ -59,7 +59,7 @@
 ## 🛠 Tech Stack 
 <p>✨ Platforms & Languages ✨</p>
 
-#### Design
+## Design
 
 <p>
   <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white"/>
@@ -68,7 +68,7 @@
   <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 </p>
 
-#### Frontend
+## Frontend
 
 <p>
   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
@@ -77,7 +77,7 @@
 </p>
 
 
-#### Infrastructure
+## Infrastructure
 
 <p>
   <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" > 
@@ -85,7 +85,7 @@
   <img src="https://img.shields.io/badge/route53-F7A81B?style=for-the-badge&logo=route53&logoColor=white">
 </p>
 
-#### Dev tools
+## Dev tools
 
 <p> 
   <img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white">
@@ -119,12 +119,15 @@
 
 ## 🔌 Main Page
 
-웹 스크린샷 찍어서 넣어야함!
-
+<p>
+  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/a8dc60cc-0a1e-4a9e-a3c4-f2b05ea0fe80">
+</p>
 <br/>
 
-### 🛠️ ERD 
+## 🛠️ ERD 
+<p>
+  <img src="https://github.com/activenursi/KillerWhalePirates/assets/117716774/c12908f5-c850-4493-9cd3-368c9d770a76">
+</p>
 
-erd 넣어야함 https://github.com/new-place-Team/InSplace-BE 여기 참고
 
-# 🙏 Thank You
+## 🙏 Thank You
