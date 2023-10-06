@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mc.board.dto.BoardDto;
 import com.mc.board.service.BoardService;
+import com.mc.member.dto.MemberDto;
 import com.mc.util.Paging;
 
 @Controller
@@ -160,5 +161,18 @@ public class BoardController {
 		
 		
 		return "./board/BoardList";
+	}
+	
+	@RequestMapping(value="/board/detail.do", method = RequestMethod.GET)
+	public String boardListOne(int no, Model model) {
+		log.debug("Welcome boardController boardlistOne - {}!" + no);
+		
+		Map<String, Object> map = boardService.boardSelectOne(no);
+		
+		BoardDto boardDto = (BoardDto)map.get("boardDto");
+	
+		model.addAttribute("boardDto", boardDto);
+		
+		return "./board/BoardDetail";
 	}
 }

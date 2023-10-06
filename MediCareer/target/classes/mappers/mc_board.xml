@@ -57,7 +57,7 @@
 	</select>
 	
 	<select id="boardSelectOne" resultMap="boardResultMap">
-		SELECT BOARD_NO, BOARD_WRITER, BBOARD_TITLE
+		SELECT BOARD_NO, BOARD_WRITER, BOARD_TITLE
 			, BOARD_CONTENT, BOARD_VIEW_COUNT, BOARD_RECOMMEND 
 			, BOARD_WRITE_DATE, CM_NO
 		FROM BOARD
@@ -181,7 +181,7 @@
 							, BOARD_WRITE_DATE, CM_NO, CATEGORY
 		                FROM BOARD 
 		                ORDER BY BOARD_WRITE_DATE DESC
-		                <if test="memberNo!==-1">WHERE CM_NO = #{memberNo}</if>) B
+		               ) B
 		) NEWLIST
 		WHERE NEWLIST.R_NUM BETWEEN #{start} AND #{end}
 	</select>

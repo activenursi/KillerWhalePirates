@@ -9,7 +9,7 @@
 <title>게시글 상세</title>
 
 	<!-- CSS 파일 연결 -->
- 	<link rel="stylesheet" type="text/css" href="resources/css/index.css">
+ 	<link rel="stylesheet" type="text/css" href="../resources/css/index.css">
 <style>
 #layerPopup{
     padding: 10px 10px;
@@ -44,6 +44,8 @@
 
 
 </style>
+
+
 </head>
 
 <body>
@@ -75,10 +77,13 @@
 			</c:if>          
         </div>
         <div class="upper">
-            <div class="subject">글제목출력하기</div>
+            <div class="subject">${boardDto.title}</div>
             <div class="info">
-                <span> 몇 일전?날짜표시</span>
-                <span> 작성자 </span>
+                <span id="date"></span>
+                <span>${boardDto.writer}</span>
+            </div>
+            <div class="content">
+            	<span>${boardDto.content}</span>
             </div>
         </div>
         
@@ -98,7 +103,7 @@
 			
         </div>
         <div class="comment">
-
+				
             <div class="uppr">
                 <div class="total">댓글 <span id="replyCnt">1(댓글수)</span></div>
 
@@ -131,12 +136,19 @@
            		
         </div>
     </section>
-
-    
-
-
-
-
-
 </body>
+
+<script type="text/javascript">
+	window.onload = function() {
+	    var currentDate = new Date(); // 현재 날짜와 시간을 가져옵니다.
+	    var writeDate = new Date(${boardDto.write_date});
+	    // 두 날짜 간의 차이를 계산
+	    var timeDifference = currentDate - writeDate;
+	    alert(timeDifference);
+	    // 밀리초를 일로 변환 (1일 = 24시간 * 60분 * 60초 * 1000밀리초)
+	    var daysAgo = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
+	    var daysObj = document.getElementsById("date");
+	    daysObj.innerHTML = daysAgo + '일 전'; 
+}
+</script>
 </html>
