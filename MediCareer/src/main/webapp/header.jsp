@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>header 랜딩페이지 헤더</title>
+<title>header</title>
 
 <link rel="stylesheet" type="text/css" href="./resources/css/index2.css">
 <style>
@@ -30,7 +30,9 @@
   border: 1px solid #888;
   width: 300px;
   text-align: center;
-}
+	}
+
+
 header .sub-menu {
 	margin-right: 150px;
 }
@@ -53,9 +55,6 @@ header .sub-menu {
 .menu_wrap {
 	margin: 0 15px; /* 메뉴 항목 사이 간격 설정 */
 }
-.sub-menu {
-	display: flex;
-}
 .sub_menu1 {
 	display:flex;
 	list-style: none;
@@ -74,7 +73,9 @@ header .sub-menu {
 	list-style: none;
 	font-size: 20px;
 	padding-right: 600px;
-}
+	}
+
+
 .sub-menuWrap1 {
 	display:flex;
 	flex:1;
@@ -91,7 +92,7 @@ header .sub-menu {
 }
 .member_wrap, .board_wrap, .customer_wrap, .search_wrap, .login_wrap {
 	text-decoration: none;
-	color: #000000;
+	color: #FFFFFF;
 	font-weight: bold;
 }
 </style>
@@ -117,55 +118,48 @@ header .sub-menu {
 </script>
 </head>
 <body>
-	<header id="header_wrap">
-		<div class="inner_wrap">
-			<nav class="menu">
-				<h2 class="medi-title" style="color:blue">MEDI<span style="color:gray">:</span><span style="color:#FF0064">CAREER</span></h2>
-                  <div class="sub-menu">
+
+		<header>
+		<div class="inner">
+			<a href="./home.do" class="logo"> 
+			<img src="./resources/images/medicareer_logo.png" style="width: 100px;"
+				alt="메디커리어">
+			</a>
+			
 			<c:choose>
-               <c:when test="${sessionScope.member.email ne null}">
-                     <ul class="sub_menu1">
-                        <li style="margin-right:40px"><a href="./jobPosting/em_list.do">채용공고</a></li>
-                        <li style="margin-right:40px"><a href="./board/board.do">커뮤니티</a></li>
-                        <li style="margin-right:40px"><a href="./member/myPage.do?no=${member.no}">마이페이지</a></li>
-                        
-                     </ul>
-                     <span class="sub-menuWrap2"style="float: right;"> ${member.name}님 <a
-                        style="color: #000000;"
-                        href="#" onclick="showLogoutModal()">로그아웃</a>
-                     </span>
-               </c:when>
-               <c:otherwise>
-                     <ul class="sub_menu3">
-                        <li style="margin-right:40px"><a href="#">채용공고</a></li>
-                        <li style="margin-right:40px"><a href="#">커뮤니티</a></li>
-                        <li style="margin-right:40px"><a href="#">마이페이지</a></li>
-                     </ul>
-                     <span class="sub-menuWrap1" style="float: right;"> <a style="color:#000000;" href="./auth/login.do">로그인</a>
-                     </span>
-               </c:otherwise>
-            </c:choose>
-                    </div>
-<!-- 				
-<ul class="sub_menu1"> -->
-<!-- 					<li class="menu_wrap"> -->
-<!-- 						<a href="#" class="member_wrap">채용공고</a> -->
-<!-- 					</li> -->
-<!-- 					<li class="menu_wrap"> -->
-<!-- 						<a href="#" class="board_wrap">커뮤니티</a> -->
-<!-- 					</li> -->
-<!-- 					<li class="menu_wrap"> -->
-<!-- 						<a href="#" class="customer_wrap">마이페이지</a> -->
-<!-- 					</li> -->
-<!-- 				</ul> -->
-<!-- 				<ul class="sub_menu2"> -->
-<!-- 					<li class="menu_wrap"> -->
-<!-- 						<a href="#" class="login_wrap">로그인</a> -->
-<!-- 					</li> -->
-<!-- 				</ul> -->
-			</nav>
+			<c:when test="${sessionScope.member.email ne null}">
+				<div class="sub-menu">
+					<ul class="menu" style="display:flex">
+						<li><a href="./jobPosting/em_list.do">채용 공고</a></li>
+						<li><a href="./board/board.do">커뮤니티</a></li>
+						<li><a href="./member/myPage.do?no=${member.no}">마이페이지</a></li>
+						
+					</ul>
+					<span style="float: right;"> ${member.name}님 <a
+						style="color: white;"
+						href="#" onclick="showLogoutModal()">로그아웃</a>
+					</span>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="sub-menu">
+					<ul class="menu1">
+						<li><a href="#">채용 공고</a></li>
+						<li><a href="#">커뮤니티</a></li>
+						<li><a href="#">마이페이지</a></li>
+					</ul>
+					<span style="float: right;"> <a style="color: white;"
+						href="./auth/login.do">로그인</a>
+					</span>
+				</div>
+			</c:otherwise>
+		</c:choose>
 		</div>
+
+	
+		
 	</header>
+	
 	<div id="logoutModal" class="modal">
         <div class="modal-content">
           <p>로그아웃 하시겠습니까?</p>
