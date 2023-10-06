@@ -45,7 +45,7 @@
 
 </style>
 
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
 <body>
@@ -92,12 +92,12 @@
                 <div class="tit">태그</div>
                 <div class="txt"></div>
             </div>
-			<script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous"> </script>
+		
             <div class="like">
                 <a href="javascript:setGood();" id="good_buttonA"><i class="ic-like-o"></i> 
-					<p>
+				
 						<span id="gCnt">조회수</span>
-					</p>
+				
 				</a>
             </div>
 			
@@ -106,24 +106,28 @@
 				
             <div class="uppr">
                 <div class="total">댓글 <span id="replyCnt">1(댓글수)</span></div>
-
-	                <div class="act"><a href="javascript:viewReply();">댓글달기</a></div>
+				<div class="replyList">
+					<ul>
+					
+					</ul>
+				</div>
+	              <div class="act"><a href="#" id="commentLink">댓글달기</a></div>
 				
             </div>
             
-			<div class="answer" id="replyWrite" name="replyWrite" style="display:block">
+			<div class="answer" id="replyWrite" name="replyWrite">
                 <div class="fhead">
                     <div class="tit">작성하기</div>
                 </div>
                 <div class="ftext">
 					<div class="tw-p-3.5 tw-overflow-y-auto tw-max-h-[500px]">
-						<textarea style="height: 120px !important;width:100%;border:solid 0.5px #fff;" placeholder="질문에 대한 답변을 남겨주세요." style="height: 120px !important;" id="wr_content" name="wr_content" class="wr_content"></textarea>
+						<textarea style="height: 120px !important;width:100%;border:solid 0.5px #fff;" placeholder="댓글을 남겨주세요." style="height: 120px !important;" id="wr_content" name="wr_content" class="wr_content"></textarea>
 						<div id="write_error_msg" class="write_error_msg" style="color: red;"></div>
 					</div>
                 </div>
                 <div class="fboot">                  
 					<div class="con1" style="text-align:right">
-						<a href="javascript:writeDb();" style="background-color: #55dfff;">댓글달기</a>
+						<a href="javascript:writeDb();" style="background-color: #55dfff;">작성하기</a>
 					</div>
                 </div>
             </div>
@@ -136,6 +140,7 @@
            		
         </div>
     </section>
+</div>
 </body>
 
 <script type="text/javascript">
@@ -149,6 +154,8 @@
 	    var daysAgo = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
 	    var daysObj = document.getElementsById("date");
 	    daysObj.innerHTML = daysAgo + '일 전'; 
-}
+	}
+
+	
 </script>
 </html>

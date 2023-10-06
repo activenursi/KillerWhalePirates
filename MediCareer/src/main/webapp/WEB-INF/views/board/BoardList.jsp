@@ -127,7 +127,7 @@
 </head>
 
 <body>
-<%-- 	<%@include file ="/header.jsp" %> --%>
+ 	<%-- <%@include file ="../header.jsp" %> --%>
 <div id="community" >
     <div class="wrap">
         <section id="header">
@@ -287,7 +287,7 @@
 	            	// 밀리초를 일로 변환 (1일 = 24시간 * 60분 * 60초 * 1000밀리초)
 	            	var daysAgo = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
 	            	
-	            	var html = '<li class="swiper-slide" onclick="location.href=\'\';" style="width: 310px;">';
+	            	var html = '<li class="swiper-slide" onclick="location.href=\'\';" style="width: 310px !important;">';
 	                html += '<div class="flex">';
 	                html += '<div class="lt-item">';
 	                html += '<div class="head">';
