@@ -94,5 +94,11 @@ public class MemberDaoImpl implements MemberDao{
 		return result;
 	}
 
+	@Override
+	public int resetPassword(MemberDto memberDto) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(namespace+"resetPassword", memberDto);
+	}
+
 	
 }

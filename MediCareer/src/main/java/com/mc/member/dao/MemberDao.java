@@ -25,5 +25,7 @@ public interface MemberDao {
 	public int memberNicknameCheck(MemberDto memberDto) throws Exception;
 	
 	public int memberEmailIdentify(MemberDto memberDto) throws Exception;
+	
+	public int resetPassword(MemberDto memberDto);
 
 }

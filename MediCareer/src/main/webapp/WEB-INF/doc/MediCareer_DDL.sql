@@ -355,3 +355,197 @@ CREATE SEQUENCE RESUME_NO_SEQ
 INCREMENT BY 1
 START WITH 1;
 
+--채용공고
+CREATE TABLE JOBPOSTING(
+    JOBPOSTING_NO NUMBER,
+    JOBPOSTING_TITLE VARCHAR2(300),
+    EMPLOYMENT_TYPE VARCHAR2(30),
+    LOCATION_NAME VARCHAR2(100),
+    WORKING_HOUR VARCHAR2(100),
+    SALARY VARCHAR2(50),
+    GENDER VARCHAR2(30),
+    AGE VARCHAR2(30),
+    EDUCATION VARCHAR2(60),
+    CAREER VARCHAR2(100),
+    PRIMARY_DUTIES1 VARCHAR2(100),
+    PRIMARY_DUTIES2 VARCHAR2(100),
+    PRIMARY_DUTIES3 VARCHAR2(100),
+    RECRUITER_NAME VARCHAR2(30),
+    RECRUITER_PHONE VARCHAR2(50),
+    RECRUITER_EMAIL VARCHAR2(100),
+    RECRUITMENT_PROCESS VARCHAR2(30),
+    EMPLOYEE_BENEFIT VARCHAR2(300),
+    ADDRESS VARCHAR2(200),
+    APPLICATION_PERIOD VARCHAR2(100),
+    CREATE_DATE DATE,
+    EM_NO NUMBER,
+    EM_NAME VARCHAR2(60)
+);
+
+--고객센터 글 테이블 논리명 지정
+COMMENT ON TABLE JOBPOSTING IS '채용공고';
+
+COMMENT ON COLUMN JOBPOSTING.JOBPOSTING_NO IS '공고번호';
+COMMENT ON COLUMN JOBPOSTING.JOBPOSTING_TITLE IS '공고제목';
+COMMENT ON COLUMN JOBPOSTING.EMPLOYMENT_TYPE IS '근무형태';
+COMMENT ON COLUMN JOBPOSTING.LOCATION_NAME IS '근무지역';
+COMMENT ON COLUMN JOBPOSTING.WORKING_HOUR IS '근무시간';
+COMMENT ON COLUMN JOBPOSTING.SALARY IS '급여';
+COMMENT ON COLUMN JOBPOSTING.GENDER IS '성별';
+COMMENT ON COLUMN JOBPOSTING.AGE IS '연령';
+COMMENT ON COLUMN JOBPOSTING.EDUCATION IS '학력';
+COMMENT ON COLUMN JOBPOSTING.CAREER IS '경력';
+COMMENT ON COLUMN JOBPOSTING.PRIMARY_DUTIES1 IS '주요업무1';
+COMMENT ON COLUMN JOBPOSTING.PRIMARY_DUTIES2 IS '주요업무2';
+COMMENT ON COLUMN JOBPOSTING.PRIMARY_DUTIES3 IS '주요업무3';
+COMMENT ON COLUMN JOBPOSTING.RECRUITER_NAME IS '채용담당자명';
+COMMENT ON COLUMN JOBPOSTING.RECRUITER_PHONE IS '담당자연락처';
+COMMENT ON COLUMN JOBPOSTING.RECRUITER_EMAIL IS '담당자이메일';
+COMMENT ON COLUMN JOBPOSTING.RECRUITMENT_PROCESS IS '전형절차TYPE';
+COMMENT ON COLUMN JOBPOSTING.EMPLOYEE_BENEFIT IS '복리후생';
+COMMENT ON COLUMN JOBPOSTING.ADDRESS IS '근무위치';
+COMMENT ON COLUMN JOBPOSTING.APPLICATION_PERIOD IS '모집기간';
+COMMENT ON COLUMN JOBPOSTING.EM_NO IS '기업회원번호';
+COMMENT ON COLUMN JOBPOSTING.EM_NAME IS '기업이름';
+
+--고객센터게시판 테이블 기본 키 설정(게시글 식별번호)
+ALTER TABLE JOBPOSTING
+ADD CONSTRAINT JOBPOSTING_NO_PK PRIMARY KEY(JOBPOSTING_NO);
+
+--고객센터게시판 테이블 외래키 지정(게시글 식별번호)
+ALTER TABLE JOBPOSTING
+ADD CONSTRAINT FK_JOBPOSTING_EM_NO
+FOREIGN KEY (EM_NO)
+REFERENCES ENTERPRISE_MEMBER (EM_NO);
+
+--고객센터게시판 테이블 식별번호에 쓰일 시퀀스 생성
+CREATE SEQUENCE JOBPOSTING_NO_SEQ
+INCREMENT BY 1
+START WITH 1;
+
+-- 채용공고 더미
+Insert into jobposting 
+(JOBPOSTING_NO,JOBPOSTING_TITLE,EMPLOYMENT_TYPE,LOCATION_NAME,WORKING_HOUR,SALARY,GENDER,AGE,EDUCATION,CAREER,PRIMARY_DUTIES1,PRIMARY_DUTIES2,PRIMARY_DUTIES3,RECRUITER_NAME,RECRUITER_PHONE,RECRUITER_EMAIL,RECRUITMENT_PROCESS,EMPLOYEE_BENEFIT,ADDRESS,APPLICATION_PERIOD,CREATE_DATE,EM_NO,EM_NAME)
+values (11,'충주 인플란트 치과 진료실 스텝모집','정규직','충북 충주시','09시~18시','230~310','여자','24세','고졸이상','동종경험우대','치위생사','치위생','응대','조성영','043-842-8675','josungyung@naver.com','진행중','기본3종','충북 충주시 연수동산로2길 14층','등록하기',to_date('23/09/18','RR/MM/DD'),1,'입플란트치과');
+
+Insert into jobposting 
+(JOBPOSTING_NO,JOBPOSTING_TITLE,EMPLOYMENT_TYPE,LOCATION_NAME,WORKING_HOUR,SALARY,GENDER,AGE,EDUCATION,CAREER,PRIMARY_DUTIES1,PRIMARY_DUTIES2,PRIMARY_DUTIES3,RECRUITER_NAME,RECRUITER_PHONE,RECRUITER_EMAIL,RECRUITMENT_PROCESS,EMPLOYEE_BENEFIT,ADDRESS,APPLICATION_PERIOD,CREATE_DATE,EM_NO,EM_NAME)
+values (12,'미래병원 방사선사 모집합니다.','정규직','전북 김제','09시~18시','월 250~','성별무관','30세~35세','고졸이상','동종경험우대','방사선사','방사선사','응대','김메디','010-2544-4111','melehospi@naver.com','진행중','기본3종','서울시 강남구 논현동 ez빌딩 medi','등록하기',to_date('23/09/22','RR/MM/DD'),1,'미래병원');
+
+Insert into jobposting 
+(JOBPOSTING_NO,JOBPOSTING_TITLE,EMPLOYMENT_TYPE,LOCATION_NAME,WORKING_HOUR,SALARY,GENDER,AGE,EDUCATION,CAREER,PRIMARY_DUTIES1,PRIMARY_DUTIES2,PRIMARY_DUTIES3,RECRUITER_NAME,RECRUITER_PHONE,RECRUITER_EMAIL,RECRUITMENT_PROCESS,EMPLOYEE_BENEFIT,ADDRESS,APPLICATION_PERIOD,CREATE_DATE,EM_NO,EM_NAME)
+values (13,'피부과 간호조무사 선생님 모십니다.','정규직','서울 서초구','주간','월 220~','성별무관','~40세','고졸이상','피부과(1~3년경력)','피부과','피부과','응대','맹선희','02-578-7600','medicellplus@gmail.com','진행중','기본3종','서울 서초구 남부순환로 2646 메디셀 플러스 의원빌딩','등록하기',to_date('23/09/17','RR/MM/DD'),1,'메디셀플러스');
+
+Insert into jobposting 
+(JOBPOSTING_NO,JOBPOSTING_TITLE,EMPLOYMENT_TYPE,LOCATION_NAME,WORKING_HOUR,SALARY,GENDER,AGE,EDUCATION,CAREER,PRIMARY_DUTIES1,PRIMARY_DUTIES2,PRIMARY_DUTIES3,RECRUITER_NAME,RECRUITER_PHONE,RECRUITER_EMAIL,RECRUITMENT_PROCESS,EMPLOYEE_BENEFIT,ADDRESS,APPLICATION_PERIOD,CREATE_DATE,EM_NO,EM_NAME)
+values (14,'미즈메디병원에서 방사선사 선생님 모십니다.','정규직','서울 강서구','평일: 08:30~17:30 / 토: 08:30~12:30(주 40시간 근무)'
+,'연 3,500만원이상(내규결정)','무관','나이무관','대학(2,3년)','무관','일반촬영','흉부촬영','영상의학과 전반적인 업무','인사총무팀','02-2007-1004','mizemedi@naver.com','진행중','기본3종','서울 강서구 강서로 295 의)성삼의료재단미즈메디병원','등록하기',to_date('23/09/22','RR/MM/DD'),1,'미즈메디병원');
+
+Insert into jobposting 
+(JOBPOSTING_NO,JOBPOSTING_TITLE,EMPLOYMENT_TYPE,LOCATION_NAME,WORKING_HOUR,SALARY,GENDER,AGE,EDUCATION,CAREER,PRIMARY_DUTIES1,PRIMARY_DUTIES2,PRIMARY_DUTIES3,RECRUITER_NAME,RECRUITER_PHONE,RECRUITER_EMAIL,RECRUITMENT_PROCESS,EMPLOYEE_BENEFIT,ADDRESS,APPLICATION_PERIOD,CREATE_DATE,EM_NO,EM_NAME)
+values (15,'저희 병원에서 같이 일하실 성실한 직원을 초빙합니다.','정규직','서울 용산구','주간','월 201~','여','나이무관','고졸이상','신입가능','피부과','피부과','응대','서혁진','02-578-7600','medicellplus@gmail.com','진행중','기본3종','서울 용산구 독서당로 86 한성빌딩 3층, 치과','등록하기',to_date('23/09/17','RR/MM/DD'),1,'유엔빌리지치과');
+
+-- 일반회원 더미
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (1,'박영희','박영희','1email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (2,'김주원','김주원','2email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (3,'정승호','정승호','3email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (4,'이지현','이지현','4email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (5,'최지우','최지우','5email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (6,'정수민','정수민','6email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (7,'김영수','김영수','7email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (8,'박민준','박민준','8email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (9,'임동우','임동우','9email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (10,'박성민','박성민','10email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (11,'임미경','임미경','11email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (12,'윤현우','윤현우','12email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (13,'박지민','박지민','13email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (14,'이민서','이민서','14email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (15,'박민서','박민서','15email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (16,'이승호','이승호','16email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (17,'박영희','박영희','17email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MODIFY_DATE) values (18,'이준호','이준호','18email@naver.com','1234',to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'));
+Insert into COMMON_MEMBER (CM_NO,CM_NAME,CM_NICKNAME,CM_EMAIL,CM_PASSWORD,CM_JOIN_DATE,CM_MOD
+
+-- 게시글 더미
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (1,'박영희','일상','RN','22사번인데 선생님들과 친해지고 싶어요','22사번이에요. 병동 선생님들이랑 친해지고 싶은데 어떻게 먼저 말을 걸어야할지 모르겠어요ㅠㅠ',160,38,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),1);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (2,'김주원','취업','RN','병동 수술실 부서 선택 고민돼요','병동 수술실 어느 부서를 가야될지 모르겠어요..
+티오가 나는 쪽으로 빠지겠지만..',161,39,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),2);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (3,'정승호','일상','RN','ICU 간호사인데 무기력해요..','3월부터 일하고 있는 ICU 간호사입니다..
+오히려 제가 있는 게 짐 같아서 무기력합니다..
+출근하면 그림자 같아요..ㅠㅠ
+조언 부탁드립니다',162,40,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),3);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (4,'이지현','취업','RN','이직하다가 부모님과 싸웠어요..','첫 병원에서 일하다가 너무 힘들어서 이직하게 되었는데 어머니랑 싸웠어요..
+어떻게 해야할까요..?',163,41,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),4);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (5,'최지우','일상','SN','사망년 죽을 것 같아요..','사망년 죽을 것 같아요..
+학점 3점 초반대도 종병 갈 수 있나요..?????',164,42,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),5);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (6,'정수민','취업','SN','지자무 4.2 토익 770 빅5','지자무 4.2에 토익 770인데 빅5 갈 수 있을까요?ㅠㅠㅠ',165,43,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),6);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (7,'김영수','일상','RN','웨이팅이 길어져서 뭘 할까요','웨이팅이 길어져서 이렇게 노는 게 맞나 싶은데 다른 곳을 지원해보는게 맞을까요?',166,44,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),7);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (8,'박민준','취업','RN','[속보]입사 6일차 신규..내던져짐..','OR 입사 6일차인데 첫 날부터 내던져저서 써큐일 배우고 물품 위치도 혼자 알아서 파악해요..
+이게 맞는 걸까요..ㅠ',167,45,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),8);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (9,'임동우','일상','RN','고대 구로 예비합격하면','고대 구로 예비인데 다른 대학병원 5월 입사해서 일하고있어요
+만약 예비 합격하면 몇 달만 일하고 그만두는 거 너무 민폐일까요..?',168,46,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),9);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (10,'박성민','취업','RN','근무하는 곳이 완전 잡과 병동인데','근무하는 곳이 완전 잡과 병동인데 이직할 때 장점일까요, 단점일까요..?',169,47,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),10);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (11,'임미경','일상','SN','22학번인데 33살','22학번인데 졸업하면 33살이에요..ㅎ
+
+지자무고 대학병원 가고싶은데 욕심일까요?',170,48,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),11);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (12,'윤현우','취업','RN','신규 입사는 몇 월이 가장 좋을까요?','신규 입사는 몇 월이 가장 좋을까요?',171,49,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),12);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (13,'박지민','일상','RN','3주차 신규.. 친구가 없어요ㅠㅠㅠ','3주차 신규, 달동기 없고 같은 사번 선생님들은 아예 말씀을 안하셔요..
+
+친해지는 사람 없이 일을 할 수 있을까요?',172,50,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),13);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (14,'이민서','취업','RN','웨이팅 너무 길어서 답답해요..','웨이팅이 너무 길어서 답답해요..
+
+작년엔 엄청 적게 뽑더니 올해는 또 많이 뽑고..
+근데 안불러주고..ㅠㅠ',173,51,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),14);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (15,'박민서','일상','SN','취업 과정이 너무 힘들어요..','취업 과정이 너무 힘들어요..
+
+내 병원은 안보이는 것만 같고..
+하루 하루 눈물이네요..ㅠㅠㅠ',174,52,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),15);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (16,'이승호','취업','SN','다음주 성인간호 시험인데..','다음주 성인간호 시험보는데 어떻게 봐야할 지 모르겠어요.. 다들 어떻게 공부하셨나요ㅠㅠ',175,53,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),16);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (17,'박영희','일상','RN','친한 동기의 응급사직..','오늘 친한 동기가 응사했어요..
+
+모레 출근인데 걱정돼요.. 저도 퇴사할까 고민 중이었는데 동기가 퇴사하니까 마음이 너무 흔들려요ㅠㅠㅠ',176,54,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),17);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (18,'이준호','취업','SN','2년 채우고 소방갈 생각 : ER로 이직 vs 간간통 2년','2년 채우고 소방쪽으로 갈 생각인데 이제 간간통으로 1년 2개월 채웠어요
+
+ER 타병원으로 이직할까요 아님 여기서 2년 채울까요?',177,55,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),18);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (19,'이승민','일상','RN','수쌤이 퇴사 면담을 안받아주면..','퇴사 생각하는데 수쌤이 퇴사 면담을 안받아주면 어떡하죠..?
+응급사직이 답일까요 하핳',178,56,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),19);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (20,'정민서','취업','RN','퇴사하고 할 거 추천해주세요 ㅎㅎ','퇴사하고 할 거 추천해주세요 ㅎㅎ D-10 ♥',179,57,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),20);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (21,'김윤서','일상','RN','신규 4개월차.. 응사하려고 합니다..','신규 4개월차.. 너무 힘들어서 응사하려고 합니다..ㅜㅜ 
+좋은 선택은 아니지만 잘한 선택일까요..?ㅜㅜ',180,58,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),21);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (22,'김미경','취업','RN','임상 3년이 의미가 있을까요?','과연 임상 3년이 의미가 있을까요?..
+맨날 상근직만 찾아보는 만 2년차입니다ㅜ',181,59,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),22);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (23,'김주원','일상','SN','과CC 어떻게 생각하시나요?','과CC 어떻게 생각하세요 다들..ㅎ 말리는 데는 이유가 있는 걸까요, 좋으면 해야되는 걸까요..ㅎㅎ',182,60,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),23);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (24,'김하민','취업','RN','수술실 가고싶은데 경쟁률이 높아서..','수술실 가고싶은데 경쟁률이 빡세서 못갈 것 같아요ㅜㅜㅜ
+로테이션으로 가능할까요?',183,61,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),24);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (25,'박미진','일상','RN','저보고 프리셉터 하래요..','10월에 신규가 들어온다고 올해 프리셉터인데 저보고 하래요..ㅜㅜㅜㅜ
+
+넘 떨리고 하기 싫어요..
+누가 누굴 가르쳐..흑흗',184,62,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),25);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (26,'김예지','취업','RN','퇴사 각도기 빳빳이 선 신규입니다..','퇴사 각도기 빳빡이 선 신규간호사 입니다..
+
+곧있으면 1년인데 
+채우고 퇴사한다 vs 지금 당장 퇴사한다..',185,63,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),26);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (27,'김서진','일상','RN','저는 어쩔 수 없는 ICU 무새일까요?','대학병원 ICU 2회 퇴사(태움) 후 종합병원 병동 1년 채웠더니 또 ICU가 도전해보고 싶습니다..
+
+이런 저.. 가능할까요..? 정상인가요..?',186,64,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),27);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (28,'김준서','취업','RN','4개월차.. 저에게 잘 맞는지 헷갈려요..','4개월차..
+업무 공부하는 건 저랑 잘 맞는 것 같은데 늘 실전에서 실수하고 혼나서 이 일이 저랑 잘 맞는지 헷갈려요 ㅜㅜ
+
+어떻게 생각하시나요?',187,65,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),28);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (29,'김미경','일상','RN','투석실 간호사 1달째 신규 일 잘하는 방법 궁금해요','투석실 간호사로 어영부영 한 달째인데.. 일이 안 느는 느낌적인 느낌..
+
+어떻게 해야 일 잘하는 신규가 될 수 있을까요..?',188,66,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),29);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (30,'김지현','취업','RN','대병 계약직 vs 종병 정규직','대병 계약직 vs 종병 정규직
+둘 중 뭐가 나을까요..?
+
+경력 쌓기에는 종병이 낫겠죠..?',189,67,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),30);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (31,'김하윤','일상','RN','웨이팅게일 컴활 자격증','웨이팅게일인데 너무 할 게 없어서 컴활 자격증이라도 딸까 싶어요. 
+도움이 될까요?',190,68,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),31);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (32,'이수민','취업','RN','웨이팅이 너무 긴데..','웨이팅이 너무 긴데 사실 열심히 놀고 있긴 하거든요..ㅎㅎ 
+
+내년 중순에나 들어갈 것 같은데 계속 이렇게 노는 게 맞을까요..?',191,69,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),32);
+Insert into BOARD (BOARD_NO,BOARD_WRITER,CATEGORY,BOARD_HASHTAG,BOARD_TITLE,BOARD_CONTENT,BOARD_VIEW_COUNT,BOARD_RECOMMEND,BOARD_WRITE_DATE,BOARD_MOD_DATE,CM_NO) values (33,'박수민','일상','RN','웨이팅 1년반째.. 즐기기 vs 다른 병원 기졸 준비','웨이팅 벌써 1년 반째예요..ㅜㅜㅜㅜ
+1. 이 시기를 즐긴다
+2. 다른 병원 기졸을 준비한다..
+
+어떤 걸 추천하시나요?',192,70,to_date('23/09/15','RR/MM/DD'),to_date('23/09/15','RR/MM/DD'),33);

@@ -78,21 +78,21 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/member/resetPasswordCtr.do", method = RequestMethod.POST)
-	public String resetPassword(MemberDto memberDto, Model model) throws Exception {
-		log.debug("Welcome MemberController findPassword!" + memberDto);
+	public String resetPasswordCtr(MemberDto memberDto, Model model) throws Exception {
+		log.info("Welcome MemberController resetPasswordCtr!" + memberDto);
+		
+		int resultNum = 0;
 		
 		try {
-			memberService.memberInsertOne(memberDto);
+			resultNum = memberService.resetPassword(memberDto);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println("오류 처리할거 있음 한다");
 			e.printStackTrace();
 		}
-			
-		return "redirect:/home.do";
+		
+		return "./auth/cm_LoginForm";
 	}
 	
-	//이메일 확인
+	//인증번호 전송
 	@ResponseBody
 	@RequestMapping(value="/member/emailIdentify.do", method = RequestMethod.POST)
 	public int memberEmailIdentify(MemberDto memberDto) throws Exception {

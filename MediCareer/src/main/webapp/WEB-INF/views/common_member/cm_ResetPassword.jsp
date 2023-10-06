@@ -252,7 +252,7 @@
 		<div>
 			<div class="pwdContent_wrap">
 				<h2 class="forgetPwd_title">비밀번호를 잊으셨나요?</h2>
-			<form action="./resetPasswordCtr.do" onsubmit="return emailValidateFnc();" method="post">
+			<form action="./resetPasswordCtr.do" onsubmit="return joinValidateFnc();" method="post">
 				<input type="hidden" id="emailVal" value="N">
 				<input type="hidden" id="passwordVal" value="N">
 				<div>

@@ -55,6 +55,15 @@
 		AND CM_PASSWORD = #{password}
 	</select>
    
+   	<update id="resetPassword" parameterType="memberDto">
+	   UPDATE COMMON_MEMBER
+	   <set>
+	      <if test="password!=null">CM_PASSWORD = #{password},</if>
+	      CM_MODIFY_DATE = SYSDATE
+	   </set>
+	      WHERE CM_EMAIL = #{email}
+	</update>
+   	
 	<select id="memberEmailIdentify" resultType="int">
 		SELECT COUNT(*)
 		FROM COMMON_MEMBER
