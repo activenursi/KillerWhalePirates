@@ -19,7 +19,6 @@ import com.mc.member.dto.MemberDto;
 @Service
 public class MemberServiceImpl implements MemberService {
 	
-	
 	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
@@ -88,6 +87,16 @@ public class MemberServiceImpl implements MemberService {
 		int result = memberDao.memberEmailIdentify(memberDto);
 		
 		return result;
+	}
+
+	@Override
+	public int resetPassword(MemberDto memberDto) {
+		// TODO Auto-generated method stub
+		int resultNum = 0;
+		
+		resultNum = memberDao.resetPassword(memberDto);
+			
+		return resultNum;
 	}
 
 }
