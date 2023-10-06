@@ -310,10 +310,10 @@
 	                html += '</div>';
 	                html += '</div>';
 	                html += '<div class="subject">';
-	                html += '<a href="#">' + data[i].title + '</a>';
+	                html += '<a href="./detail.do?no=' + data[i].no + '&writeDate='+ daysAgo +'">' + data[i].title + '</a>';
 	                html += '</div>';
 	                html += '<div class="text">';
-	                html += '<a href="#">' + data[i].content + '</a>';
+	                html += '<a href="./detail.do?no=' + data[i].no + '">' + data[i].content + '</a>';
 	                html += '</div>';
 	                html += '</div>';
 	                html += '</div>';
@@ -396,10 +396,10 @@
 	            	html += '<div class="hash"><span>#수술</span> <span>#수술방</span> <span>#정형외과</span></div>';
 	            	html += '</div>';
 	            	html += '<div class="subject">';
-	            	html += '<a href="#">' + boardList[i].title + '</a>';
+	            	html += '<a href="./detail.do?no=' + boardList[i].no + '">' + boardList[i].title + '</a>';
 	            	html += '</div>';
 	            	html += '<div class="text">';
-	            	html += '<a href="#">' + boardList[i].content + '</a>';
+	            	html += '<a href="./detail.do?no=' + boardList[i].no + '">' + boardList[i].content + '</a>';
 	            	html += '</div>';
 	            	html += '</div>';
 	            	html += '<div class="rt-item"></div>';
@@ -522,10 +522,10 @@
 	            	html += '<div class="hash"><span>#수술</span> <span>#수술방</span> <span>#정형외과</span></div>';
 	            	html += '</div>';
 	            	html += '<div class="subject">';
-	            	html += '<a href="#">' + boardList[i].title + '</a>';
+	            	html += '<a href="./detail.do?no=' + boardList[i].no + '">' + boardList[i].title + '</a>';
 	            	html += '</div>';
 	            	html += '<div class="text">';
-	            	html += '<a href="#">' + boardList[i].content + '</a>';
+	            	html += '<a href="./detail.do?no=' + boardList[i].no + '">' + boardList[i].content + '</a>';
 	            	html += '</div>';
 	            	html += '</div>';
 	            	html += '<div class="rt-item"></div>';
