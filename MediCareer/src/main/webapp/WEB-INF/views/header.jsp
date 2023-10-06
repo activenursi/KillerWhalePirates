@@ -30,7 +30,9 @@
   border: 1px solid #888;
   width: 300px;
   text-align: center;
-}
+	}
+
+
 </style>
 
 <script type="text/javascript">
@@ -62,15 +64,10 @@
 				alt="메디커리어">
 			</a>
 			
-		</div>
-
-		<!--        	<form action="auth/login.do" id="simpleForm" method="get">
-			<input type="button"value="로그인 화면으로 이동" onclick="loginMoveFnc();">
-		</form> -->
-		<c:choose>
+			<c:choose>
 			<c:when test="${sessionScope.member.email ne null}">
 				<div class="sub-menu">
-					<ul class="menu">
+					<ul class="menu" style="display:flex">
 						<li><a href="./jobPosting/em_list.do">채용 공고</a></li>
 						<li><a href="./board/board.do">커뮤니티</a></li>
 						<li><a href="./member/myPage.do?no=${member.no}">마이페이지</a></li>
@@ -95,6 +92,10 @@
 				</div>
 			</c:otherwise>
 		</c:choose>
+		</div>
+
+	
+		
 	</header>
 	
 	<div id="logoutModal" class="modal">
