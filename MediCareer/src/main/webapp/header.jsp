@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>header</title>
 
-<link rel="stylesheet" type="text/css" href="./resources/css/index.css">
+<link rel="stylesheet" type="text/css" href="./resources/css/index2.css">
 <style>
 /* 모달 스타일링 */
 .modal {
@@ -33,6 +33,68 @@
 	}
 
 
+header .sub-menu {
+	margin-right: 150px;
+}
+#header_wrap {
+	color: #fff; /* 텍스트 색상 설정 */
+	padding: 20px 0;
+}
+.medi-title {
+	font-size: 38px;
+	font-weight: 700;
+	float:left;	
+}
+.menu {
+	display: flex; /* 수평으로 나열하기 위해 flex 속성 적용 */
+	justify-content: center; /* 메뉴 항목 가로 정렬 */
+	align-items: center;
+	margin-left: 300px;
+	float:left;
+}
+.menu_wrap {
+	margin: 0 15px; /* 메뉴 항목 사이 간격 설정 */
+}
+.sub_menu1 {
+	display:flex;
+	list-style: none;
+	font-size: 20px;
+	padding-right:500px;
+}
+.sub_menu2 {
+	display:flex;
+	flex:1;
+	list-style: none;
+	font-size: 20px;
+	margin-left: 100px;
+}
+.sub_menu3 {
+	display:flex;
+	list-style: none;
+	font-size: 20px;
+	padding-right: 600px;
+	}
+
+
+.sub-menuWrap1 {
+	display:flex;
+	flex:1;
+	list-style: none;
+	font-size: 20px;
+	margin-left: 100px;
+}
+.sub-menuWrap2 {
+	display:flex;
+	flex:1;
+	list-style: none;
+	font-size: 20px;
+	margin-left: 100px;
+}
+.member_wrap, .board_wrap, .customer_wrap, .search_wrap, .login_wrap {
+	text-decoration: none;
+	color: #FFFFFF;
+	font-weight: bold;
+}
 </style>
 
 <script type="text/javascript">
@@ -57,7 +119,7 @@
 </head>
 <body>
 
-	<header>
+		<header>
 		<div class="inner">
 			<a href="./home.do" class="logo"> 
 			<img src="./resources/images/medicareer_logo.png" style="width: 100px;"
@@ -100,11 +162,11 @@
 	
 	<div id="logoutModal" class="modal">
         <div class="modal-content">
-	       <p>로그아웃 하시겠습니까?</p>
-	       <button onclick="confirmLogout()">확인</button>
-	       <button onclick="cancelLogout()">취소</button>
+          <p>로그아웃 하시겠습니까?</p>
+          <button onclick="confirmLogout()">확인</button>
+          <button onclick="cancelLogout()">취소</button>
         </div>
-	</div>
+   </div>
 </body>
 	<script type="text/javascript">
 		var modal = document.getElementById('logoutModal');
@@ -125,6 +187,5 @@
 	    	 modal.style.display = 'none';
 	    }
 	</script>
-
 
 </html>

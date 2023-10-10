@@ -10,7 +10,7 @@
 
 </style>
 </head>
-<link rel="stylesheet" type="text/css" href="/resoures/css/index2.css">
+<link rel="stylesheet" type="text/css" href="./resoures/css/index2.css">
 <body>
 	<header id="header_wrap">
 		<div class="inner">

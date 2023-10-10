@@ -76,6 +76,7 @@ table th {
 </style>
 </head>
 <body>
+<%@include file ="header.jsp" %>
 	<div class="warp-container">
 		<div class="adm-member-update">
 			<div>

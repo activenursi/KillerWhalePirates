@@ -188,7 +188,7 @@
                 <div class="middle">
                     <div class="onlyme">
                         <label>
-                            <input type="checkbox" onclick="myList(${member.no})"><p> ${member.no}내가 쓴글 만 보기</p>
+                            <input type="checkbox" onclick="myList(${member.no})"><p>내가 쓴글 만 보기</p>
                         </label>
                     </div>
                     
@@ -472,7 +472,7 @@
     
     //내가쓴글보기
     function myList(no2) {  //최신순으로
-    	alert(no2);
+
         $.ajax({
         url:"../community/newlist.do",
         method: "GET",
