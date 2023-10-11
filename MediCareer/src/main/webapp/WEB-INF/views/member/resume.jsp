@@ -180,19 +180,19 @@ a {
 				<div>
 					<h3 style="margin-bottom:8px;">이름</h3>
 					<p class="small_title">이름을 작성해주세요.</p>
-					<input class="input_name" type="text" placeholder="이름을 입력해주세요.">
+					<input class="input_name" type="text" name="name" placeholder="이름을 입력해주세요.">
 				</div>
 
 				<div>
 					<h3 style="margin-bottom:8px;">이메일</h3>
 					<p class="small_title">이메일을 작성해주세요.</p>
-					<input class="input_email" type="text" placeholder="이메일을 입력해주세요.">
+					<input class="input_email" type="text" name="email" placeholder="이메일을 입력해주세요.">
 				</div>
 				<div>
 					<h3 style="margin-bottom:8px;">생년월일</h3>
 					<p class="small_title">생년월일을 작성해주세요.</p>
 					<input class="input_date" type="text"
-						placeholder="생년월일 8자리를 입력해주세요."> 
+						name="birth_date" placeholder="생년월일 8자리를 입력해주세요."> 
 						<span>
 						<br>
 						<input class="input_male" type="radio" target="_blank;">남자 
@@ -202,23 +202,23 @@ a {
 				<div>
 					<h3 style="margin-bottom:8px;">주소</h3>
 					<p class="small_title">주소를 작성해주세요.</p>
-					<input class="input_addr" type="text" placeholder="주소를 입력해주세요.">
+					<input class="input_addr" name="address" type="text" placeholder="주소를 입력해주세요.">
 				</div>
 				<div>
 					<h3 style="margin-bottom:8px;">
 						학력&nbsp;&nbsp;&nbsp; <span style="font-size: 15px; color: red;">필수</span>
 					</h3>
 						<p class="small_title">최종 학력과 경력을 작성해주세요.</p>
-					<input class="input_education" type="text" placeholder="학력을 입력해주세요."> 
+					<input class="input_education" type="text" name="final_academic_background" placeholder="학력을 입력해주세요."> 
 					<br>
-					<input class="input_major" type="text" placeholder="전공을 입력해주세요.">
+					<input class="input_major" type="text" name="educational_institute" placeholder="전공을 입력해주세요.">
 				</div>
 
 				<div>
 					<h3 style="margin-bottom:8px;">어학 / 자격증</h3>
 					<p class="small_title">취득한 자격증을 작성해주세요.</p>
 					<input class="input_certificate" type="text"
-						placeholder="취득한 자격증을 입력해주세요.">
+						name="license_name" placeholder="취득한 자격증을 입력해주세요.">
 				</div>
 
 				<div>
@@ -235,6 +235,7 @@ a {
 					</textarea>
 				</div>
 				<div>
+					<input class="preview_btn" type="button" value="작성완료">
 					<input class="preview_btn" type="button" value="미리보기">
 				</div>
 			</div>

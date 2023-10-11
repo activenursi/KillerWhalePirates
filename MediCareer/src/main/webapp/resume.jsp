@@ -235,6 +235,7 @@ a {
 					</textarea>
 				</div>
 				<div>
+					<input class="preview_btn" type="button" value="작성완료">
 					<input class="preview_btn" type="button" value="미리보기">
 				</div>
 			</div>

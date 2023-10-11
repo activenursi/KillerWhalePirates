@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>이력서 ㅁ리ㅣ보기</title>
+<title>이력서 미리보기</title>
 <style>
 #main_content {
 	width: 1348px;
