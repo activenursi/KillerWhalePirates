@@ -25,6 +25,13 @@
 	height: 250px;
 }
 
+.items {
+	font-size: 15px;
+	font-weight: 700;
+	text-align: left;
+	color: darkblue;
+}
+
 /* 입력란 */
 .cre_wrap_inputBox{
 	margin: 0 auto;
@@ -379,6 +386,7 @@
 					<input type="hidden" id="emailVal" value="N">
 					<input type="hidden" id="nameVal" value="N">
 					<input type="hidden" id="passwordVal" value="N">
+					<p class="items">닉네임</p>
 					<div>
 						<label>
 							<li class="inputBox_items">
@@ -422,6 +430,7 @@
 							</li>
 						</label>
 					</div>
+					<p class="items">이메일</p>
 					<div>
 						<label>
 							<li class="inputBox_items">
@@ -476,6 +485,7 @@
 							</li>
 						</label>
 					</div>
+					<p class="items">이름</p>
 					<div>
 						<label>
 							<li class="inputBox_items">
@@ -498,6 +508,7 @@
 							</li>
 						</label>
 					</div>
+					<p class="items">비밀번호</p>
 					<div>
 						<label>
 							<li class="inputBox_items">
